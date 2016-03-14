@@ -1,7 +1,7 @@
 # UHN
 
 ## Members
--Raj
--Soo Ah
--Eric
--Yi
+- Raj
+- Soo Ah
+- Eric
+- Yi
