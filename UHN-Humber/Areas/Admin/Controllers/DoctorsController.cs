@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using UHN_Humber.Models;
+using PagedList;
 
 namespace UHN_Humber.Areas.Admin.Controllers
 {
@@ -15,7 +16,7 @@ namespace UHN_Humber.Areas.Admin.Controllers
         private UHNDBContext db = new UHNDBContext();
 
         // GET: Admin/Doctors
-        public ActionResult Index(string orderBy, string searchText)
+        public ActionResult Index(string orderBy, string searchText, int? pageNumber)
         {
             IQueryable<Doctor> doctors = db.Doctors;
             string order = String.IsNullOrEmpty(orderBy) ? "id" : orderBy;
@@ -43,10 +44,12 @@ namespace UHN_Humber.Areas.Admin.Controllers
                     break;
             }
 
-
+            int page = pageNumber ?? 1;
             ViewData["searchText"] = searchText;
             ViewData["orderBy"] = orderBy;
-            return View(doctors.ToList());
+            ViewData["pageNumber"] = page;
+            return View(doctors.ToPagedList(page, 5));
+            //return View(doctors.ToList());
         }
 
         // GET: Admin/Doctors/Details/5

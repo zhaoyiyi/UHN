@@ -1,4 +1,5 @@
-﻿@model IEnumerable<UHN_Humber.Models.Doctor>
+﻿@model PagedList.IPagedList<UHN_Humber.Models.Doctor>
+@using PagedList.Mvc
 
 @{
     ViewBag.Title = "Doctors";
@@ -12,6 +13,7 @@
     if (orderBy == "id") { orderName = "Id"; }
 
     string searchText = (string)ViewData["searchText"];
+    int pageNumber = (int)ViewData["pageNumber"];
 }
 
 
@@ -49,25 +51,12 @@
 
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DocId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Doc_first_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Doc_last_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Doc_email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Doc_phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Doc_specialty)
-        </th>
-        <th></th>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Specialty</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -97,5 +86,10 @@
         </td>
     </tr>
 }
-
 </table>
+
+<div>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { pageNumber = page, orderBy, searchText }))
+</div>
