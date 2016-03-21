@@ -11,24 +11,40 @@ namespace UHN_Humber.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Doctor
     {
+        [Display(Name = "ID")]
         public int DocId { get; set; }
+        [Display(Name = "Academic Affiliatirion")]
         public string Doc_academic_affiliation { get; set; }
+        [Display(Name = "Clinic")]
         public string Doc_clinic { get; set; }
+        [Display(Name = "Education")]
         public string Doc_education_and_training { get; set; }
+        [Display(Name = "Email")]
         public string Doc_email { get; set; }
+        [Display(Name = "First Name")]
         public string Doc_first_name { get; set; }
+        [Display(Name = "Image")]
         public string Doc_image { get; set; }
+        [Display(Name = "Language")]
         public string Doc_languages { get; set; }
+        [Display(Name = "Last Name")]
         public string Doc_last_name { get; set; }
+        [Display(Name = "Middle Name")]
         public string Doc_middle_name { get; set; }
+        [Display(Name = "Phone")]
         public string Doc_phone { get; set; }
+        [Display(Name = "Program")]
         public string Doc_program { get; set; }
+        [Display(Name = "Publications")]
         public string Doc_publications { get; set; }
+        [Display(Name = "Research Affliliations")]
         public string Doc_research_institute_affiliations { get; set; }
+        [Display(Name = "Research Profile")]
         public string Doc_research_profile { get; set; }
+        [Display(Name = "Specialty")]
         public string Doc_specialty { get; set; }
     }
 }

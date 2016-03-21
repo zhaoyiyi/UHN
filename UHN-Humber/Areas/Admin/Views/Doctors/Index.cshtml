@@ -4,21 +4,58 @@
     ViewBag.Title = "Index";
 }
 
+@{
+    string order = Request["orderBy"];
+    string orderName = "id";
+    if (order == "first_name") { orderName = "First Name"; }
+    if (order == "last_name") { orderName = "Last Name"; }
+    if (order == "id") { orderName = "Id"; }
+}
+
+
 <h2>Index</h2>
+
+@{
+    var orderList = new List<SelectListItem>
+    {
+        new SelectListItem {Text = "id", Value = "id"},
+        new SelectListItem {Text = "First Name", Value = "first_name" },
+        new SelectListItem {Text = "Last Name", Value = "last_name" }
+    };
+}
+
+<!-- <p>Order By: @Html.DropDownList("Order Dropdown", orderList)</p> -->
+
+<div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Order By: 
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>@Html.ActionLink("Id", "Index", new { orderBy = "id"})</li>
+        <li>@Html.ActionLink("First Name", "Index", new { orderBy = "first_name" })</li>
+        <li>@Html.ActionLink("Last Name", "Index", new { orderBy = "last_name" })</li>
+    </ul>
+    @orderName
+</div>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Doc_email)
+            @Html.DisplayNameFor(model => model.DocId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Doc_first_name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Doc_last_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Doc_email)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Doc_phone)
@@ -32,13 +69,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Doc_email)
+            @Html.DisplayFor(modelItem => item.DocId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Doc_first_name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Doc_last_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Doc_email)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Doc_phone)

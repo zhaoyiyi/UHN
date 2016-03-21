@@ -15,9 +15,29 @@ namespace UHN_Humber.Areas.Admin.Controllers
         private UHNDBContext db = new UHNDBContext();
 
         // GET: Admin/Doctors
-        public ActionResult Index()
+        public ActionResult Index(string orderBy)
         {
-            return View(db.Doctors.ToList());
+            IOrderedQueryable<Doctor> doctors = db.Doctors;
+            string order = String.IsNullOrEmpty(orderBy) ? "id" : orderBy;
+
+            switch (order)
+            {
+                case "id":
+                    doctors = doctors.OrderBy(d => d.DocId);
+                    break;
+                case "first_name":
+                    doctors = doctors.OrderBy(d => d.Doc_first_name);
+                    break;
+                case "last_name":
+                    doctors = doctors.OrderBy(d => d.Doc_last_name);
+                    break;
+                default:
+                    Response.Write("invalid order name");
+                    break;
+            }
+            
+
+            return View(doctors.ToList());
         }
 
         // GET: Admin/Doctors/Details/5
