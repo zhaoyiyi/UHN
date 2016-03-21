@@ -1,43 +1,47 @@
 ﻿@model IEnumerable<UHN_Humber.Models.Doctor>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Doctors";
 }
 
 @{
-    string order = Request["orderBy"];
+    string orderBy = (string)ViewData["orderBy"];
     string orderName = "id";
-    if (order == "first_name") { orderName = "First Name"; }
-    if (order == "last_name") { orderName = "Last Name"; }
-    if (order == "id") { orderName = "Id"; }
+    if (orderBy == "first_name") { orderName = "First Name"; }
+    if (orderBy == "last_name") { orderName = "Last Name"; }
+    if (orderBy == "id") { orderName = "Id"; }
+
+    string searchText = (string)ViewData["searchText"];
 }
 
 
 <h2>Index</h2>
 
-@{
-    var orderList = new List<SelectListItem>
-    {
-        new SelectListItem {Text = "id", Value = "id"},
-        new SelectListItem {Text = "First Name", Value = "first_name" },
-        new SelectListItem {Text = "Last Name", Value = "last_name" }
-    };
+@using (Html.BeginForm("Index", "Doctors", FormMethod.Get))
+{
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Order By:
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li>@Html.ActionLink("Id", "Index", new { orderBy = "id", searchText })</li>
+            <li>@Html.ActionLink("First Name", "Index", new { orderBy = "first_name", searchText })</li>
+            <li>@Html.ActionLink("Last Name", "Index", new { orderBy = "last_name", searchText })</li>
+        </ul>
+        @orderName
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Search</button>
+        </span>
+        @Html.TextBox("searchText", searchText, new { @class = "form-control", @placeholder = "Search..." })
+
+        <input type="hidden" name="orderBy" value=@orderBy>
+    </div>
+
 }
-
-<!-- <p>Order By: @Html.DropDownList("Order Dropdown", orderList)</p> -->
-
-<div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Order By: 
-        <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li>@Html.ActionLink("Id", "Index", new { orderBy = "id"})</li>
-        <li>@Html.ActionLink("First Name", "Index", new { orderBy = "first_name" })</li>
-        <li>@Html.ActionLink("Last Name", "Index", new { orderBy = "last_name" })</li>
-    </ul>
-    @orderName
-</div>
 
 <p>
     @Html.ActionLink("Create New", "Create")

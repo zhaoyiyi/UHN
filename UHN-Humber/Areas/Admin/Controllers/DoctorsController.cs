@@ -15,11 +15,18 @@ namespace UHN_Humber.Areas.Admin.Controllers
         private UHNDBContext db = new UHNDBContext();
 
         // GET: Admin/Doctors
-        public ActionResult Index(string orderBy)
+        public ActionResult Index(string orderBy, string searchText)
         {
-            IOrderedQueryable<Doctor> doctors = db.Doctors;
+            IQueryable<Doctor> doctors = db.Doctors;
             string order = String.IsNullOrEmpty(orderBy) ? "id" : orderBy;
 
+            // Search if search text is not empty
+            if (!String.IsNullOrEmpty(searchText))
+            {
+                doctors = doctors.Where(doc => doc.Doc_first_name.Contains(searchText) || doc.Doc_last_name.Contains(searchText) );
+            }
+
+            // Sort result
             switch (order)
             {
                 case "id":
@@ -35,8 +42,10 @@ namespace UHN_Humber.Areas.Admin.Controllers
                     Response.Write("invalid order name");
                     break;
             }
-            
 
+
+            ViewData["searchText"] = searchText;
+            ViewData["orderBy"] = orderBy;
             return View(doctors.ToList());
         }
 
