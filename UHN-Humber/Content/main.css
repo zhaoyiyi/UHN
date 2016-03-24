@@ -463,9 +463,9 @@ background-color: #2b2b2b;
 	#nav_lg li.nav-item a.menu_item{	
 		color: #fff;
 		text-transform: uppercase;
-		text-shadow: 1px 1px 2px #004A83;
+		text-shadow: 1px 1px 1px #004A83;
 		font-weight: 600;
-		font-size: 13.5px;
+		font-size: 14.5px;
 		position: absolute;
 		top: 20px;
 		left: 0;
@@ -476,10 +476,16 @@ background-color: #2b2b2b;
 	}	
 
 	#nav_lg li.nav-item:before, #nav_lg li.static2:before{
-		content: url("~/images/nav_seperator.png");
+		content: url("/images/nav_seperator.png");
 		position: absolute;
 		left: 0;
 	}	
+
+
+
+
+
+
 
 	#nav_lg ul.blue_top{
 		background-color: #f7f7f7;
@@ -662,7 +668,7 @@ background-color: #2b2b2b;
 	}
 
 	#nav_lg li.nav-item{
-		width: 120px;
+		width: 150px;
 	}
 
 }
