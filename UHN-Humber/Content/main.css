@@ -163,15 +163,16 @@ ul.mobile_drop_down_list li{
 
 	margin-top: -1px; 
     font-size: 15px;
-
+   
 }
 
 
 
 ul.mobile_drop_down_list li a{
 	text-decoration: none;
-	color: #333;
+	 color:#585858;
 	padding-left: 30px;
+    font-weight:bold;
 }
 
 
@@ -228,8 +229,13 @@ ul.mobile_second_nav li{
 	padding: 8px 20px;
 	font-size: 14px;
 	border: none;
+   
 }
-	
+
+
+    ul.mobile_second_nav li a {
+        font-weight:normal;
+    }
 	
 ul.mobile_second_nav li:hover, ul.mobile_second_nav li:hover > a{
 	background-color: #33CCFF;
