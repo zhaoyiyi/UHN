@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+    <link rel="stylesheet" href="~/Content/main.css">
+    <script src="~/Content/main.js"></script>
+    <title>UHN-University Health Network by Group 6</title>
+</head>
+<body>
+
+    <div class="header_decoration hidden-xs">
+        <div class="left_decoration"></div>
+    </div>
+
+
+
+    <header class="main_header container">
+        <div class="row">
+
+            <div class="logo col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                <div class="row">
+                    <a href="" class="col-xs-8">
+                        <img class="hidden-xs" src="~/images/logo.png" alt="logo image" id="logo" /><img class="visible-xs" src="~/images/logo-uhn.svg" alt="logo image" id="logo2" />
+                        <br /><span id="fake">This is a fake website for a school project</span>
+                    </a>
+
+
+
+
+                    <!-- Search Icon for Mobile -->
+                    <div class="search_icon col-xs-2 visible-xs" style="cursor: pointer;">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </div>
+
+
+
+                    <div class="mobile-menu col-xs-2">
+                        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                        <span id="menu">MENU</span>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <!-- Search Bar -->
+            <div class="col-md-3 col-lg-3 col-sm-3 hidden-xs">
+                <div class="input-group search-bar">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="searchBtn"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    </span>
+                </div>
+            </div>
+
+
+            <!-- Language Drop Down List -->
+            <div class="col-md-2 col-lg-2 col-sm-2 hidden-xs">
+                <div class="btn-group language-ddl">
+                    <button type="button" class="btn btn-default english-first">English</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">English</a></li>
+                        <li><a href="#">French</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Chinese</a></li>
+                        <li><a href="#">Korean</a></li>
+                        <li><a href="#">Japanese</a></li>
+                        <li><a href="#">Portuguese</a></li>
+                        <li><a href="#">Vietnamese</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </header>
+
+
+
+
+    <!-- mobile menu -->
+    <div class="col-xs-12 mobile_div closed">
+        <ul class="mobile_drop_down_list">
+            <li class="mobile_first_nav notopen">
+                <a href="#">PATIENTS & FAMILIES&nbsp;&nbsp;<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a>
+            </li>
+
+            <ul class="mobile_second_nav closed">
+                <li><a href="">Emergency Departments</a></li>
+                <li><a href="">Find a Doctor</a></li>
+                <li><a href="">Health Information</a></li>
+                <li><a href="">My Visit to UHN</a></li>
+                <li><a href="">Visiting Patients</a></li>
+                <li><a href="">Online Booking</a></li>
+                <li><a href="">Patients & Family Services</a></li>
+            </ul>
+
+
+
+            <li class="mobile_first_nav notopen"><a href="#">RESEARCH&nbsp;&nbsp;<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a></li>
+
+
+            <ul class="mobile_second_nav closed">
+                <li><a href="">Our Research Institute</a></li>
+                <li><a href="">Research Ethics Board</a></li>
+                <li><a href="">Research Commercialization</a></li>
+                <li><a href="">Research Trainees</a></li>
+                <li><a href="">Clinical Research Quality</a></li>
+            </ul>
+
+
+
+
+
+            <li class="mobile_first_nav notopen"><a href="#">EDUCATION&nbsp;&nbsp;<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a></li>
+
+
+            <ul class="mobile_second_nav closed">
+                <li><a href="">The Michener Institute</a></li>
+                <li><a href="">Event Services</a></li>
+                <li><a href="">Observerships</a></li>
+                <li><a href="">Students</a></li>
+                <li><a href="">Libraries</a></li>
+                <li><a href="">International Centre for Education</a></li>
+            </ul>
+
+
+
+            <li class="mobile_first_nav notopen"><a href="#">ABOUT UHN&nbsp;&nbsp;<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a></li>
+
+            <ul class="mobile_second_nav closed">
+                <li><a href="">Our History</a></li>
+                <li><a href="">Achieving Our Vision</a></li>
+                <li><a href="">Events Calendar</a></li>
+                <li><a href="">Fiscal Accountability</a></li>
+                <li><a href="">General Services</a></li>
+                <li><a href="">Accessibility at UHN</a></li>
+                <li><a href="">FAQ</a></li>
+            </ul>
+
+            <li><a href="">CONTACT</a></li>
+        </ul>
+    </div>
+
+
+
+    <div id="center_list" class="visible-xs">
+
+        <p class="col-xs-6"><a href=""><img src="~/images/pmcc.jpg" style="height:60px; margin-right: 10px;" align="left" /><span>Princess Margaret Cancer Center</span></a></p>
+        <p class="col-xs-6"><a href=""><img align="left" src="~/images/tgh.jpg" style="height:64px; margin-right: 10px;" /><span>Toronto General Hospital</span></a></p>
+        <p class="col-xs-6"><a href=""><img align="left" src="~/images/twh.jpg" style="height:64px; margin-right: 10px;" /><span>Toronto Western Hospital</span></a></p>
+        <p class="col-xs-6"><a href=""><img align="left" src="~/images/rehab.jpg" style="height:64px; margin-right: 10px;" /><span>Toronto Rehab. Institute</span></a></p>
+    </div>
+
+
+
+
+
+    <div class="main-nav container">
+        <ul id="nav_lg">
+            <li class="static"></li>
+            <li class="nav-item dropdown">
+                <a href="" class="dropdown-toggle menu_item" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Hospitals</a>
+                <div class="dropdown-menu first_nav" aria-labelledby="dropdownMenu1">
+                    <ul class="blue_top">
+                        <li class="first_menu"><a href="">Princess Margaret Cancer Center</a></li>
+                        <li><a href="">Toronto General Hospital</a></li>
+                        <li><a href="">Toronto Weston Hospital</a></li>
+                        <li class="dropdown-submenu">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Toronto Rehabilitation Institute<span style="vertical-align: bottom; float:right; font-size:11px; padding-top: 3px;" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                            <ul class="dropdown-menu green_top">
+                                <li><a href="#">Toronto Rehab - Bickle</a></li>
+                                <li><a href="#">Toronto Rehab - Lakeside</a></li>
+                                <li><a href="#">Toronto Rehab - Lyndhurst</a></li>
+                                <li><a href="#">Toronto Rehab - Rumsey</a></li>
+                                <li><a href="#">Toronto Rehab - University</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+            <li class="nav-item special_li">
+
+
+                <a href="" class="dropdown-toggle menu_item" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Patients<br />& Families</a>
+                <div class="dropdown-menu first_nav" aria-labelledby="dropdownMenu2">
+                    <ul class="blue_top">
+                        <li class="first_menu"><a href="">Emergency Departments</a></li>
+                        <li><a href="">Find a Doctor</a></li>
+                        <li><a href="">Health Information</a></li>
+                        <li><a href="">My Visit to UHN</a></li>
+                        <li><a href="">Visiting Patients</a></li>
+                        <li><a href="">Online Booking</a></li>
+                        <li><a href="">Patients & Family Services</a></li>
+                    </ul>
+                </div>
+
+            </li>
+            <li class="nav-item">
+                <a href="" class="dropdown-toggle menu_item" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Research</a>
+                <div class="dropdown-menu first_nav" aria-labelledby="dropdownMenu3">
+                    <ul class="blue_top">
+                        <li class="first_menu"><a href="">Our Research Institute</a></li>
+                        <li><a href="">Research Ethics Board</a></li>
+                        <li><a href="">Research Commercialization</a></li>
+                        <li><a href="">Research Trainees</a></li>
+                        <li><a href="">Clinical Research Quality</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="" class="dropdown-toggle menu_item" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Education</a>
+                <div class="dropdown-menu first_nav" aria-labelledby="dropdownMenu4">
+                    <ul class="blue_top">
+                        <li class="first_menu"><a href="">The Michener Institute</a></li>
+                        <li><a href="">Event Services</a></li>
+                        <li><a href="">Observerships</a></li>
+                        <li><a href="">Students</a></li>
+                        <li><a href="">Libraries</a></li>
+                        <li><a href="">International Centre for Education</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="" class="dropdown-toggle menu_item" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">About UHN</a>
+                <div class="dropdown-menu first_nav" aria-labelledby="dropdownMenu5">
+                    <ul class="blue_top">
+                        <li class="first_menu"><a href="">Our History</a></li>
+                        <li><a href="">Achieving Our Vision</a></li>
+                        <li><a href="">Quality and Patient Safety</a></li>
+                        <li><a href="">Events Calendar</a></li>
+                        <li><a href="">Fiscal Accountability</a></li>
+                        <li><a href="">General Services</a></li>
+                        <li><a href="">Accessibility at UHN</a></li>
+                        <li><a href="">FAQ</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item" style="cursor: pointer;"><a class="menu_item">Contact</a></li>
+            <li class="static2"></li>
+        </ul>
+
+
+
+
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        </div>
+
+
+        <!-- Footer -->
+
+
+        <footer class="container" style="width:100% !important;">
+            <div class="footer_top row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <b>Princess Margaret Cancer Center</b><br />
+                    610 University Ave, Toronto, ON M5G 2M9<br />
+                    (416) 946-2000
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <b>Toronto General Hospital</b><br />
+                    200 Elizabeth Street, Toronto, ON M5G 2C4<br />
+                    (416) 340-4800
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <b>Toronto Western Hospital</b><br />
+                    399 Bathurst St, Toronto, ON M5T 2S8<br />
+                    (416) 603-5801
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <b>Toronto Rehabilitation Institute</b><br />
+                    3, 550 University Ave, Toronto, ON M5G 2A2<br />
+                    (416) 597-3422
+                </div>
+            </div>
+
+            <div class="footer_bottom row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    Copyright &copy; 2016 UHN Redesign Project by Group 6<br />
+                    All Rights Reserved.<br />
+                    This is a fake website for a school project
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <img src="~/images/facebook.png" alt="facebook link" />
+                    <img src="~/images/twitter.png" alt="twitter link" />
+                    <img src="~/images/youtube.png" alt="youtube link" />
+                    <img src="~/images/linkedin.png" alt="linkedin link" />
+                </div>
+            </div>
+
+
+        </footer>
+
+
+</body>
+</html>
+
+

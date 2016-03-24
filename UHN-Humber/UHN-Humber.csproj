@@ -139,7 +139,25 @@
     <Content Include="App_Data\UHNDB_log.ldf">
       <DependentUpon>UHNDB.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\main.css" />
+    <Content Include="Content\main.js" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="images\facebook.png" />
+    <Content Include="images\linkedin.png" />
+    <Content Include="images\logo-uhn.svg" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\menu_bg_image_first.png" />
+    <Content Include="images\nav_bg_item.png" />
+    <Content Include="images\nav_bg_item_2.png" />
+    <Content Include="images\nav_bg_line.png" />
+    <Content Include="images\nav_bg_line_2.png" />
+    <Content Include="images\nav_seperator.png" />
+    <Content Include="images\pmcc.jpg" />
+    <Content Include="images\rehab.jpg" />
+    <Content Include="images\tgh.jpg" />
+    <Content Include="images\twh.jpg" />
+    <Content Include="images\twitter.png" />
+    <Content Include="images\youtube.png" />
     <Content Include="scripts\admin\lumino.glyphs.js" />
     <Content Include="Content\admin\styles.css" />
     <Content Include="Content\bootstrap.css" />
@@ -196,6 +214,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DoctorsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -271,6 +290,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_AdminSideMenu.cshtml" />
+    <Content Include="Views\Shared\_PublicView.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -280,8 +302,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="images\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
