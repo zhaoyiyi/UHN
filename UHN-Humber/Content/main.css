@@ -141,6 +141,12 @@ div.mobile-menu:hover{
 
 div.mobile_div{
 	padding: 0;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 90%;
+    border-top: 4px solid #33CCFF; //#1e83eb;
 }
 
 
@@ -177,9 +183,9 @@ ul.mobile_drop_down_list li a{
 
 
 ul.mobile_drop_down_list li:hover, ul.mobile_drop_down_list li:hover > a{
-	color: white;
+	color: #434343;
 	cursor: pointer;
-	background-color: #FF982B; 
+	background-color: #f1f1f1; 
 }
 
 
@@ -238,8 +244,8 @@ ul.mobile_second_nav li{
     }
 	
 ul.mobile_second_nav li:hover, ul.mobile_second_nav li:hover > a{
-	background-color: #33CCFF;
-
+	background-color: #1e83eb; // #33CCFF;
+    color: white;
 }
 	
 	
@@ -251,11 +257,12 @@ div.closed, ul.closed{
 	
 	
 li.open{
-	background-color: #FF982B;
+	color: #434343;
+	background-color: #f1f1f1; 
 }
 li.open  a{
-	background-color: #FF982B;
-	color: white !important;
+	color: #434343;
+	background-color: #f1f1f1; 
 }
 
 li.notopen{
@@ -268,9 +275,10 @@ li.notopen a{
 	
 	
 #center_list	{
-	margin-left: 2%;
-	margin-right: 2%;
+	margin-left: 5%;
+	margin-right: 5%;
 	margin-top: 20px;
+    vertical-align:middle;
 }
 	
 
@@ -280,9 +288,8 @@ li.notopen a{
 	border-left: 1px solid #D0D0D0;
 	border-right: 1px solid #D0D0D0;
 	margin-left: -1px;
-	padding-top: 10px;
-	padding-bottom: 5px;
-	min-height: 99px;
+	padding-top: 5px;
+	min-height: 95px;
 	cursor: pointer;
 
 
@@ -296,7 +303,7 @@ li.notopen a{
 #center_list p span{
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-weight: bold;
-	font-size: 11px;
+	font-size: 14px;
 
 }
 
@@ -359,18 +366,14 @@ background-color: #2b2b2b;
 	
 
 
-@media only screen and (min-width : 425px){
-	
-
-	#center_list p span{
-		font-size: 13px;
-	}
-	#center_list p span{
-		vertical-align: middle;
-	}
-
+@media only screen and (min-width : 600px) {
+    #center_list p {
+        width: 50%;
+    }
+        #center_list p span {
+     font-size: 13px;
+               }
 }
-	
 
 @media only screen and (min-width : 768px){
 
