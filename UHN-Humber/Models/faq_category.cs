@@ -11,13 +11,14 @@ namespace UHN_Humber.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class FAQTable
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class faq_category
     {
-        public int FAQId { get; set; }
-        public Nullable<int> Order { get; set; }
-        public string Category { get; set; }
-        public string Question { get; set; }
-        public string Anwer { get; set; }
+        public int faq_category_id { get; set; }
+
+        [Required(ErrorMessage = "Please enter the category name")]
+        public string faq_category_name { get; set; }
+        public Nullable<int> faq_category_order { get; set; }
     }
 }

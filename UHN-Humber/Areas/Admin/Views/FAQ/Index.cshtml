@@ -1,0 +1,41 @@
+﻿@model IEnumerable<UHN_Humber.Models.faq_category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-bottom: 50px;">Frequently Asked Question</h2>
+
+<h3>FAQ Category List
+    <span style="font-size: 14px; float: right;">
+        @Html.ActionLink("Add New Category", "Create")
+    </span>
+</h3>
+<table class="table">
+    <tr>
+        <th>
+           <b>Category Name</b>
+        </th>
+        <th>
+            <b>Sort Order</b>
+        </th>
+        <th><b>Action</b></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.faq_category_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.faq_category_order)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.faq_category_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.faq_category_id })
+        </td>
+    </tr>
+}
+
+</table>

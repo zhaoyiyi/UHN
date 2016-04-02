@@ -1,0 +1,53 @@
+﻿@model UHN_Humber.Models.faq_category
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 sstyle="margin-bottom: 50px;">Frequently Asked Questions</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Add FAQ Category</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+           <div class="control-label col-md-2">
+                <b>Category Name <span style="vertical-align: middle; color: red; font-size: 30px;">*</span> : </b>
+            </div> 
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.faq_category_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.faq_category_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">
+                <b>Sort Order : </b>
+            </div> 
+            <div class="col-md-10">
+               @Html.DropDownList("Categories", "Select the category order")
+            </div>
+            <input type="hidden" name="maxValue" value="@ViewBag.MaxValue"/>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" style="background-color: white;" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

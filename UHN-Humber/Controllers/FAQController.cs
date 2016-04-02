@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace UHN_Humber.Controllers
 {
-    public class HomeController : Controller
+    public class FAQController : Controller
     {
-        // GET: Home
+        // GET: FAQ
         public ActionResult Index()
         {
             return View();

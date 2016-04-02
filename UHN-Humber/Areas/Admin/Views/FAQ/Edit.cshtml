@@ -1,0 +1,110 @@
+﻿@model UHN_Humber.Models.faq_category
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-bottom: 50px;">Frequently Asked Question</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Edit FAQ Category</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.faq_category_id)
+
+        <div class="form-group">
+            <div class="control-label col-md-2">
+                <b>Category Name <span style="vertical-align: middle; color: red; font-size: 30px;">*</span> : </b>
+            </div> 
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.faq_category_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.faq_category_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">
+                <b>Sort Order  : </b>
+            </div> 
+            <div class="col-md-10">
+                @Html.DropDownList("Categories")
+                <input type="hidden" name="faqid" value="@Model.faq_category_id" />
+                <input type="hidden" name="oldindex" value="@Model.faq_category_order" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Edit" class="btn btn-default" style="background-color: white;" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+
+
+<h4 style="margin-top: 50px;">
+    FAQ Question List
+    <span style="font-size: 14px; float: right;">
+        @Html.ActionLink("Add New Question", "CreateQuestion", new { id = Model.faq_category_id })
+    </span>
+</h4>
+<table class="table">
+    <tr>
+        <th>
+            <b>Question</b>
+        </th>
+        <th>
+            <b>Answer</b>
+        </th>
+        <th>
+            <b>Sort Order</b>
+        </th>
+        <th><b>Action</b></th>
+    </tr>
+
+
+    @foreach (var item in ViewBag.Questions)
+    {
+        <tr>
+            <td>
+               @item.faq_question_question
+            </td>
+            <td>
+                @item.faq_question_answer
+            </td>
+            <td>
+                @item.faq_question_order
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditQuestion", new { id = item.faq_question_id }) |
+                @Html.ActionLink("Delete", "DeleteQuestion", new { id = item.faq_question_id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<div style="margin-bottom: 60px;">
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
