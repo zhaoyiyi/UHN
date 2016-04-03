@@ -227,7 +227,7 @@
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DoctorsController.cs" />
     <Compile Include="Areas\Admin\Controllers\FAQController.cs" />
-    <Compile Include="Controllers\FAQController.cs" />
+    <Compile Include="Controllers\FAQUHNController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -243,6 +243,7 @@
     <Compile Include="Models\EventsTable.cs">
       <DependentUpon>UHNModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\faqModel.cs" />
     <Compile Include="Models\faq_category.cs">
       <DependentUpon>UHNModel.tt</DependentUpon>
     </Compile>
@@ -307,6 +308,8 @@
     <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_AdminSideMenu.cshtml" />
     <Content Include="Views\Shared\_PublicView.cshtml" />
+    <Content Include="Views\FAQUHN\Index.cshtml" />
+    <Content Include="Views\FAQUHN\displayQList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -316,7 +319,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Views\FAQ\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

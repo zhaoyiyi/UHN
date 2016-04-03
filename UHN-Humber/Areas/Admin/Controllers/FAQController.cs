@@ -19,6 +19,7 @@ namespace UHN_Humber.Areas.Admin.Controllers
                              orderby c.faq_category_order ascending
                              select c;
 
+
             return View(categories);
         }
 
