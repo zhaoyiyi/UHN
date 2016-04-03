@@ -12,6 +12,10 @@ namespace UHN_Humber.Controllers
 {
     public class ApiController : Controller
     {
+        public ActionResult Index()
+        {
+            return View();
+        }
 
         [HttpGet]
         public ActionResult Menu(string name)

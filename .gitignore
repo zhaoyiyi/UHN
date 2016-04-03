@@ -1,5 +1,6 @@
 node_modules/
 jspm_packages/
+.idea/
 
 
 # Created by http://www.gitignore.io

@@ -1,30 +1,50 @@
 import React from 'react';
-import '../style.css!';
 
 export default class MenuDisplay extends React.Component {
   static propTypes = {
     menu: React.PropTypes.array.isRequired
   };
 
-  drawMenu = (menu) => {
+  drawMenu = (menu, isSubmenu = false) => {
     return menu.map((item, index) => {
-      let submenu = "";
+      let submenu = '';
+      let arrow = '';
+      let liClass = !isSubmenu ? "nav-item" : "dropdown-submenu";
+      let aClass = !isSubmenu ? "dropdown-toggle menu_item" : "dropdown-toggle";
       if ($.isArray(item)) return;
       if ($.isArray(menu[index + 1])) submenu = (
-          <ul key={index}>{this.drawMenu(menu[index + 1])}</ul>
+          <div key={index} className="dropdown-menu first_nav">
+            <ul className="blue_top">
+              {this.drawMenu(menu[index + 1], true)}
+            </ul>
+          </div>
+      );
+      if (submenu && isSubmenu) arrow = (
+          <span style={{verticalAlign: 'bottom', float: 'right', fontSize: '11px', paddingTop: '3px'}}
+                className="glyphicon glyphicon-chevron-right" />
       );
       return (
-          <li key={index}><a href={`http://${location.hostname}/${item.link}`}>{item.name}</a>{submenu}</li>
+          <li key={index} className={liClass}>
+            <a className={aClass}
+               href={`http://${location.hostname}/${item.link}`}>{item.name}
+            </a>
+            {arrow}
+            {submenu}
+          </li>
       )
     })
   };
 
   render() {
     return (
-        <div className="navigation">
-          <ul>
-            {this.drawMenu(this.props.menu)}
-          </ul>
+        <div className="main-nav container">
+          <div className="Main-nav container">
+            <ul id="nav_lg">
+              <li className="static"></li>
+              {this.drawMenu(this.props.menu)}
+              <li className="static2"></li>
+            </ul>
+          </div>
         </div>
     )
   }
