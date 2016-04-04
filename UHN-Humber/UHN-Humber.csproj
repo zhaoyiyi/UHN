@@ -155,8 +155,10 @@
     <Content Include="scripts\apps\MenuEditor\actions\MenuActions.js" />
     <Content Include="scripts\apps\MenuEditor\api.js" />
     <Content Include="scripts\apps\MenuEditor\app.js" />
+    <Content Include="scripts\apps\MenuEditor\components\CollapseButton.js" />
     <Content Include="scripts\apps\MenuEditor\components\EditorContainer.js" />
     <Content Include="scripts\apps\MenuEditor\components\MenuItem.js" />
+    <Content Include="scripts\apps\MenuEditor\components\MenuList.js" />
     <Content Include="scripts\apps\MenuEditor\components\MenuTab.js" />
     <Content Include="scripts\apps\MenuEditor\components\MenuTabItem.js" />
     <Content Include="scripts\apps\MenuEditor\constants\MenuConstants.js" />

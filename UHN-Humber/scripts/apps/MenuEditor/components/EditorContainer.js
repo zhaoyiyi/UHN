@@ -1,7 +1,7 @@
 import React from 'react';
 import update from 'react/lib/update';
+import MenuList from './MenuList';
 import MenuTab from './MenuTab';
-import MenuItem from './MenuItem';
 import MenuStore from '../stores/MenuStore';
 import MenuActions from '../actions/MenuActions';
 import MenuDisplay from '../../MenuDisplay/components/MenuDisplay';
@@ -19,8 +19,8 @@ Array.prototype.deepSplice = function (indexArray, deleteCount, ...replacement) 
 };
 
 export default class EditorContainer extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = MenuStore.getState();
   }
 
@@ -57,7 +57,7 @@ export default class EditorContainer extends React.Component {
   /*****************
    * Methods
    *****************/
-  saveMenu = (event) => {
+  saveMenu = () => {
     MenuActions.saveMenu(this.state.menu);
   };
 
@@ -101,30 +101,11 @@ export default class EditorContainer extends React.Component {
   handleNewItem = () => {
     MenuActions.createMenuItem();
   };
+
+
   /*****************
    * Display
    *****************/
-  drawMenu = (menuItems, baseIndex = '') => {
-    return menuItems.map((item, index) => {
-      // don't draw array - submenu
-      // unique react id
-      const id = baseIndex + index.toString();
-      const nextItem = menuItems[index + 1];
-      // Set submenu
-      let subMenu;
-      if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, index + 1);
-      if ($.isArray(item)) return;
-      return (
-          <li key={id} data-id={id}>
-            <MenuItem  {...item} onChange={this.handleInputChange} onDelete={this.handleDeleteItem}/>
-            <ul className="sortable"
-                style={{ minHeight: '20px', margin: '0 0 0 2em', padding: '0'}}>
-              {subMenu}
-            </ul>
-          </li>
-      );
-    })
-  };
 
   render() {
     if (this.state.menu.length === 0) return (<div>loading...</div>);
@@ -143,9 +124,11 @@ export default class EditorContainer extends React.Component {
               <button className="btn btn-success " onClick={this.handleNewItem}>New Item</button>
               <button className="btn btn-primary" onClick={this.saveMenu}>Save</button>
 
-              <ul className="sortable" style={{padding: '2em 0', border: '1px solid pink'}}>
-                {this.drawMenu(this.state.menu[this.state.num].menu)}
-              </ul>
+              <MenuList
+                  menu={this.state.menu[this.state.num]}
+                  onChange={this.handleInputChange}
+                  onDelete={this.handleDeleteItem}
+              />
             </div>
           </div>
         </div>

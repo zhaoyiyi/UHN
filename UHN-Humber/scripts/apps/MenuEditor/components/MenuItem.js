@@ -1,11 +1,22 @@
 import React from 'react';
 
 export default class MenuItem extends React.Component {
+  static defaultProps = {
+    collapseButton: ""
+  };
+
+  static propTypes = {
+    name: React.PropTypes.string.isRequired,
+    onChange: React.PropTypes.func.isRequired,
+    onDelete: React.PropTypes.func.isRequired,
+    collapseButton: React.PropTypes.node
+  };
 
   render() {
     return (
         <div className="panel panel-default" style={{marginBottom: '0px', cursor: 'move'}}>
-          <div className="panel-body">
+          {this.props.collapseButton}
+          <div className="panel-body" style={{padding: '2px'}}>
             <div className="row">
               <div className="col-xs-5">
                 <div className="input-group">
