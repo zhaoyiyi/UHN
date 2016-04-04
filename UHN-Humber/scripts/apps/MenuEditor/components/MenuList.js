@@ -8,7 +8,7 @@ import CollapseButton from './CollapseButton';
 export default class MenuList extends React.Component {
 
   static propTypes = {
-    menu: React.PropTypes.object.isRequired,
+    menu: React.PropTypes.array.isRequired,
     onChange: React.PropTypes.func.isRequired,
     onDelete: React.PropTypes.func.isRequired
   };
@@ -39,6 +39,15 @@ export default class MenuList extends React.Component {
     }
   };
 
+  handleInputChange = (id, prop) => (value) => {
+    let menu = [].concat(this.props.menu);
+    let menuItem = id.toString().split('').reduce((acc, item) => {
+      return acc[item];
+    }, menu);
+    menuItem[prop] = value;
+    this.props.onChange(menu);
+  };
+
   drawMenu = (menuItems, baseIndex = '') => {
 
     return menuItems.map((item, index) => {
@@ -50,7 +59,7 @@ export default class MenuList extends React.Component {
       const nextItem = menuItems[index + 1];
       // Set submenu
       let subMenu, collapseButton;
-      if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, index + 1);
+      if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, +id + 1);
       if ($.isArray(item)) return;
       if (subMenu) {
         const isCollapsed = _.find(this.state.collapsedItems, item) ? true : false;
@@ -59,11 +68,20 @@ export default class MenuList extends React.Component {
             onClick={this.handleCollapse}/>;
         if (isCollapsed) style.display = 'none';
       }
-
+      const nameValueLink = {
+        value: item.name,
+        requestChange: this.handleInputChange(id, 'name')
+      };
+      const linkValueLink = {
+        value: item.link,
+        requestChange: this.handleInputChange(id, 'link')
+      };
 
       return (
           <li key={id} data-id={id}>
             <MenuItem  {...item}
+                nameValueLink={nameValueLink}
+                linkValueLink={linkValueLink}
                 collapseButton={collapseButton}
                 onChange={this.props.onChange}
                 onDelete={this.props.onDelete}/>
@@ -79,7 +97,7 @@ export default class MenuList extends React.Component {
   render() {
     return (
         <ul className="sortable" style={{padding: '2em 0', border: '1px solid pink'}}>
-          {this.drawMenu(this.props.menu.menu)}
+          {this.drawMenu(this.props.menu)}
         </ul>
     )
   }

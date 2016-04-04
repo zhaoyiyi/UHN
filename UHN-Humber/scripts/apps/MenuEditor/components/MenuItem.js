@@ -6,11 +6,16 @@ export default class MenuItem extends React.Component {
   };
 
   static propTypes = {
-    name: React.PropTypes.string.isRequired,
+    nameValueLink: React.PropTypes.object.isRequired,
+    linkValueLink: React.PropTypes.object.isRequired,
     onChange: React.PropTypes.func.isRequired,
     onDelete: React.PropTypes.func.isRequired,
     collapseButton: React.PropTypes.node
   };
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.name !== this.props.name || nextProps.link !== this.props.link
+  }
 
   render() {
     return (
@@ -23,7 +28,7 @@ export default class MenuItem extends React.Component {
                   <span className="input-group-addon">Name</span>
                   <input type="text" name='name'
                          className="form-control" placeholder="name"
-                         value={this.props.name} onChange={this.props.onChange}/>
+                         valueLink={this.props.nameValueLink}/>
                 </div>
               </div>
 
@@ -32,7 +37,7 @@ export default class MenuItem extends React.Component {
                   <span className="input-group-addon">Link</span>
                   <input type="text" name='link'
                          className="form-control" placeholder="link"
-                         value={this.props.link} onChange={this.props.onChange}/>
+                         valueLink={this.props.linkValueLink}/>
                 </div>
               </div>
 

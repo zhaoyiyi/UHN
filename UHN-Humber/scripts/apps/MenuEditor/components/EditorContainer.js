@@ -61,24 +61,6 @@ export default class EditorContainer extends React.Component {
     MenuActions.saveMenu(this.state.menu);
   };
 
-  handleInputChange = (event) => {
-    const currentMenu = this.state.menu[this.state.num];
-    const type = event.target.getAttribute('name');
-    const id = $(event.target).closest('li').data('id');
-    const item = id.toString().split('').reduce((acc, item) => {
-      return acc[item];
-    }, currentMenu.menu);
-    item[type] = event.target.value;
-    this.setState({
-      menu: update(this.state.menu, {
-        $apply: (menuState) => {
-          menuState[this.state.num] = currentMenu;
-          return menuState;
-        }
-      })
-    })
-  };
-
   handleDrop = () => {
     // get current menu
     const menu = this._getMenuItemValue($('#sortableMenu > ul'));
@@ -100,6 +82,13 @@ export default class EditorContainer extends React.Component {
 
   handleNewItem = () => {
     MenuActions.createMenuItem();
+  };
+
+  handleMenuUpdate = (menu) => {
+    this.state.menu[this.state.num].menu = menu;
+    this.setState(update(this.state.menu[this.state.num].menu, {
+      $set: menu
+    }))
   };
 
 
@@ -125,8 +114,8 @@ export default class EditorContainer extends React.Component {
               <button className="btn btn-primary" onClick={this.saveMenu}>Save</button>
 
               <MenuList
-                  menu={this.state.menu[this.state.num]}
-                  onChange={this.handleInputChange}
+                  menu={this.state.menu[this.state.num].menu}
+                  onChange={this.handleMenuUpdate}
                   onDelete={this.handleDeleteItem}
               />
             </div>
