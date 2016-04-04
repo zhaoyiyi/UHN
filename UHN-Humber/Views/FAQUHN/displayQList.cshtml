@@ -85,16 +85,24 @@
     p {
         color: #6f6f6f;
         font: normal 14px/18px "Ubuntu", sans-serif;
-        display: none;
         width: 90%;
         margin-left: auto;
         margin-right: auto;
         padding: 10px;
+        display: block;
     }
     #faq-list{
                  border: 1px solid #dedede;
                  padding: 20px 30px;
              }
+
+    @@media screen and (min-width: 992px) {
+        p{
+            display: none;
+        }
+
+
+    }
 }
 
 </style>
@@ -128,7 +136,7 @@
                 @item.faq_question_question<span class="hidden-sm hidden-xs glyphicon glyphicon-menu-down"
                                  aria-hidden="true"></span>
         </h3>
-                                <p class="visible-sm visible-xs">@item.faq_question_answer</p>
+              <p>@item.faq_question_answer</p>
         }
         else
         { }
