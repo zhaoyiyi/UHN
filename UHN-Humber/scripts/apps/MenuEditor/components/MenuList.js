@@ -34,14 +34,16 @@ export default class MenuList extends React.Component {
       }));
     } else {
       const newArray = this.state.collapsedItems
-          .filter( item => item.name !== parentItem.name && item.link !== parentItem.link);
+          .filter( item => !(item.name === parentItem.name && item.link === parentItem.link));
       this.setState({collapsedItems: newArray})
     }
+
   };
 
   handleInputChange = (id, prop) => (value) => {
-    let menu = [].concat(this.props.menu);
-    let menuItem = id.toString().split('').reduce((acc, item) => {
+      let menu = [].concat(this.props.menu);
+      console.log(id);
+    let menuItem = id.toString().split(',').reduce((acc, item) => {
       return acc[item];
     }, menu);
     menuItem[prop] = value;
@@ -49,18 +51,18 @@ export default class MenuList extends React.Component {
   };
 
   drawMenu = (menuItems, baseIndex = '') => {
-
     return menuItems.map((item, index) => {
       let style={ minHeight: '10px', margin: '0 0 0 2em', padding: '0.5em'};
 
       // don't draw array - submenu
       // unique react id
-      const id = baseIndex + index.toString();
+      const id = baseIndex + index;
       const nextItem = menuItems[index + 1];
       // Set submenu
       let subMenu, collapseButton;
-      if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, +id + 1);
+      if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, baseIndex + (index  + 1) + ',');
       if ($.isArray(item)) return;
+      // If there is submenu, add collapse button
       if (subMenu) {
         const isCollapsed = _.find(this.state.collapsedItems, item) ? true : false;
         collapseButton = <CollapseButton
@@ -85,8 +87,7 @@ export default class MenuList extends React.Component {
                 collapseButton={collapseButton}
                 onChange={this.props.onChange}
                 onDelete={this.props.onDelete}/>
-            <ul className="sortable"
-                style={style}>
+            <ul className="sortable" style={style}>
               {subMenu}
             </ul>
           </li>

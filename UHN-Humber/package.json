@@ -2,11 +2,8 @@
   "name": "php-project",
   "version": "0.0.1",
   "scripts": {
-    "bundle-auth": "jspm bundle-sfx --no-mangle --skip-source-maps --minify Auth/Views/auth/app.js Assets/js/authApp.js",
-    "bundle-authpage": "jspm bundle-sfx --no-mangle --skip-source-maps --minify Auth/Views/auth/appPage.js Assets/js/authPage.js",
-    "bundle-trailer": "jspm bundle-sfx --no-mangle --skip-source-maps --minify JsApps/MovieTrailer/app.js Assets/js/trailerApp.js",
-    "bundle-menuEditor": "jspm bundle-sfx --no-mangle --skip-source-maps --minify JsApps/MenuEditor/app.js Assets/js/MenuEditor.js",
-    "bundle-menuDisplay": "jspm bundle-sfx --no-mangle --skip-source-maps --minify JsApps/MenuDisplay/app.js Assets/js/MenuDisplay.js"
+    "bundle-menuEditor": "jspm bundle-sfx --no-mangle --skip-source-maps --minify scripts/apps/MenuEditor/app.js scripts/apps/MenuEditor.js",
+    "bundle-menuDisplay": "jspm bundle-sfx --no-mangle --skip-source-maps --minify scripts/apps/MenuDisplay/app.js scripts/apps/MenuDisplay.js"
   },
   "devDependencies": {
     "babel-core": "^6.3.21",

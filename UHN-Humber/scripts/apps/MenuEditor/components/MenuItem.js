@@ -14,7 +14,9 @@ export default class MenuItem extends React.Component {
   };
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.name !== this.props.name || nextProps.link !== this.props.link
+    return nextProps.name !== this.props.name
+        || nextProps.link !== this.props.link
+        || nextProps.collapseButton !== this.props.collapseButton
   }
 
   render() {
