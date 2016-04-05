@@ -35,10 +35,9 @@
     </div>
 
     <div class="input-group">
-        <span class="input-group-btn">
-            <button class="btn btn-default" type="submit">Search</button>
-        </span>
-        @Html.TextBox("searchText", searchText, new { @class = "form-control", @placeholder = "Search..." })
+        <!-- search app -->
+        <div id="searchBar"></div>
+        <script src="~/scripts/apps/SearchBar.js"></script>
 
         <input type="hidden" name="orderBy" value=@orderBy>
     </div>

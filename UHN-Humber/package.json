@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "scripts": {
     "bundle-menuEditor": "jspm bundle-sfx --no-mangle --skip-source-maps --minify scripts/apps/MenuEditor/app.js scripts/apps/MenuEditor.js",
-    "bundle-menuDisplay": "jspm bundle-sfx --no-mangle --skip-source-maps --minify scripts/apps/MenuDisplay/app.js scripts/apps/MenuDisplay.js"
+    "bundle-menuDisplay": "jspm bundle-sfx --no-mangle --skip-source-maps --minify scripts/apps/MenuDisplay/app.js scripts/apps/MenuDisplay.js",
+    "bundle-search": "jspm bundle-sfx --no-mangle --skip-source-maps --minify scripts/apps/SearchBar/app.js scripts/apps/SearchBar.js"
+
   },
   "devDependencies": {
     "babel-core": "^6.3.21",

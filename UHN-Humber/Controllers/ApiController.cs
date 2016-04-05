@@ -50,5 +50,27 @@ namespace UHN_Humber.Controllers
 
             return Json(new { success = true});
         }
+
+
+        public JsonResult Intellisense(string text)
+        {
+            if(String.IsNullOrEmpty(text)) return Json("", JsonRequestBehavior.AllowGet);
+
+            UHNDBContext db = new UHNDBContext();
+            IQueryable<Doctor> doctors = db.Doctors;
+            doctors = doctors.Where(d => d.Doc_first_name.Contains(text)
+                            || d.Doc_last_name.Contains(text)
+                            || d.Doc_specialty.Contains(text));
+
+
+            IEnumerable<object> result = doctors.ToList().Select(d => new {
+                id = d.DocId,
+                firstName = d.Doc_first_name,
+                lastName = d.Doc_last_name,
+                specialty = d.Doc_specialty
+            });
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }
