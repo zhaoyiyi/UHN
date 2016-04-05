@@ -57,13 +57,18 @@ namespace UHN_Humber.Controllers
             if(String.IsNullOrEmpty(text)) return Json("", JsonRequestBehavior.AllowGet);
 
             UHNDBContext db = new UHNDBContext();
+            IntellisenceSetting options = db.IntellisenceSettings.FirstOrDefault();
+
+            if (options.Intellisense == 0) return Json("", JsonRequestBehavior.AllowGet);
+
+
             IQueryable<Doctor> doctors = db.Doctors;
             doctors = doctors.Where(d => d.Doc_first_name.Contains(text)
                             || d.Doc_last_name.Contains(text)
                             || d.Doc_specialty.Contains(text));
 
 
-            IEnumerable<object> result = doctors.ToList().Select(d => new {
+            IEnumerable<object> result = doctors.Take((int)options.Result_limit).ToList().Select(d => new {
                 id = d.DocId,
                 firstName = d.Doc_first_name,
                 lastName = d.Doc_last_name,

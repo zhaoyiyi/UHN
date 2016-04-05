@@ -84,16 +84,14 @@
           </Key>
           <Property Name="Search_History" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\APP_DATA\UHNDB.MDF.dbo.IntellisenceSettings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="IntellisenceSettings">
           <Key>
-            <PropertyRef Name="Intellisense" />
+            <PropertyRef Name="id" />
           </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Intellisense" Type="tinyint" Nullable="false" />
-          <Property Name="Result_limit" Type="int" />
-          <Property Name="Disabled_fields" Type="varchar" MaxLength="50" />
-          <Property Name="Debounce_Time" Type="int" />
+          <Property Name="Result_limit" Type="int" Nullable="false" />
+          <Property Name="Debounce_Time" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MenuGroup">
           <Key>
@@ -175,6 +173,7 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <EntitySet Name="faq_category" EntityType="Self.faq_category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="faq_question" EntityType="Self.faq_question" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IntellisenceSettings" EntityType="Self.IntellisenceSettings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuGroup" EntityType="Self.MenuGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuItem" EntityType="Self.MenuItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
@@ -182,14 +181,6 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <EntitySet Name="StaffLogin" EntityType="Self.StaffLogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VideoTable" EntityType="Self.VideoTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Volunteer" EntityType="Self.Volunteer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="IntellisenceSettings" EntityType="Self.IntellisenceSettings" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [IntellisenceSettings].[Intellisense] AS [Intellisense], 
-    [IntellisenceSettings].[Result_limit] AS [Result_limit], 
-    [IntellisenceSettings].[Disabled_fields] AS [Disabled_fields], 
-    [IntellisenceSettings].[Debounce_Time] AS [Debounce_Time]
-    FROM [dbo].[IntellisenceSettings] AS [IntellisenceSettings]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -330,12 +321,12 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
         </EntityType>
         <EntityType Name="IntellisenceSetting">
           <Key>
-            <PropertyRef Name="Intellisense" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="Intellisense" Type="Byte" Nullable="false" />
-          <Property Name="Result_limit" Type="Int32" />
-          <Property Name="Disabled_fields" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Debounce_Time" Type="Int32" />
+          <Property Name="Result_limit" Type="Int32" Nullable="false" />
+          <Property Name="Debounce_Time" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityContainer Name="UHNDBContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AlertTables" EntityType="Self.AlertTable" />
@@ -526,9 +517,9 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <EntitySetMapping Name="IntellisenceSettings">
             <EntityTypeMapping TypeName="UHNDBModel.IntellisenceSetting">
               <MappingFragment StoreEntitySet="IntellisenceSettings">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Intellisense" ColumnName="Intellisense" />
                 <ScalarProperty Name="Result_limit" ColumnName="Result_limit" />
-                <ScalarProperty Name="Disabled_fields" ColumnName="Disabled_fields" />
                 <ScalarProperty Name="Debounce_Time" ColumnName="Debounce_Time" />
               </MappingFragment>
             </EntityTypeMapping>

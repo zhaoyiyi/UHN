@@ -17,7 +17,7 @@
         <EntityTypeShape EntityType="UHNDBModel.StaffLogin" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UHNDBModel.VideoTable" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UHNDBModel.Volunteer" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UHNDBModel.IntellisenceSetting" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UHNDBModel.IntellisenceSetting" Width="2.25" PointX="8.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UHNDBModel.faq_category" Width="1.5" PointX="0.75" PointY="10.75" />
         <EntityTypeShape EntityType="UHNDBModel.faq_question" Width="1.5" PointX="9.375" PointY="10.75" />
       </Diagram>
