@@ -15,8 +15,8 @@ namespace UHN_Humber.Models
     public partial class IntellisenceSetting
     {
         public byte Intellisense { get; set; }
-        public Nullable<int> Result_limit { get; set; }
-        public string Disabled_fields { get; set; }
-        public Nullable<int> Debounce_Time { get; set; }
+        public int Result_limit { get; set; }
+        public int Debounce_Time { get; set; }
+        public int id { get; set; }
     }
 }

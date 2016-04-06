@@ -20,6 +20,7 @@
         <EntityTypeShape EntityType="UHNDBModel.Event" Width="1.5" PointX="11.375" PointY="0.75" />
         <EntityTypeShape EntityType="UHNDBModel.FAQCategory" Width="1.5" PointX="11.375" PointY="3.75" />
         <EntityTypeShape EntityType="UHNDBModel.FAQQuestion" Width="1.5" PointX="3.375" PointY="11.75" />
+
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

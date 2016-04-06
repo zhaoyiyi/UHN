@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -24,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -84,6 +86,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
       <Private>True</Private>
@@ -135,10 +141,36 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Menu.mdf" />
+    <Content Include="App_Data\Menu_log.ldf">
+      <DependentUpon>Menu.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\UHNDB.mdf" />
     <Content Include="App_Data\UHNDB_log.ldf">
       <DependentUpon>UHNDB.mdf</DependentUpon>
     </Content>
+    <Content Include="scripts\apps\MenuDisplay.js" />
+    <Content Include="scripts\apps\MenuDisplay\app.js" />
+    <Content Include="scripts\apps\MenuDisplay\components\MenuDisplay.js" />
+    <Content Include="scripts\apps\MenuDisplay\example.html" />
+    <Content Include="scripts\apps\MenuDisplay\index.html" />
+    <Content Include="scripts\apps\MenuDisplay\style.css" />
+    <Content Include="scripts\apps\MenuEditor.js" />
+    <Content Include="scripts\apps\MenuEditor\actions\MenuActions.js" />
+    <Content Include="scripts\apps\MenuEditor\api.js" />
+    <Content Include="scripts\apps\MenuEditor\app.js" />
+    <Content Include="scripts\apps\MenuEditor\components\CollapseButton.js" />
+    <Content Include="scripts\apps\MenuEditor\components\EditorContainer.js" />
+    <Content Include="scripts\apps\MenuEditor\components\MenuItem.js" />
+    <Content Include="scripts\apps\MenuEditor\components\MenuList.js" />
+    <Content Include="scripts\apps\MenuEditor\components\MenuTab.js" />
+    <Content Include="scripts\apps\MenuEditor\components\MenuTabItem.js" />
+    <Content Include="scripts\apps\MenuEditor\constants\MenuConstants.js" />
+    <Content Include="scripts\apps\MenuEditor\css\menu.css" />
+    <Content Include="scripts\apps\MenuEditor\dispatcher\AppDispatcher.js" />
+    <Content Include="scripts\apps\MenuEditor\example.html" />
+    <Content Include="scripts\apps\MenuEditor\index.html" />
+    <Content Include="scripts\apps\MenuEditor\stores\MenuStore.js" />
     <Content Include="Content\main.css" />
     <Content Include="Content\main.js" />
     <Content Include="Content\PagedList.css" />
@@ -158,6 +190,16 @@
     <Content Include="images\twh.jpg" />
     <Content Include="images\twitter.png" />
     <Content Include="images\youtube.png" />
+    <Content Include="Models\MenuModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MenuModel.edmx</DependentUpon>
+      <LastGenOutput>MenuModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\MenuModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MenuModel.edmx</DependentUpon>
+      <LastGenOutput>MenuModel.cs</LastGenOutput>
+    </Content>
     <Content Include="scripts\admin\lumino.glyphs.js" />
     <Content Include="Content\admin\styles.css" />
     <Content Include="Content\bootstrap.css" />
@@ -180,6 +222,13 @@
     </Content>
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="scripts\apps\SearchBar.js" />
+    <Content Include="scripts\apps\SearchBar\app.js" />
+    <Content Include="scripts\apps\SearchBar\components\Input.js" />
+    <Content Include="scripts\apps\SearchBar\components\SearchBar.js" />
+    <Content Include="scripts\apps\SearchBar\components\Suggestion.js" />
+    <Content Include="scripts\apps\SearchBar\components\SuggestionItem.js" />
+    <Content Include="scripts\apps\SearchBar\index.html" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\UHNModel.edmx">
@@ -210,6 +259,19 @@
     <Content Include="Areas\Admin\Views\FAQ\CreateQuestion.cshtml" />
     <Content Include="Areas\Admin\Views\FAQ\DeleteQuestion.cshtml" />
     <Content Include="Areas\Admin\Views\FAQ\EditQuestion.cshtml" />
+    <EntityDeploy Include="Models\MenuModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MenuModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\MenuModel.edmx.diagram">
+      <DependentUpon>MenuModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\IntellisenceSettings\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\IntellisenceSettings\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\IntellisenceSettings\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\IntellisenceSettings\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\IntellisenceSettings\Index.cshtml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -229,6 +291,10 @@
     <Compile Include="Areas\Admin\Controllers\FAQController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\FAQUHNController.cs" />
+    <Compile Include="Areas\Admin\Controllers\IntellisenceSettingsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
+    <Compile Include="Controllers\ApiController.cs" />
+    <Compile Include="Controllers\SearchDoctorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -259,11 +325,29 @@
     <Compile Include="Models\IntellisenceSetting.cs">
       <DependentUpon>UHNModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Menu.cs">
+      <DependentUpon>MenuModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MenuGroup.cs">
       <DependentUpon>UHNModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MenuItem.cs">
       <DependentUpon>UHNModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MenuModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MenuModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MenuModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\News.cs">
       <DependentUpon>UHNModel.tt</DependentUpon>
@@ -314,6 +398,9 @@
     <Content Include="Views\FAQUHN\Index.cshtml" />
     <Content Include="Views\FAQUHN\displayQList.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Api\Index.cshtml" />
+    <Content Include="Views\SearchDoctor\Index.cshtml" />
+    <Content Include="Views\SearchDoctor\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -325,6 +412,7 @@
     <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
@@ -332,6 +420,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>

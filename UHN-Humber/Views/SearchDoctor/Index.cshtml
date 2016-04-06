@@ -1,0 +1,88 @@
+﻿@model PagedList.IPagedList<UHN_Humber.Models.Doctor>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Doctors";
+}
+
+@{
+    string orderBy = (string)ViewData["orderBy"];
+    string orderName = "id";
+    if (orderBy == "first_name") { orderName = "First Name"; }
+    if (orderBy == "last_name") { orderName = "Last Name"; }
+    if (orderBy == "id") { orderName = "Id"; }
+
+    string searchText = (string)ViewData["searchText"];
+    int pageNumber = (int)ViewData["pageNumber"];
+}
+
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "Doctors", FormMethod.Get))
+{
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Order By:
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li>@Html.ActionLink("Id", "Index", new { orderBy = "id", searchText })</li>
+            <li>@Html.ActionLink("First Name", "Index", new { orderBy = "first_name", searchText })</li>
+            <li>@Html.ActionLink("Last Name", "Index", new { orderBy = "last_name", searchText })</li>
+        </ul>
+        @orderName
+    </div>
+
+    <div class="input-group">
+        <!-- search app -->
+        <div id="searchBar" data-path="/SearchDoctor/details"></div>
+        <script src="~/scripts/apps/SearchBar.js"></script>
+
+        <input type="hidden" name="orderBy" value=@orderBy>
+    </div>
+
+}
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Specialty</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doc_first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doc_last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doc_email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doc_phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doc_specialty)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.DocId })
+            </td>
+        </tr>
+    }
+</table>
+
+<div>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { pageNumber = page, orderBy, searchText }))
+</div>

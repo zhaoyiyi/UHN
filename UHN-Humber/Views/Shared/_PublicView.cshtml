@@ -180,98 +180,11 @@
 
 
 
+    <!-- Main Navigation Menu -->
+    <div id="menuDisplay" data-menuName="Main"></div>
+    <script src="~/scripts/apps/MenuDisplay.js"></script>
 
 
-    <div class="main-nav container">
-        <ul id="nav_lg">
-            <li class="static"></li>
-            <li class="nav-item dropdown">
-                <a href="" class="dropdown-toggle menu_item" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Hospitals</a>
-                <div class="dropdown-menu first_nav" aria-labelledby="dropdownMenu1">
-                    <ul class="blue_top">
-                        <li class="first_menu"><a href="">Princess Margaret Cancer Center</a></li>
-                        <li><a href="">Toronto General Hospital</a></li>
-                        <li><a href="">Toronto Weston Hospital</a></li>
-                        <li class="dropdown-submenu">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Toronto Rehabilitation Institute<span style="vertical-align: bottom; float:right; font-size:11px; padding-top: 3px;" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-                            <ul class="dropdown-menu green_top">
-                                <li><a href="#">Toronto Rehab - Bickle</a></li>
-                                <li><a href="#">Toronto Rehab - Lakeside</a></li>
-                                <li><a href="#">Toronto Rehab - Lyndhurst</a></li>
-                                <li><a href="#">Toronto Rehab - Rumsey</a></li>
-                                <li><a href="#">Toronto Rehab - University</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-
-
-            <li class="nav-item special_li">
-
-
-                <a href="" class="dropdown-toggle menu_item" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Patients<br />& Families</a>
-                <div class="dropdown-menu first_nav" aria-labelledby="dropdownMenu2">
-                    <ul class="blue_top">
-                        <li class="first_menu"><a href="">Emergency Departments</a></li>
-                        <li><a href="">Find a Doctor</a></li>
-                        <li><a href="">Health Information</a></li>
-                        <li><a href="">My Visit to UHN</a></li>
-                        <li><a href="">Visiting Patients</a></li>
-                        <li><a href="">Online Booking</a></li>
-                        <li><a href="">Patients & Family Services</a></li>
-                    </ul>
-                </div>
-
-            </li>
-            <li class="nav-item">
-                <a href="" class="dropdown-toggle menu_item" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Research</a>
-                <div class="dropdown-menu first_nav" aria-labelledby="dropdownMenu3">
-                    <ul class="blue_top">
-                        <li class="first_menu"><a href="">Our Research Institute</a></li>
-                        <li><a href="">Research Ethics Board</a></li>
-                        <li><a href="">Research Commercialization</a></li>
-                        <li><a href="">Research Trainees</a></li>
-                        <li><a href="">Clinical Research Quality</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a href="" class="dropdown-toggle menu_item" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Education</a>
-                <div class="dropdown-menu first_nav" aria-labelledby="dropdownMenu4">
-                    <ul class="blue_top">
-                        <li class="first_menu"><a href="">The Michener Institute</a></li>
-                        <li><a href="">Event Services</a></li>
-                        <li><a href="">Observerships</a></li>
-                        <li><a href="">Students</a></li>
-                        <li><a href="">Libraries</a></li>
-                        <li><a href="">International Centre for Education</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a href="" class="dropdown-toggle menu_item" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">About UHN</a>
-                <div class="dropdown-menu first_nav" aria-labelledby="dropdownMenu5">
-                    <ul class="blue_top">
-                        <li class="first_menu"><a href="">Our History</a></li>
-                        <li><a href="">Achieving Our Vision</a></li>
-                        <li><a href="">Quality and Patient Safety</a></li>
-                        <li><a href="">Events Calendar</a></li>
-                        <li><a href="">Fiscal Accountability</a></li>
-                        <li><a href="">General Services</a></li>
-                        <li><a href="">Accessibility at UHN</a></li>
-                        <li>@Html.ActionLink("FAQ", "Index", "FAQUHN")</li>
-                    </ul>
-                </div>
-            </li>
-            <li class="nav-item" style="cursor: pointer;"><a class="menu_item">Contact</a></li>
-            <li class="static2"></li>
-        </ul>
-
-
-
-
-    </div>
     <div class="container body-content">
         @RenderBody()
     </div>
