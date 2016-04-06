@@ -50,7 +50,7 @@
 
         @foreach (var item in Model.modelOne)
         {
-                <li role="presentation">@Html.ActionLink(item.faq_category_name, "displayQList", new { categoryid = item.faq_category_id })</li>
+                <li role="presentation">@Html.ActionLink(item.FAQCategoryName, "displayQList", new { categoryid = item.FAQCategoryID })</li>
         }
 
     </ul>
@@ -107,7 +107,7 @@
     }
 
 
-    }
+    
 </style>
 
 <script>
@@ -132,17 +132,17 @@
 
     @foreach (var item in Model.modelOne)
     {
-        <h4>@item.faq_category_name</h4>
+        <h4>@item.FAQCategoryName</h4>
 
         foreach (var item2 in Model.modelTwo)
         {
 
-            if (item2.faq_question_category == item.faq_category_id)
+            if (item2.FAQQuestionCategory == item.FAQCategoryID)
             {
             <h3>
-                @item2.faq_question_question<span class="hidden-sm hidden-xs glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+                @item2.FAQQuestionQuestion<span class="hidden-sm hidden-xs glyphicon glyphicon-menu-down" aria-hidden="true"></span>
             </h3>
-            <p>@item2.faq_question_answer</p>
+            <p>@item2.FAQQuestionAnswer</p>
                 }
                 else
                 { }

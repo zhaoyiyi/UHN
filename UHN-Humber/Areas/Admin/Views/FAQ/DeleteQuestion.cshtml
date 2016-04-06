@@ -1,4 +1,4 @@
-﻿@model UHN_Humber.Models.faq_question
+﻿@model UHN_Humber.Models.FAQQuestion
 
 @{
     ViewBag.Title = "DeleteQuestion";
@@ -17,7 +17,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.faq_question_question)
+            @Html.DisplayFor(model => model.FAQQuestionQuestion)
         </dd>
 
         <dt>
@@ -25,7 +25,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.faq_question_answer)
+            @Html.DisplayFor(model => model.FAQQuestionAnswer)
         </dd>
 
         <dt>
@@ -33,7 +33,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.faq_question_order)
+            @Html.DisplayFor(model => model.FAQQuestionOrder)
         </dd>
 
     </dl>
@@ -43,7 +43,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" style="background-color:white;" /> |
-            @Html.ActionLink("Back to List", "Edit", new { id= Model.faq_question_category})
+            @Html.ActionLink("Back to List", "Edit", new { id= Model.FAQQuestionCategory})
         </div>
     }
 </div>

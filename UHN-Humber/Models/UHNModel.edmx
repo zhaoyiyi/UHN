@@ -50,33 +50,34 @@
           <Property Name="DonationAddress" Type="varchar" MaxLength="50" />
           <Property Name="DonationCreditCard" Type="nchar" MaxLength="10" />
         </EntityType>
-        <EntityType Name="EventsTable">
+        <EntityType Name="Events">
           <Key>
-            <PropertyRef Name="EventId" />
+            <PropertyRef Name="EventID" />
           </Key>
-          <Property Name="EventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EventTitle" Type="varchar" MaxLength="50" />
+          <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventName" Type="varchar(max)" />
+          <Property Name="EventDate" Type="datetime" />
+          <Property Name="EventTime" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="EventLocation" Type="varchar(max)" />
           <Property Name="EventDescription" Type="varchar(max)" />
-          <Property Name="EventDatetime" Type="datetime" />
-          <Property Name="Recurrence" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="faq_category">
+        <EntityType Name="FAQCategory">
           <Key>
-            <PropertyRef Name="faq_category_id" />
+            <PropertyRef Name="FAQCategoryID" />
           </Key>
-          <Property Name="faq_category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="faq_category_name" Type="varchar(max)" />
-          <Property Name="faq_category_order" Type="int" />
+          <Property Name="FAQCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FAQCategoryName" Type="varchar(max)" />
+          <Property Name="FAQCategoryOrder" Type="int" />
         </EntityType>
-        <EntityType Name="faq_question">
+        <EntityType Name="FAQQuestion">
           <Key>
-            <PropertyRef Name="faq_question_id" />
+            <PropertyRef Name="FAQQuestionID" />
           </Key>
-          <Property Name="faq_question_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="faq_question_question" Type="varchar(max)" />
-          <Property Name="faq_question_answer" Type="varchar(max)" />
-          <Property Name="faq_question_category" Type="int" />
-          <Property Name="faq_question_order" Type="int" />
+          <Property Name="FAQQuestionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FAQQuestionQuestion" Type="varchar(max)" />
+          <Property Name="FAQQuestionAnswer" Type="varchar(max)" />
+          <Property Name="FAQQuestionCategory" Type="int" />
+          <Property Name="FAQQuestionOrder" Type="int" />
         </EntityType>
         <EntityType Name="History">
           <Key>
@@ -171,9 +172,9 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <EntitySet Name="AlertTable" EntityType="Self.AlertTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="doctors" EntityType="Self.doctors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="EventsTable" EntityType="Self.EventsTable" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="faq_category" EntityType="Self.faq_category" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="faq_question" EntityType="Self.faq_question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAQCategory" EntityType="Self.FAQCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAQQuestion" EntityType="Self.FAQQuestion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuGroup" EntityType="Self.MenuGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuItem" EntityType="Self.MenuItem" Schema="dbo" store:Type="Tables" />
@@ -239,16 +240,6 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <Property Name="DonationEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DonationAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DonationCreditCard" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-        </EntityType>
-        <EntityType Name="EventsTable">
-          <Key>
-            <PropertyRef Name="EventId" />
-          </Key>
-          <Property Name="EventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EventTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EventDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="EventDatetime" Type="DateTime" Precision="3" />
-          <Property Name="Recurrence" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="History">
           <Key>
@@ -341,7 +332,6 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <EntitySet Name="AlertTables" EntityType="Self.AlertTable" />
           <EntitySet Name="Doctors" EntityType="UHNDBModel.Doctor" />
           <EntitySet Name="Donations" EntityType="Self.Donation" />
-          <EntitySet Name="EventsTables" EntityType="Self.EventsTable" />
           <EntitySet Name="Histories" EntityType="Self.History" />
           <EntitySet Name="MenuGroups" EntityType="Self.MenuGroup" />
           <EntitySet Name="MenuItems" EntityType="Self.MenuItem" />
@@ -351,26 +341,38 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <EntitySet Name="VideoTables" EntityType="Self.VideoTable" />
           <EntitySet Name="Volunteers" EntityType="Self.Volunteer" />
           <EntitySet Name="IntellisenceSettings" EntityType="Self.IntellisenceSetting" />
-          <EntitySet Name="faq_category" EntityType="UHNDBModel.faq_category" />
-          <EntitySet Name="faq_question" EntityType="UHNDBModel.faq_question" />
+          <EntitySet Name="Events" EntityType="UHNDBModel.Event" />
+          <EntitySet Name="FAQCategories" EntityType="UHNDBModel.FAQCategory" />
+          <EntitySet Name="FAQQuestions" EntityType="UHNDBModel.FAQQuestion" />
         </EntityContainer>
-        <EntityType Name="faq_category">
+        <EntityType Name="Event">
           <Key>
-            <PropertyRef Name="faq_category_id" />
+            <PropertyRef Name="EventID" />
           </Key>
-          <Property Name="faq_category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="faq_category_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="faq_category_order" Type="Int32" />
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EventDate" Type="DateTime" Precision="3" />
+          <Property Name="EventTime" Type="Decimal" Precision="18" Scale="1" />
+          <Property Name="EventLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EventDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="faq_question">
+        <EntityType Name="FAQCategory">
           <Key>
-            <PropertyRef Name="faq_question_id" />
+            <PropertyRef Name="FAQCategoryID" />
           </Key>
-          <Property Name="faq_question_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="faq_question_question" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="faq_question_answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="faq_question_category" Type="Int32" />
-          <Property Name="faq_question_order" Type="Int32" />
+          <Property Name="FAQCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FAQCategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FAQCategoryOrder" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FAQQuestion">
+          <Key>
+            <PropertyRef Name="FAQQuestionID" />
+          </Key>
+          <Property Name="FAQQuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FAQQuestionQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FAQQuestionAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FAQQuestionCategory" Type="Int32" />
+          <Property Name="FAQQuestionOrder" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -423,17 +425,6 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
                 <ScalarProperty Name="DonationEmail" ColumnName="DonationEmail" />
                 <ScalarProperty Name="DonationAddress" ColumnName="DonationAddress" />
                 <ScalarProperty Name="DonationCreditCard" ColumnName="DonationCreditCard" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EventsTables">
-            <EntityTypeMapping TypeName="UHNDBModel.EventsTable">
-              <MappingFragment StoreEntitySet="EventsTable">
-                <ScalarProperty Name="EventId" ColumnName="EventId" />
-                <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
-                <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
-                <ScalarProperty Name="EventDatetime" ColumnName="EventDatetime" />
-                <ScalarProperty Name="Recurrence" ColumnName="Recurrence" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -533,23 +524,35 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="faq_category">
-            <EntityTypeMapping TypeName="UHNDBModel.faq_category">
-              <MappingFragment StoreEntitySet="faq_category">
-                <ScalarProperty Name="faq_category_order" ColumnName="faq_category_order" />
-                <ScalarProperty Name="faq_category_name" ColumnName="faq_category_name" />
-                <ScalarProperty Name="faq_category_id" ColumnName="faq_category_id" />
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="UHNDBModel.Event">
+              <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
+                <ScalarProperty Name="EventLocation" ColumnName="EventLocation" />
+                <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="faq_question">
-            <EntityTypeMapping TypeName="UHNDBModel.faq_question">
-              <MappingFragment StoreEntitySet="faq_question">
-                <ScalarProperty Name="faq_question_order" ColumnName="faq_question_order" />
-                <ScalarProperty Name="faq_question_category" ColumnName="faq_question_category" />
-                <ScalarProperty Name="faq_question_answer" ColumnName="faq_question_answer" />
-                <ScalarProperty Name="faq_question_question" ColumnName="faq_question_question" />
-                <ScalarProperty Name="faq_question_id" ColumnName="faq_question_id" />
+          <EntitySetMapping Name="FAQCategories">
+            <EntityTypeMapping TypeName="UHNDBModel.FAQCategory">
+              <MappingFragment StoreEntitySet="FAQCategory">
+                <ScalarProperty Name="FAQCategoryOrder" ColumnName="FAQCategoryOrder" />
+                <ScalarProperty Name="FAQCategoryName" ColumnName="FAQCategoryName" />
+                <ScalarProperty Name="FAQCategoryID" ColumnName="FAQCategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FAQQuestions">
+            <EntityTypeMapping TypeName="UHNDBModel.FAQQuestion">
+              <MappingFragment StoreEntitySet="FAQQuestion">
+                <ScalarProperty Name="FAQQuestionOrder" ColumnName="FAQQuestionOrder" />
+                <ScalarProperty Name="FAQQuestionCategory" ColumnName="FAQQuestionCategory" />
+                <ScalarProperty Name="FAQQuestionAnswer" ColumnName="FAQQuestionAnswer" />
+                <ScalarProperty Name="FAQQuestionQuestion" ColumnName="FAQQuestionQuestion" />
+                <ScalarProperty Name="FAQQuestionID" ColumnName="FAQQuestionID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

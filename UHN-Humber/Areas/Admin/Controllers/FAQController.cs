@@ -15,8 +15,8 @@ namespace UHN_Humber.Areas.Admin.Controllers
         // GET: Admin/FAQ
         public ActionResult Index()
         {
-            var categories = from c in uc.faq_category
-                             orderby c.faq_category_order ascending
+            var categories = from c in uc.FAQCategories
+                             orderby c.FAQCategoryOrder ascending
                              select c;
 
 
@@ -27,9 +27,8 @@ namespace UHN_Humber.Areas.Admin.Controllers
         public ActionResult Create()
         {
 
-            List<SelectListItem> items = new SelectList(uc.faq_category
-                                              .OrderBy(e => e.faq_category_order),
-                             "faq_category_order", "faq_category_order").ToList();
+            List<SelectListItem> items = new SelectList(uc.FAQCategories.OrderBy(e => e.FAQCategoryOrder),
+                             "FAQCategoryOrder", "FAQCategoryOrder").ToList();
 
             var numItem = items.Count() + 1;
 
@@ -45,31 +44,31 @@ namespace UHN_Humber.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                faq_category fc = new faq_category();
+                FAQCategory fc = new FAQCategory();
 
-                var numItems = uc.faq_category.Count();
+                var numItems = uc.FAQCategories.Count();
 
 
 
-                fc.faq_category_name = formCollection["faq_category_name"];
+                fc.FAQCategoryName = formCollection["FAQCategoryName"];
 
                 if (formCollection["Categories"] == "" || formCollection["Categories"]== formCollection["maxValue"])
                 {
-                    fc.faq_category_order = Int32.Parse(formCollection["maxValue"]);
+                    fc.FAQCategoryOrder = Int32.Parse(formCollection["maxValue"]);
                 }
                 else
                 {
-                   foreach(var oldc in uc.faq_category)
+                   foreach(var oldc in uc.FAQCategories)
                     {
-                        if(oldc.faq_category_order >= Int32.Parse(formCollection["Categories"]))
+                        if(oldc.FAQCategoryOrder >= Int32.Parse(formCollection["Categories"]))
                         {
-                            oldc.faq_category_order = oldc.faq_category_order + 1;
+                            oldc.FAQCategoryOrder = oldc.FAQCategoryOrder + 1;
                         }
                     }
-                   fc.faq_category_order = Int32.Parse(formCollection["Categories"]);
+                   fc.FAQCategoryOrder = Int32.Parse(formCollection["Categories"]);
                 }
 
-                uc.faq_category.Add(fc);
+                uc.FAQCategories.Add(fc);
                 uc.SaveChanges();
 
             }
@@ -79,7 +78,7 @@ namespace UHN_Humber.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            faq_category fc = uc.faq_category.Single(p => p.faq_category_id == id);
+            FAQCategory fc = uc.FAQCategories.Single(p => p.FAQCategoryID == id);
             return View(fc);
         }
 
@@ -87,19 +86,19 @@ namespace UHN_Humber.Areas.Admin.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            faq_category fc = uc.faq_category.Single(p => p.faq_category_id == id);
+            FAQCategory fc = uc.FAQCategories.Single(p => p.FAQCategoryID == id);
 
 
 
-            foreach (var oldc in uc.faq_category)
+            foreach (var oldc in uc.FAQCategories)
             {
-                if (oldc.faq_category_order > fc.faq_category_order)
+                if (oldc.FAQCategoryOrder > fc.FAQCategoryOrder)
                 {
-                    oldc.faq_category_order = oldc.faq_category_order - 1;
+                    oldc.FAQCategoryOrder = oldc.FAQCategoryOrder - 1;
                 }
             }
 
-            uc.faq_category.Remove(fc);
+            uc.FAQCategories.Remove(fc);
             uc.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -108,16 +107,16 @@ namespace UHN_Humber.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
 
-            faq_category fc = uc.faq_category.Single(p => p.faq_category_id == id);
+            FAQCategory fc = uc.FAQCategories.Single(p => p.FAQCategoryID == id);
 
 
-            List<SelectListItem> items = new SelectList(uc.faq_category
-                                             .OrderBy(e => e.faq_category_order),
-                            "faq_category_order", "faq_category_order").ToList();
+            List<SelectListItem> items = new SelectList(uc.FAQCategories
+                                             .OrderBy(e => e.FAQCategoryOrder),
+                            "FAQCategoryOrder", "FAQCategoryOrder").ToList();
 
             foreach(var item in items)
             {
-                if(item.Value == fc.faq_category_order.ToString())
+                if(item.Value == fc.FAQCategoryOrder.ToString())
                 {
                     item.Selected = true;
                     break;
@@ -125,7 +124,7 @@ namespace UHN_Humber.Areas.Admin.Controllers
             }
 
             ViewBag.Categories = items;
-            ViewBag.Questions = uc.faq_question.Where(q=>q.faq_question_category==id).OrderBy(q => q.faq_question_order).ToList();
+            ViewBag.Questions = uc.FAQQuestions.Where(q=>q.FAQQuestionCategory==id).OrderBy(q => q.FAQQuestionOrder).ToList();
 
             return View(fc);
         }
@@ -136,11 +135,11 @@ namespace UHN_Humber.Areas.Admin.Controllers
             var oldindex = Int32.Parse(formCollection["oldindex"]);
             var faqid = Int32.Parse(formCollection["faqid"]);
 
-            var newname = formCollection["faq_category_name"];
+            var newname = formCollection["FAQCategoryName"];
             var newindex = Int32.Parse(formCollection["Categories"]);
 
 
-            faq_category fc = uc.faq_category.Single(p => p.faq_category_id == faqid);
+            FAQCategory fc = uc.FAQCategories.Single(p => p.FAQCategoryID == faqid);
 
 
 
@@ -151,28 +150,28 @@ namespace UHN_Humber.Areas.Admin.Controllers
             else if (oldindex > newindex)
             {
 
-                foreach(var item in uc.faq_category)
+                foreach(var item in uc.FAQCategories)
                 {
-                    if(item.faq_category_order >= newindex && item.faq_category_order < oldindex && item.faq_category_id != faqid)
+                    if(item.FAQCategoryOrder >= newindex && item.FAQCategoryOrder < oldindex && item.FAQCategoryID != faqid)
                     {
                         
-                        item.faq_category_order = item.faq_category_order + 1;
+                        item.FAQCategoryOrder = item.FAQCategoryOrder + 1;
                     }
                 }   
             }
             else
             {
-                foreach (var item in uc.faq_category)
+                foreach (var item in uc.FAQCategories)
                 {
-                    if (item.faq_category_order <= newindex && item.faq_category_order > oldindex && item.faq_category_id != faqid)
+                    if (item.FAQCategoryOrder <= newindex && item.FAQCategoryOrder > oldindex && item.FAQCategoryID != faqid)
                     {
-                        item.faq_category_order = item.faq_category_order - 1;
+                        item.FAQCategoryOrder = item.FAQCategoryOrder - 1;
                     }
                 }
             }
 
-            fc.faq_category_name = newname;
-            fc.faq_category_order = newindex;
+            fc.FAQCategoryName = newname;
+            fc.FAQCategoryOrder = newindex;
 
 
             uc.SaveChanges();
@@ -189,7 +188,7 @@ namespace UHN_Humber.Areas.Admin.Controllers
         public ActionResult CreateQuestion(int id)
         {
 
-            List<SelectListItem> items = new SelectList(uc.faq_question.Where(q => q.faq_question_category == id).OrderBy(e => e.faq_question_order), "faq_question_order", "faq_question_order").ToList();
+            List<SelectListItem> items = new SelectList(uc.FAQQuestions.Where(q => q.FAQQuestionCategory == id).OrderBy(e => e.FAQQuestionOrder), "FAQQuestionOrder", "FAQQuestionOrder").ToList();
                 
                
             var numItem = items.Count() + 1;
@@ -206,34 +205,34 @@ namespace UHN_Humber.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                faq_question fq = new faq_question();
+                FAQQuestion fq = new FAQQuestion();
 
                 var categoryid = Int32.Parse(formCollection["categoryid"]);
 
-                var numItems = uc.faq_question.Where(q => q.faq_question_category == categoryid).Count();
+                var numItems = uc.FAQQuestions.Where(q => q.FAQQuestionCategory == categoryid).Count();
 
 
-                fq.faq_question_category = categoryid;
-                fq.faq_question_question = formCollection["faq_question_question"];
-                fq.faq_question_answer = formCollection["faq_question_answer"];
+                fq.FAQQuestionCategory = categoryid;
+                fq.FAQQuestionQuestion = formCollection["FAQQuestionQuestion"];
+                fq.FAQQuestionAnswer = formCollection["FAQQuestionAnswer"];
 
                 if (formCollection["Questions"] == "" || formCollection["Questions"] == formCollection["maxValue"])
                 {
-                    fq.faq_question_order = Int32.Parse(formCollection["maxValue"]);
+                    fq.FAQQuestionOrder = Int32.Parse(formCollection["maxValue"]);
                 }
                 else
                 {
-                    foreach (var oldc in uc.faq_question.Where(q => q.faq_question_category == categoryid))
+                    foreach (var oldc in uc.FAQQuestions.Where(q => q.FAQQuestionCategory == categoryid))
                     {
-                        if (oldc.faq_question_order >= Int32.Parse(formCollection["Questions"]))
+                        if (oldc.FAQQuestionOrder >= Int32.Parse(formCollection["Questions"]))
                         {
-                            oldc.faq_question_order = oldc.faq_question_order + 1;
+                            oldc.FAQQuestionOrder = oldc.FAQQuestionOrder + 1;
                         }
                     }
-                    fq.faq_question_order = Int32.Parse(formCollection["Questions"]);
+                    fq.FAQQuestionOrder = Int32.Parse(formCollection["Questions"]);
                 }
 
-                uc.faq_question.Add(fq);
+                uc.FAQQuestions.Add(fq);
                 uc.SaveChanges();
                 return RedirectToAction("Edit", new { id = categoryid });
             }
@@ -244,7 +243,7 @@ namespace UHN_Humber.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult DeleteQuestion(int id)
         {
-            faq_question fc = uc.faq_question.Single(p => p.faq_question_id == id);
+            FAQQuestion fc = uc.FAQQuestions.Single(p => p.FAQQuestionID == id);
             return View(fc);
         }
 
@@ -252,21 +251,21 @@ namespace UHN_Humber.Areas.Admin.Controllers
         [HttpPost, ActionName("DeleteQuestion")]
         public ActionResult DeleteConfirmedQuestion(int id)
         {
-            faq_question fc = uc.faq_question.Single(p => p.faq_question_id == id);
+            FAQQuestion fc = uc.FAQQuestions.Single(p => p.FAQQuestionID == id);
 
-            var questionlist = uc.faq_question.Where(q => q.faq_question_category == fc.faq_question_category);
+            var questionlist = uc.FAQQuestions.Where(q => q.FAQQuestionCategory == fc.FAQQuestionCategory);
 
             foreach (var oldc in questionlist)
             {
-                if (oldc.faq_question_order > fc.faq_question_order)
+                if (oldc.FAQQuestionOrder > fc.FAQQuestionOrder)
                 {
-                    oldc.faq_question_order = oldc.faq_question_order - 1;
+                    oldc.FAQQuestionOrder = oldc.FAQQuestionOrder - 1;
                 }
             }
 
-            uc.faq_question.Remove(fc);
+            uc.FAQQuestions.Remove(fc);
             uc.SaveChanges();
-            return RedirectToAction("Edit", new { id=fc.faq_question_category});
+            return RedirectToAction("Edit", new { id=fc.FAQQuestionCategory});
         }
 
 
@@ -277,14 +276,14 @@ namespace UHN_Humber.Areas.Admin.Controllers
         public ActionResult EditQuestion(int id)
         {
 
-            faq_question fc = uc.faq_question.Single(p => p.faq_question_id == id);
+            FAQQuestion fc = uc.FAQQuestions.Single(p => p.FAQQuestionID == id);
 
 
-            List<SelectListItem> items = new SelectList(uc.faq_question.Where(q => q.faq_question_category == fc.faq_question_category).OrderBy(e => e.faq_question_order), "faq_question_order", "faq_question_order").ToList();
+            List<SelectListItem> items = new SelectList(uc.FAQQuestions.Where(q => q.FAQQuestionCategory == fc.FAQQuestionCategory).OrderBy(e => e.FAQQuestionOrder), "FAQQuestionOrder", "FAQQuestionOrder").ToList();
 
             foreach (var item in items)
             {
-                if (item.Value == fc.faq_question_order.ToString())
+                if (item.Value == fc.FAQQuestionOrder.ToString())
                 {
                     item.Selected = true;
                     break;
@@ -292,7 +291,7 @@ namespace UHN_Humber.Areas.Admin.Controllers
             }
 
             ViewBag.Questions = items;
-            ViewBag.CategoryID = fc.faq_question_category;
+            ViewBag.CategoryID = fc.FAQQuestionCategory;
             return View(fc);
         }
 
@@ -302,12 +301,12 @@ namespace UHN_Humber.Areas.Admin.Controllers
             var oldindex = Int32.Parse(formCollection["oldindex"]);
             var faqid = Int32.Parse(formCollection["faqid"]);
 
-            var newquestion = formCollection["faq_question_question"];
-            var newanswer = formCollection["faq_question_question"];
+            var newquestion = formCollection["FAQQuestionQuestion"];
+            var newanswer = formCollection["FAQQuestionAnswer"];
             var newindex = Int32.Parse(formCollection["Questions"]);
 
 
-            faq_question fc = uc.faq_question.Single(p => p.faq_question_id == faqid);
+            FAQQuestion fc = uc.FAQQuestions.Single(p => p.FAQQuestionID == faqid);
 
 
 
@@ -318,34 +317,34 @@ namespace UHN_Humber.Areas.Admin.Controllers
             else if (oldindex > newindex)
             {
 
-                foreach (var item in uc.faq_question.Where(q=>q.faq_question_category == fc.faq_question_category))
+                foreach (var item in uc.FAQQuestions.Where(q=>q.FAQQuestionCategory == fc.FAQQuestionCategory))
                 {
-                    if (item.faq_question_order >= newindex && item.faq_question_order < oldindex && item.faq_question_id != faqid)
+                    if (item.FAQQuestionOrder >= newindex && item.FAQQuestionOrder < oldindex && item.FAQQuestionID != faqid)
                     {
 
-                        item.faq_question_order = item.faq_question_order + 1;
+                        item.FAQQuestionOrder = item.FAQQuestionOrder + 1;
                     }
                 }
             }
             else
             {
-                foreach (var item in uc.faq_question.Where(q => q.faq_question_category == fc.faq_question_category))
+                foreach (var item in uc.FAQQuestions.Where(q => q.FAQQuestionCategory == fc.FAQQuestionCategory))
                 {
-                    if (item.faq_question_order <= newindex && item.faq_question_order > oldindex && item.faq_question_id != faqid)
+                    if (item.FAQQuestionOrder <= newindex && item.FAQQuestionOrder > oldindex && item.FAQQuestionID != faqid)
                     {
-                        item.faq_question_order = item.faq_question_order - 1;
+                        item.FAQQuestionOrder = item.FAQQuestionOrder - 1;
                     }
                 }
             }
 
-            fc.faq_question_question = newquestion;
-            fc.faq_question_answer = newanswer;
-            fc.faq_question_order = newindex;
-            fc.faq_question_category = fc.faq_question_category;
+            fc.FAQQuestionQuestion = newquestion;
+            fc.FAQQuestionAnswer = newanswer;
+            fc.FAQQuestionOrder = newindex;
+            fc.FAQQuestionCategory = fc.FAQQuestionCategory;
 
             uc.SaveChanges();
 
-            return RedirectToAction("Edit", new { id = fc.faq_question_category});
+            return RedirectToAction("Edit", new { id = fc.FAQQuestionCategory});
         }
 
 

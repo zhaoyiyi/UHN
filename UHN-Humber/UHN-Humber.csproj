@@ -227,6 +227,7 @@
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DoctorsController.cs" />
     <Compile Include="Areas\Admin\Controllers\FAQController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\FAQUHNController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -240,14 +241,16 @@
     <Compile Include="Models\Donation.cs">
       <DependentUpon>UHNModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EventsTable.cs">
+    <Compile Include="Models\Event.cs">
+      <DependentUpon>UHNModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EventDate.cs" />
+    <Compile Include="Models\EventModel.cs" />
+    <Compile Include="Models\FAQCategory.cs">
       <DependentUpon>UHNModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\faqModel.cs" />
-    <Compile Include="Models\faq_category.cs">
-      <DependentUpon>UHNModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\faq_question.cs">
+    <Compile Include="Models\FAQQuestion.cs">
       <DependentUpon>UHNModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\History.cs">
@@ -310,6 +313,7 @@
     <Content Include="Views\Shared\_PublicView.cshtml" />
     <Content Include="Views\FAQUHN\Index.cshtml" />
     <Content Include="Views\FAQUHN\displayQList.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

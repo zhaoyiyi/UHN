@@ -16,13 +16,13 @@ namespace UHN_Humber.Controllers
 
         public ActionResult Index()
         {
-            var categories = from c in uc.faq_category
-                             orderby c.faq_category_order ascending
+            var categories = from c in uc.FAQCategories
+                             orderby c.FAQCategoryOrder ascending
                              select c;
 
 
-            var questions = from p in uc.faq_question
-                            orderby p.faq_question_order ascending
+            var questions = from p in uc.FAQQuestions
+                            orderby p.FAQQuestionOrder ascending
                             select p;
 
             var cq = new faqModel();
@@ -35,13 +35,13 @@ namespace UHN_Humber.Controllers
 
         public ActionResult displayQList(string id)
         {
-            var categories = from c in uc.faq_category
-                             orderby c.faq_category_order ascending
+            var categories = from c in uc.FAQCategories
+                             orderby c.FAQCategoryOrder ascending
                              select c;
 
 
-            var questions = from p in uc.faq_question
-                            orderby p.faq_question_order ascending
+            var questions = from p in uc.FAQQuestions
+                            orderby p.FAQQuestionOrder ascending
                             select p;
 
             var cq = new faqModel();

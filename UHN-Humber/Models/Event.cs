@@ -11,16 +11,14 @@ namespace UHN_Humber.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public partial class faq_question
+    
+    public partial class Event
     {
-        public int faq_question_id { get; set; }
-        [Required(ErrorMessage = "Please enter the question")]
-        public string faq_question_question { get; set; }
-        [Required(ErrorMessage = "Please enter the answer")]
-        public string faq_question_answer { get; set; }
-        public Nullable<int> faq_question_category { get; set; }
-        public Nullable<int> faq_question_order { get; set; }
+        public int EventID { get; set; }
+        public string EventName { get; set; }
+        public Nullable<System.DateTime> EventDate { get; set; }
+        public Nullable<decimal> EventTime { get; set; }
+        public string EventLocation { get; set; }
+        public string EventDescription { get; set; }
     }
 }

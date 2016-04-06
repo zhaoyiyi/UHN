@@ -5,9 +5,9 @@ using System.Web;
 
 namespace UHN_Humber.Models
 {
-    public class faqModel
+    public class EventModel
     {
-        public IQueryable<FAQCategory> modelOne;
-        public IQueryable<FAQQuestion> modelTwo;
+        public IQueryable<Event> events;
+        public EventDate modelTwo;
     }
 }

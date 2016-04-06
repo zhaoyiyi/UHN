@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<UHN_Humber.Models.faq_category>*@
-
+﻿
 @model UHN_Humber.Models.faqModel
 
 
@@ -53,13 +52,13 @@
 
         @foreach (var item in Model.modelOne)
         {
-            if (Request.QueryString["categoryid"] == item.faq_category_id.ToString())
+            if (Request.QueryString["categoryid"] == item.FAQCategoryID.ToString())
             {
-                <li role="presentation"><a class="active">@item.faq_category_name</a></li>
+                <li role="presentation"><a class="active">@item.FAQCategoryName</a></li>
             }
             else
             {
-                <li role="presentation">@Html.ActionLink(item.faq_category_name, "displayQList", new { categoryid = item.faq_category_id.ToString() })</li>
+                <li role="presentation">@Html.ActionLink(item.FAQCategoryName, "displayQList", new { categoryid = item.FAQCategoryID.ToString() })</li>
             }
         }
 
@@ -103,7 +102,7 @@
 
 
     }
-}
+
 
 </style>
 
@@ -129,14 +128,14 @@
 
     @foreach (var item in Model.modelTwo)
     {
-        if (item.faq_question_category.ToString() == Request.QueryString["categoryid"])
+        if (item.FAQQuestionCategory.ToString() == Request.QueryString["categoryid"])
         {
             
             <h3>
-                @item.faq_question_question<span class="hidden-sm hidden-xs glyphicon glyphicon-menu-down"
+                @item.FAQQuestionQuestion<span class="hidden-sm hidden-xs glyphicon glyphicon-menu-down"
                                  aria-hidden="true"></span>
         </h3>
-              <p>@item.faq_question_answer</p>
+              <p>@item.FAQQuestionAnswer</p>
         }
         else
         { }

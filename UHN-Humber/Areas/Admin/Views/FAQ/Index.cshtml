@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UHN_Humber.Models.faq_category>
+﻿@model IEnumerable<UHN_Humber.Models.FAQCategory>
 
 @{
     ViewBag.Title = "Index";
@@ -26,14 +26,14 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.faq_category_name)
+            @Html.DisplayFor(modelItem => item.FAQCategoryName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.faq_category_order)
+            @Html.DisplayFor(modelItem => item.FAQCategoryOrder)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.faq_category_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.faq_category_id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.FAQCategoryID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FAQCategoryID })
         </td>
     </tr>
 }

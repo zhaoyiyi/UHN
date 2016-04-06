@@ -1,4 +1,4 @@
-﻿@model UHN_Humber.Models.faq_category
+﻿@model UHN_Humber.Models.FAQCategory
 
 @{
     ViewBag.Title = "Create";
@@ -21,8 +21,8 @@
                 <b>Category Name <span style="vertical-align: middle; color: red; font-size: 30px;">*</span> : </b>
             </div> 
             <div class="col-md-10">
-                @Html.EditorFor(model => model.faq_category_name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.faq_category_name, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.FAQCategoryName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FAQCategoryName, "", new { @class = "text-danger" })
             </div>
         </div>
 
