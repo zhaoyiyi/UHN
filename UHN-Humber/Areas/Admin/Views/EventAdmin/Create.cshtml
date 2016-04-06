@@ -8,6 +8,18 @@
 <h2>Events</h2>
 
 
+<script>
+
+
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+</script>
+
+
+<p>Date: <input type="text" id="datepicker"></p>
+
+
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
