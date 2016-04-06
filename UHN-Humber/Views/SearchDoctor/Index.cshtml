@@ -36,18 +36,13 @@
 
     <div class="input-group">
         <!-- search app -->
-        <div id="searchBar" data-path="Admin/Doctors/details"></div>
+        <div id="searchBar" data-path="/SearchDoctor/details"></div>
         <script src="~/scripts/apps/SearchBar.js"></script>
 
         <input type="hidden" name="orderBy" value=@orderBy>
     </div>
 
 }
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
 <table class="table">
     <tr>
         <th>ID</th>
@@ -58,33 +53,32 @@
         <th>Specialty</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DocId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Doc_first_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Doc_last_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Doc_email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Doc_phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Doc_specialty)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DocId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DocId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DocId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doc_first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doc_last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doc_email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doc_phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doc_specialty)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.DocId })
+            </td>
+        </tr>
+    }
 </table>
 
 <div>

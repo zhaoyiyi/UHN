@@ -11,7 +11,7 @@ export default class SuggestionItem extends React.Component {
 
     render() {
         return (
-              <a href={`details/${this.props.id}`}>
+              <a href={`${this.props.path}/${this.props.id}`}>
                 {this.props.firstName} {this.props.lastName}, {this.props.specialty}
           </a>
 

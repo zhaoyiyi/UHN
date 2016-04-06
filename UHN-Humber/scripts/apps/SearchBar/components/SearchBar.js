@@ -2,14 +2,6 @@ import React from 'react';
 import Input from './Input';
 import Suggestion from './Suggestion';
 
-function getData() {
-  return [
-    {firstName: '12312', lastName: 'lastname', specialty: 'speic', id: '1'},
-    {firstName: '123', lastName: 'lastnsdfame', specialty: 'speic', id: '11'},
-    {firstName: '1', lastName: 'asdf', specialty: 'asd', id: '2'},
-    {firstName: '2', lastName: 'sdf', specialty: 'spesdfic', id: '5'}
-  ]
-}
 
 export default class SearchBar extends React.Component {
 
@@ -17,7 +9,8 @@ export default class SearchBar extends React.Component {
     super();
     this.state = {
       text: '',
-      suggestions: []
+      suggestions: [],
+      path: document.querySelector('#searchBar').getAttribute('data-path')
     };
   }
 
@@ -48,7 +41,7 @@ export default class SearchBar extends React.Component {
             value={this.state.text}
             onChange={this.handleInputChange}
       />
-        <Suggestion suggestions={this.state.suggestions}/>
+        <Suggestion suggestions={this.state.suggestions} path={this.state.path} />
       </div>
     )
   }

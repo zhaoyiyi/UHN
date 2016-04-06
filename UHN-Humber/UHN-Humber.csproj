@@ -293,6 +293,7 @@
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\FAQController.cs" />
+    <Compile Include="Controllers\SearchDoctorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -391,6 +392,8 @@
     <Content Include="Views\Shared\_AdminSideMenu.cshtml" />
     <Content Include="Views\Shared\_PublicView.cshtml" />
     <Content Include="Views\Api\Index.cshtml" />
+    <Content Include="Views\SearchDoctor\Index.cshtml" />
+    <Content Include="Views\SearchDoctor\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

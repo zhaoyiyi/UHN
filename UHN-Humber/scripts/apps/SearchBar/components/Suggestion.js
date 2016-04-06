@@ -14,7 +14,7 @@ export default class Suggestion extends React.Component {
             {this.props.suggestions.map( (suggestion, index) => {
               return (
                   <li key={index} className="list-group-item">
-                    <SuggestionItem {...suggestion} />
+                    <SuggestionItem {...suggestion} path={this.props.path} />
                   </li>
               )
             })}
