@@ -272,6 +272,8 @@
     <Content Include="Areas\Admin\Views\IntellisenceSettings\Details.cshtml" />
     <Content Include="Areas\Admin\Views\IntellisenceSettings\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\IntellisenceSettings\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\EventAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\EventAdmin\Create.cshtml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -288,6 +290,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DoctorsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EventAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\FAQController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\FAQUHNController.cs" />
