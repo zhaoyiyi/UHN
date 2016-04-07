@@ -14,9 +14,9 @@ namespace UHN_Humber.Models
     
     public partial class IntellisenceSetting
     {
-        public int id { get; set; }
         public byte Intellisense { get; set; }
         public int Result_limit { get; set; }
         public int Debounce_Time { get; set; }
+        public int id { get; set; }
     }
 }

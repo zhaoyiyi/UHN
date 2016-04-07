@@ -12,12 +12,12 @@
 
 
   $(function() {
-      $("#datepicker").datepicker({ minDate: 0, maxDate: "+10Y" });
+    $( "#datepicker" ).datepicker();
   });
 </script>
 
 
-
+<p>Date: <input type="text" id="datepicker"></p>
 
 
 @using (Html.BeginForm()) 
@@ -30,7 +30,7 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             <div class = "control-label col-md-2">
-                   Event Name : <span style="vertical-align: middle; color: red; font-size: 30px;">*</span>
+                   Event Name : 
             </div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "form-control" } })
@@ -40,79 +40,27 @@
 
         <div class="form-group">
             <div class="control-label col-md-2">
-                Date<span style="vertical-align: middle; color: red; font-size: 30px;">*</span> :
+                Date : 
             </div>
             <div class="col-md-10">
-                 
-                @Html.TextBoxFor(model => model.EventDate, new { Name = "EventDate", id = "datepicker" })
-              
+                @Html.EditorFor(model => model.EventDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.EventDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="control-label col-md-2">
-                Time<span style="vertical-align: middle; color: red; font-size: 30px;">*</span> : 
+                Time : 
             </div>
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.EventTime, new List<SelectListItem>
-            {
-                new SelectListItem { Text = "12:00 AM", Value = "0"},
-                new SelectListItem { Text = "12:30 AM", Value = "0.5" },
-                new SelectListItem { Text = "01:00 AM", Value = "1" },
-                new SelectListItem { Text = "01:30 AM", Value = "1.5" },
-                new SelectListItem { Text = "02:00 AM", Value = "2" },
-                new SelectListItem { Text = "02:30 AM", Value = "2.5" },
-                new SelectListItem { Text = "03:00 AM", Value = "3" },
-                new SelectListItem { Text = "03:30 AM", Value = "3.5" },
-                new SelectListItem { Text = "04:00 AM", Value = "4" },
-                new SelectListItem { Text = "04:30 AM", Value = "4.5" },
-                new SelectListItem { Text = "05:00 AM", Value = "5" },
-                new SelectListItem { Text = "05:30 AM", Value = "5.5" },
-                new SelectListItem { Text = "06:00 AM", Value = "6" },
-                new SelectListItem { Text = "06:30 AM", Value = "6.5" },
-                new SelectListItem { Text = "07:00 AM", Value = "7" },
-                new SelectListItem { Text = "07:30 AM", Value = "7.5" },
-                new SelectListItem { Text = "08:00 AM", Value = "8" },
-                new SelectListItem { Text = "08:30 AM", Value = "8.5" },
-                new SelectListItem { Text = "09:00 AM", Value = "9" },
-                new SelectListItem { Text = "09:30 AM", Value = "9.5" },
-                new SelectListItem { Text = "10:00 AM", Value = "10" },
-                new SelectListItem { Text = "10:30 AM", Value = "10.5" },
-                new SelectListItem { Text = "11:00 AM", Value = "11" },
-                new SelectListItem { Text = "11:30 AM", Value = "11.5" },
-                new SelectListItem { Text = "12:00 PM", Value = "12" },
-                new SelectListItem { Text = "12:30 PM", Value = "12.5" },
-                new SelectListItem { Text = "01:00 PM", Value = "13" },
-                new SelectListItem { Text = "01:30 PM", Value = "13.5" },
-                new SelectListItem { Text = "02:00 PM", Value = "14" },
-                new SelectListItem { Text = "02:30 PM", Value = "14.5" },
-                new SelectListItem { Text = "03:00 PM", Value = "15" },
-                new SelectListItem { Text = "03:30 PM", Value = "15.5" },
-                new SelectListItem { Text = "04:00 PM", Value = "16" },
-                new SelectListItem { Text = "04:30 PM", Value = "16.5" },
-                new SelectListItem { Text = "05:00 PM", Value = "17" },
-                new SelectListItem { Text = "05:30 PM", Value = "17.5" },
-                new SelectListItem { Text = "06:00 PM", Value = "18" },
-                new SelectListItem { Text = "06:30 PM", Value = "18.5" },
-                new SelectListItem { Text = "07:00 PM", Value = "19" },
-                new SelectListItem { Text = "07:30 PM", Value = "19.5" },
-                new SelectListItem { Text = "08:00 PM", Value = "20" },
-                new SelectListItem { Text = "08:30 PM", Value = "20.5" },
-                new SelectListItem { Text = "09:00 PM", Value = "21" },
-                new SelectListItem { Text = "09:30 PM", Value = "21.5" },
-                new SelectListItem { Text = "10:00 PM", Value = "22" },
-                new SelectListItem { Text = "10:30 PM", Value = "22.5" },
-                new SelectListItem { Text = "11:00 PM", Value = "23" },
-                new SelectListItem { Text = "11:30 PM", Value = "23.5" }
-            }, "Select the Event Time")
+                @Html.EditorFor(model => model.EventTime, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.EventTime, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="control-label col-md-2">
-                Location<span style="vertical-align: middle; color: red; font-size: 30px;">*</span> : 
+                Location : 
             </div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EventLocation, new { htmlAttributes = new { @class = "form-control" } })
@@ -122,7 +70,7 @@
 
         <div class="form-group">
             <div class="control-label col-md-2">
-                Description<span style="vertical-align: middle; color: red; font-size: 30px;">*</span> : 
+                Description : 
             </div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EventDescription, new { htmlAttributes = new { @class = "form-control" } })

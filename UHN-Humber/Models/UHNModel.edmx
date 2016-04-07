@@ -310,6 +310,15 @@
           <Property Name="VolunteerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VolunteerResume" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="IntellisenceSetting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Intellisense" Type="Byte" Nullable="false" />
+          <Property Name="Result_limit" Type="Int32" Nullable="false" />
+          <Property Name="Debounce_Time" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
         <EntityContainer Name="UHNDBContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AlertTables" EntityType="Self.AlertTable" />
           <EntitySet Name="Doctors" EntityType="UHNDBModel.Doctor" />
@@ -322,10 +331,10 @@
           <EntitySet Name="StaffLogins" EntityType="Self.StaffLogin" />
           <EntitySet Name="VideoTables" EntityType="Self.VideoTable" />
           <EntitySet Name="Volunteers" EntityType="Self.Volunteer" />
+          <EntitySet Name="IntellisenceSettings" EntityType="Self.IntellisenceSetting" />
           <EntitySet Name="Events" EntityType="UHNDBModel.Event" />
           <EntitySet Name="FAQCategories" EntityType="UHNDBModel.FAQCategory" />
           <EntitySet Name="FAQQuestions" EntityType="UHNDBModel.FAQQuestion" />
-          <EntitySet Name="IntellisenceSettings" EntityType="UHNDBModel.IntellisenceSetting" />
         </EntityContainer>
         <EntityType Name="Event">
           <Key>
@@ -355,15 +364,6 @@
           <Property Name="FAQQuestionAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FAQQuestionCategory" Type="Int32" />
           <Property Name="FAQQuestionOrder" Type="Int32" />
-        </EntityType>
-        <EntityType Name="IntellisenceSetting">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Intellisense" Type="Byte" Nullable="false" />
-          <Property Name="Result_limit" Type="Int32" Nullable="false" />
-          <Property Name="Debounce_Time" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -505,6 +505,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="IntellisenceSettings">
+            <EntityTypeMapping TypeName="UHNDBModel.IntellisenceSetting">
+              <MappingFragment StoreEntitySet="IntellisenceSettings">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Intellisense" ColumnName="Intellisense" />
+                <ScalarProperty Name="Result_limit" ColumnName="Result_limit" />
+                <ScalarProperty Name="Debounce_Time" ColumnName="Debounce_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="UHNDBModel.Event">
               <MappingFragment StoreEntitySet="Events">
@@ -534,16 +544,6 @@
                 <ScalarProperty Name="FAQQuestionAnswer" ColumnName="FAQQuestionAnswer" />
                 <ScalarProperty Name="FAQQuestionQuestion" ColumnName="FAQQuestionQuestion" />
                 <ScalarProperty Name="FAQQuestionID" ColumnName="FAQQuestionID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="IntellisenceSettings">
-            <EntityTypeMapping TypeName="UHNDBModel.IntellisenceSetting">
-              <MappingFragment StoreEntitySet="IntellisenceSettings">
-                <ScalarProperty Name="Debounce_Time" ColumnName="Debounce_Time" />
-                <ScalarProperty Name="Result_limit" ColumnName="Result_limit" />
-                <ScalarProperty Name="Intellisense" ColumnName="Intellisense" />
-                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
