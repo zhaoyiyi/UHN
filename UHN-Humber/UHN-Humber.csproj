@@ -310,7 +310,7 @@
     <Compile Include="Models\Donation.cs">
       <DependentUpon>UHNModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Event.cs">
+    <Compile Include="Models\Event1.cs">
       <DependentUpon>UHNModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EventDate.cs" />

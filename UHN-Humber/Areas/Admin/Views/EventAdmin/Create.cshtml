@@ -1,4 +1,4 @@
-﻿@model UHN_Humber.Models.Event
+﻿@model UHN_Humber.Models.Event1
 
 @{
     ViewBag.Title = "Create New Event";
@@ -73,7 +73,7 @@
                 Description : 
             </div>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EventDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.EventDescription, new { htmlAttributes = new { @class = "form-control", @Value="" } })
                 @Html.ValidationMessageFor(model => model.EventDescription, "", new { @class = "text-danger" })
             </div>
         </div>

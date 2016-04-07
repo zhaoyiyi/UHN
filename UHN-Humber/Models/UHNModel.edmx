@@ -50,16 +50,17 @@
           <Property Name="DonationAddress" Type="varchar" MaxLength="50" />
           <Property Name="DonationCreditCard" Type="nchar" MaxLength="10" />
         </EntityType>
-        <EntityType Name="Events">
+        <EntityType Name="Event">
           <Key>
             <PropertyRef Name="EventID" />
           </Key>
           <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EventName" Type="varchar(max)" />
           <Property Name="EventDate" Type="datetime" />
-          <Property Name="EventTime" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="EventTime" Type="varchar(max)" />
           <Property Name="EventLocation" Type="varchar(max)" />
           <Property Name="EventDescription" Type="varchar(max)" />
+          <Property Name="EventRecurred" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="FAQCategory">
           <Key>
@@ -85,14 +86,14 @@
           </Key>
           <Property Name="Search_History" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\APP_DATA\UHNDB.MDF.dbo.IntellisenceSettings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="IntellisenceSettings">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          
           <Property Name="Intellisense" Type="tinyint" Nullable="false" />
-          <Property Name="Result_limit" Type="int" Nullable="false" />
-          <Property Name="Debounce_Time" Type="int" Nullable="false" />
+          <Property Name="Result_limit" Type="int" />
+          <Property Name="Disabled_fields" Type="varchar" MaxLength="50" />
+          <Property Name="Debounce_Time" Type="int" />
         </EntityType>
         <EntityType Name="MenuGroup">
           <Key>
@@ -170,11 +171,10 @@
           <EntitySet Name="AlertTable" EntityType="Self.AlertTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="doctors" EntityType="Self.doctors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FAQCategory" EntityType="Self.FAQCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FAQQuestion" EntityType="Self.FAQQuestion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="IntellisenceSettings" EntityType="Self.IntellisenceSettings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuGroup" EntityType="Self.MenuGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuItem" EntityType="Self.MenuItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
@@ -182,6 +182,14 @@
           <EntitySet Name="StaffLogin" EntityType="Self.StaffLogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VideoTable" EntityType="Self.VideoTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Volunteer" EntityType="Self.Volunteer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IntellisenceSettings" EntityType="Self.IntellisenceSettings" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [IntellisenceSettings].[Intellisense] AS [Intellisense], 
+    [IntellisenceSettings].[Result_limit] AS [Result_limit], 
+    [IntellisenceSettings].[Disabled_fields] AS [Disabled_fields], 
+    [IntellisenceSettings].[Debounce_Time] AS [Debounce_Time]
+    FROM [dbo].[IntellisenceSettings] AS [IntellisenceSettings]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -315,9 +323,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="Intellisense" Type="Byte" Nullable="false" />
-          <Property Name="Result_limit" Type="Int32" Nullable="false" />
-          <Property Name="Debounce_Time" Type="Int32" Nullable="false" />
+          <Property Name="Result_limit" Type="Int32" />
+          <Property Name="Debounce_Time" Type="Int32" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Disabled_fields" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="UHNDBContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AlertTables" EntityType="Self.AlertTable" />
@@ -332,21 +341,10 @@
           <EntitySet Name="VideoTables" EntityType="Self.VideoTable" />
           <EntitySet Name="Volunteers" EntityType="Self.Volunteer" />
           <EntitySet Name="IntellisenceSettings" EntityType="Self.IntellisenceSetting" />
-          <EntitySet Name="Events" EntityType="UHNDBModel.Event" />
           <EntitySet Name="FAQCategories" EntityType="UHNDBModel.FAQCategory" />
           <EntitySet Name="FAQQuestions" EntityType="UHNDBModel.FAQQuestion" />
+          <EntitySet Name="Event1" EntityType="UHNDBModel.Event1" />
         </EntityContainer>
-        <EntityType Name="Event">
-          <Key>
-            <PropertyRef Name="EventID" />
-          </Key>
-          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EventName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="EventDate" Type="DateTime" Precision="3" />
-          <Property Name="EventTime" Type="Decimal" Precision="18" Scale="1" />
-          <Property Name="EventLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="EventDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="FAQCategory">
           <Key>
             <PropertyRef Name="FAQCategoryID" />
@@ -364,6 +362,18 @@
           <Property Name="FAQQuestionAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FAQQuestionCategory" Type="Int32" />
           <Property Name="FAQQuestionOrder" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Event1">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EventDate" Type="DateTime" Precision="3" />
+          <Property Name="EventTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EventLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EventDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EventRecurred" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -508,22 +518,10 @@
           <EntitySetMapping Name="IntellisenceSettings">
             <EntityTypeMapping TypeName="UHNDBModel.IntellisenceSetting">
               <MappingFragment StoreEntitySet="IntellisenceSettings">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Disabled_fields" ColumnName="Disabled_fields" />
                 <ScalarProperty Name="Intellisense" ColumnName="Intellisense" />
                 <ScalarProperty Name="Result_limit" ColumnName="Result_limit" />
                 <ScalarProperty Name="Debounce_Time" ColumnName="Debounce_Time" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Events">
-            <EntityTypeMapping TypeName="UHNDBModel.Event">
-              <MappingFragment StoreEntitySet="Events">
-                <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
-                <ScalarProperty Name="EventLocation" ColumnName="EventLocation" />
-                <ScalarProperty Name="EventTime" ColumnName="EventTime" />
-                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
-                <ScalarProperty Name="EventName" ColumnName="EventName" />
-                <ScalarProperty Name="EventID" ColumnName="EventID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -544,6 +542,19 @@
                 <ScalarProperty Name="FAQQuestionAnswer" ColumnName="FAQQuestionAnswer" />
                 <ScalarProperty Name="FAQQuestionQuestion" ColumnName="FAQQuestionQuestion" />
                 <ScalarProperty Name="FAQQuestionID" ColumnName="FAQQuestionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Event1">
+            <EntityTypeMapping TypeName="UHNDBModel.Event1">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="EventRecurred" ColumnName="EventRecurred" />
+                <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
+                <ScalarProperty Name="EventLocation" ColumnName="EventLocation" />
+                <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

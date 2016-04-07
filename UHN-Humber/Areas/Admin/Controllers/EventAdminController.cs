@@ -11,10 +11,11 @@ namespace UHN_Humber.Areas.Admin.Controllers
     {
         UHNDBContext uc = new UHNDBContext();
 
+
         // GET: Admin/EventAdmin
         public ActionResult Index()
         {
-            var events = from c in uc.Events
+            var events = from c in uc.Event1
                              orderby c.EventDate ascending, c.EventTime
                              select c;
 

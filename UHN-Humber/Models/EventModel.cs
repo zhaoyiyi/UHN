@@ -7,7 +7,7 @@ namespace UHN_Humber.Models
 {
     public class EventModel
     {
-        public IQueryable<Event> events;
+        public IQueryable<Event1> events;
         public EventDate modelTwo;
     }
 }
