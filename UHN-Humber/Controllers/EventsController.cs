@@ -9,11 +9,14 @@ namespace UHN_Humber.Controllers
 {
     public class EventsController : Controller
     {
+
+        UHNDBContext uc = new UHNDBContext();
+
         // GET: Events
         [HttpGet]
         public ActionResult Index()
         {
-            
+
             EventDate firstDay = new EventDate();
 
             firstDay.year = System.DateTime.Now.Year;
@@ -21,7 +24,7 @@ namespace UHN_Humber.Controllers
             firstDay.monthInString = System.DateTime.Now.ToString("MMMM");
             firstDay.date = System.DateTime.Now.Day;
             firstDay.numDays = System.DateTime.DaysInMonth(firstDay.year, firstDay.month);
-            
+
 
             var temp = new DateTime(firstDay.year, firstDay.month, 1);
 
@@ -32,7 +35,15 @@ namespace UHN_Humber.Controllers
             firstDay.lastday = (int)temp2.DayOfWeek;
             firstDay.incOrDec = 0;
 
-            return View(firstDay);
+            var ef = new EventModel();
+            ef.events =  from c in uc.Events
+                         where c.EventDate.Value.Year == firstDay.year
+                         && c.EventDate.Value.Month == firstDay.month
+                                         orderby c.EventDate ascending
+                                         select c;
+            ef.modelTwo = firstDay;
+
+            return View(ef);
         }
 
         [HttpPost]
@@ -58,7 +69,14 @@ namespace UHN_Humber.Controllers
             firstDay.lastday = (int)temp2.DayOfWeek;
             firstDay.incOrDec = 0;
 
-            return View(firstDay);
+            var ed = new EventModel();
+            ed.events = from c in uc.Events
+                        orderby c.EventDate ascending
+                        select c;
+            ed.modelTwo = firstDay;
+
+
+            return View(ed);
 
 
         }
