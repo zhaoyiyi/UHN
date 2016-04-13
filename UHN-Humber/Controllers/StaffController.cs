@@ -10,32 +10,7 @@ namespace UHN_Humber.Controllers
     public class StaffController : Controller
     {
         // GET: Staff
-        public ActionResult Index()
-        {
-            StaffContext db = new StaffContext();
-
-            return View(db.StaffLogins.ToList());
-        }
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Register(StaffLogin staffLogin)
-        {
-            if (ModelState.IsValid)
-            {
-                StaffContext db = new StaffContext();
-
-                db.StaffLogins.Add(staffLogin);
-                db.SaveChanges();
-
-                ModelState.Clear();
-                ViewBag.Message = staffLogin.StaffFirstName + " " + staffLogin.StaffLastName + " successfully registered.";
-            }
-            return View();
-        }
+        
 
         public ActionResult Login()
         {

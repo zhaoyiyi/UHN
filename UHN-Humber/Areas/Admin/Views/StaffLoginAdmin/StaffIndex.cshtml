@@ -1,19 +1,14 @@
 ﻿@model IEnumerable<UHN_Humber.Models.StaffLogin>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "StaffIndex";
+    Layout = "~/Views/Shared/_AdminSideMenu.cshtml";
 }
 
-<h2>Staff Login Directory</h2>
-
-<div style="text-align:right">
-    @Html.ActionLink("Logout","Logout")
-</div>
-
-
+<h2>StaffIndex</h2>
 
 <p>
-    @Html.ActionLink("Register New", "Register")
+    @Html.ActionLink("Register", "Register")
 </p>
 <table class="table">
     <tr>
@@ -30,7 +25,7 @@
             @Html.DisplayNameFor(model => model.StaffPassword)
         </th>
         <th>
-            @Html.DisplayNameFor(model=> model.StaffAccess)
+            @Html.DisplayNameFor(model => model.StaffAccess)
         </th>
         <th></th>
     </tr>

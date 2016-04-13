@@ -10,12 +10,7 @@ namespace UHN_Humber.Controllers
     public class VolunteerController : Controller
     {
         // GET: Volunteer
-        public ActionResult VolunteerIndex()
-        {
-            VolunteerContext db = new VolunteerContext();
-
-            return View(db.Volunteers.ToList());
-        }
+        
 
         public ActionResult VolunteerApply()
         {

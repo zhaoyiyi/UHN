@@ -2,30 +2,30 @@
 
 @{
     ViewBag.Title = "VolunteerIndex";
+    Layout = "~/Views/Shared/_AdminSideMenu.cshtml";
 }
 
-<h2>VolunteerIndex</h2>
-
+<h2>Volunteer Applications</h2>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.VolunteerFirstName)
+            First Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VolunteerLastName)
+            Last Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VolunteerAddress)
+            Address
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VolunteerPhone)
+            Phone
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VolunteerEmail)
+            Email
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VolunteerInfo)
+            Info
         </th>
         <th></th>
     </tr>
@@ -49,10 +49,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.VolunteerInfo)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id=item.VolunteerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.VolunteerId })
         </td>
     </tr>
 }

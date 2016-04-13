@@ -310,6 +310,9 @@
     <Content Include="Areas\Admin\Views\EventAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\EventAdmin\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\EventAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\VolunteerAdmin\VolunteerIndex.cshtml" />
+    <Content Include="Areas\Admin\Views\StaffLoginAdmin\StaffIndex.cshtml" />
+    <Content Include="Areas\Admin\Views\StaffLoginAdmin\Register.cshtml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -326,6 +329,8 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DoctorsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StaffLoginAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VolunteerAdminController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\VolunteerController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventAdminController.cs" />
@@ -456,12 +461,9 @@
     <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_AdminSideMenu.cshtml" />
     <Content Include="Views\Shared\_PublicView.cshtml" />
-    <Content Include="Views\Staff\Index.cshtml" />
-    <Content Include="Views\Staff\Register.cshtml" />
     <Content Include="Views\Staff\Login.cshtml" />
     <Content Include="Views\Staff\LoggedIn.cshtml" />
     <Content Include="Views\Volunteer\VolunteerApply.cshtml" />
-    <Content Include="Views\Volunteer\VolunteerIndex.cshtml" />
     <Content Include="Views\FAQUHN\Index.cshtml" />
     <Content Include="Views\FAQUHN\displayQList.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
@@ -477,6 +479,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Volunteer\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
