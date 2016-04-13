@@ -1,87 +1,124 @@
 ﻿
-@model UHN_Humber.Models.EventDate
+@model UHN_Humber.Models.EventModel
 
 @{
     ViewBag.Title = "Events Calendar";
     Layout = "~/Views/Shared/_PublicView.cshtml";
 }
-
 <h2 style="margin-top: 50px; margin-bottom: 30px; font-size: 25px;">Events Calendar</h2>
 
 
-
-
 <style>
-        h1{
-            font: bold 22px/30px "Ubuntu", sans-serif;
-    color: #333333;
-    text-transform: uppercase;
-    padding: 0 0 16px 0;
-    margin: 30px 0 30px 0;
-    border-bottom: 1px solid #e4e4e4;
-    text-align: center;
+    h1 {
+        font: bold 22px/30px "Ubuntu", sans-serif;
+        color: #333333;
+        text-transform: uppercase;
+        padding: 0 0 16px 0;
+        margin: 30px 0 30px 0;
+        border-bottom: 1px solid #e4e4e4;
+        text-align: center;
     }
 
-        h1 span.glyphicon{
+        h1 span.glyphicon {
             margin-left: 30px;
             margin-right: 30px;
             cursor: pointer;
             font-size: 18px;
         }
 
-        table{
-            width: 100%;
-            table-layout: fixed;
-        }
+    table {
+        width: 100%;
+        table-layout: fixed;
+    }
 
-        #days th{
-            text-align: center;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            background-color: #337ab7;
-            color: white;
-        }
+    #days th {
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: #337ab7;
+        color: white;
+    }
 
 
-        td{
-             border: 1px solid #e4e4e4;
-             min-height: 120px;
-             height: 120px;
-             position: relative;
-             padding: 15px 10px;
-           
-        }
-        .dayTopRight{
-            position:absolute;
-            top:5px;
-            right: 10px;
-        }
+    td {
+        border: 1px solid #e4e4e4;
+        min-height: 120px;
+        height: 120px;
+        position: relative;
+        padding: 15px 10px;
+        vertical-align: top;
+    }
 
-        .events{
-            color: #1E90FF;
-            cursor: pointer;
-            text-decoration: underline;
-           
-        }
+    .dayTopRight {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+    }
+
+    .events {
+        color: #1E90FF;
+        cursor: pointer;
+        text-decoration: underline;
+        position: relative;
+    }
+
+    .events div, .circle div{
+        display: none;
+    }
+
+    .events:hover div, .circle:hover div{
+        position: absolute;
+          left: 1em;
+          top: 2em;
+          z-index: 99;
+          margin-left: 0;
+          min-width: 200px;
+          display: inline-block;
+    }
+
+
+
+    .events div span,  .circle div span{
+        background-color: #DBE0E9;
+          border: 1px solid #344C74;
+          color: #344C74;
+          padding: 4px 7px;
+          width: 200px;
+          display: inline-block;
+          font-weight: bold;
+    }
+
+    .events div span+span, .circle div span+span{
+                  padding: 10px 7px;
+          background-color: #FFF0D5;
+          border: 1px solid #AF8844;
+          color: #454039;
+          font-weight: normal;
+    }
+
+    .circle{
+        width:10px;
+            height:10px;
+            border-radius:50px;
+            background:#1E90FF;
+            margin-bottom: 5px;
+    }
+
 
 </style>
-
-@{ 
+@{
     var chMonth = 0;
 }
 
-
 <h1>
     <span class="changeMonth glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    @Model.monthInString &nbsp; @Model.year <span class="changeMonth glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    @Model.modelTwo.monthInString &nbsp; @Model.modelTwo.year <span class="changeMonth glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 </h1>
-
 <form method="post">
-    <input type="hidden" name="year" value=@Model.year />
-    <input type="hidden" name="month" value=@Model.month />
+    <input type="hidden" name="year" value=@Model.modelTwo.year />
+    <input type="hidden" name="month" value=@Model.modelTwo.month />
     <input type="hidden" name="incordec" id="incordec" />
 </form>
-
 
 <script type="text/javascript">
         $(function () {
@@ -94,7 +131,7 @@
                     $("#incordec").val("1");
                     $("form").submit();
                 }
-               
+
             });
         });
 </script>
@@ -102,63 +139,122 @@
 
 
 
-<table>
-    <tr id="days">
-        <th>SUN</th>
-        <th>MON</th>
-        <th>TUE</th>
-        <th>WED</th>
-        <th>THU</th>
-        <th>FRI</th>
-        <th>SAT</th>
-    </tr>
-  
-        @{ 
-                int count = 1;
+
+    <table>
+        <tr id="days">
+            <th>SUN</th>
+            <th>MON</th>
+            <th>TUE</th>
+            <th>WED</th>
+            <th>THU</th>
+            <th>FRI</th>
+            <th>SAT</th>
+        </tr>
+
+        @{
+            int count = 1;
         }
 
+        @for (var i = 1 - Model.modelTwo.dayInString; i <= (Model.modelTwo.numDays + (6 - Model.modelTwo.lastday));)
+        {
 
-
-    @for (var i = 1-Model.dayInString; i <= (Model.numDays + (6-Model.lastday)); )
-    {
-        
             <tr class="calendardays">
-
-                @for(var j=0; j< 7; j++)
+                @for (var j = 0; j < 7; j++)
                 {
 
-                    if (i < 1 || i > Model.numDays)
+                    if (i < 1 || i > Model.modelTwo.numDays)
                     {
                         <td></td>
                     }
                     else
                     {
-                        if (Model.year == System.DateTime.Now.Year && Model.month == System.DateTime.Now.Month && i == System.DateTime.Now.Day)
+                        if (Model.modelTwo.year == System.DateTime.Now.Year && Model.modelTwo.month == System.DateTime.Now.Month && i == System.DateTime.Now.Day)
                         {
-                            <td style="background-color:#FFFF99; "><span class="events"></span><br />
-                <span class="dayTopRight">@i</span></td>
+                            <td style="background-color:#FFFF99; ">
+
+                                @foreach (var e in Model.events.Where(e => e.EventDate.Value.Day == i && e.EventDate.Value.Month == Model.modelTwo.month
+        && e.EventDate.Value.Year == Model.modelTwo.year))
+                                {
+                                    <div class="circle visible-xs">
+
+                                        <div>
+                                            <span>@e.EventTitle</span>
+                                            <span>
+                                                <b>Time: </b> @e.EventTime<br /><br /><b>
+                                                    Location:
+                                                </b> @e.EventLocation<br /><br />                              <b>Description:</b> @e.EventDescription<br /><br />
+                                            </span>
+                                        </div>
+
+                                    </div> 
+                                   <div class="hidden-xs">
+
+                                        <span style="font-size:     12px;">@e.EventTime</span><br  />
+                                       <span class="events">
+                    @e.EventTitle <div>
+                                        <span>@e.EventTitle</span>
+                                           <span>                          <b>Time: </b> @e.EventTime<br /><br /><b>
+    Location: </b> @e.EventLocation<br /><br />                              <b>Description:</b> @e.EventDescription<br /><br />
+    </span>
+                                    </div>
+                                </span><br />
+                                       </div>
+                                }
+                                <span class="dayTopRight">@i</span>
+                            </td>
                         }
                         else
                         {
-                        <td><span class="events"></span><br/>
-                            <span class="dayTopRight">@i</span></td>
+                            <td>
+                                @foreach (var e in Model.events.Where(e => e.EventDate.Value.Day == i && e.EventDate.Value.Month == Model.modelTwo.month && e.EventDate.Value.Year == Model.modelTwo.year))
+                            {
+
+                                    <div class="circle visible-xs">
+
+                                        <div>
+                                            <span>@e.EventTitle</span>
+                                            <span>
+                                                <b>Time: </b> @e.EventTime<br /><br /><b>
+                                                    Location:
+                                                </b> @e.EventLocation<br /><br />                              <b>Description:</b> @e.EventDescription<br /><br />
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                    <div class="hidden-xs">
+
+                                        <span style="font-size:     12px;">@e.EventTime</span><br />
+                                        <span class="events">
+                                            @e.EventTitle <div>
+                                                <span>@e.EventTitle</span>
+                                                <span>
+                                                    <b>Time: </b> @e.EventTime<br /><br /><b>
+                                                        Location:
+                                                    </b> @e.EventLocation<br /><br />                              <b>Description:</b> @e.EventDescription<br /><br />
+                                                </span>
+                                            </div>
+                                        </span><br />
+                                    </div>
+
+                                }
+
+
+
+                                <span class="dayTopRight">@i</span>
+                            </td>
                         }
                     }
 
                     i++;
                 }
-
             </tr>
 
-    }
+        }
 
+    </table>
+    <div style="margin-top: 30px; margin-bottom: 50px; position: relative;">
+        <div style="display: inline-block; width:30px; height: 30px; background-color:  	#FFFF99; border: 1px solid black;"></div>
+        <span style="position: absolute; top: 3px; margin-left: 10px;left: 40px;">Today : @System.DateTime.Now.DayOfWeek.ToString(), @System.DateTime.Now.ToLongDateString()</span>
+    </div>
 
-
-</table>
-
-<div style="margin-top: 30px; margin-bottom: 50px; position: relative;">
-    <div style="display: inline-block; width:30px; height: 30px; background-color:  	#FFFF99; border: 1px solid black;"></div>
-    <span style="position: absolute; top: 3px; margin-left: 10px;left: 40px;">Today : @System.DateTime.Now.DayOfWeek.ToString(), @System.DateTime.Now.ToLongDateString()</span>
-
-</div>
 

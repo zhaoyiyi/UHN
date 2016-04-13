@@ -1,11 +1,11 @@
-﻿@model IEnumerable<UHN_Humber.Models.Event1>
+﻿@model IEnumerable<UHN_Humber.Models.Event>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Events</h2>
 
 <p>
     @Html.ActionLink("Create New Event", "Create")
@@ -13,19 +13,22 @@
 <table class="table">
     <tr>
         <th>
-            Name
+            Title
         </th>
         <th>
-            Date
+           Date
         </th>
         <th>
-           Time
+            Time
         </th>
         <th>
-           Location
+            Location
         </th>
         <th>
-           Description
+            Description
+        </th>
+        <th>
+            Recurrence
         </th>
         <th></th>
     </tr>
@@ -33,10 +36,12 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.EventName)
+            @Html.DisplayFor(modelItem => item.EventTitle)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EventDate)
+          @String.Format("{0:d}", item.EventDate)
+     
+            
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EventTime)
@@ -48,8 +53,10 @@
             @Html.DisplayFor(modelItem => item.EventDescription)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.EventRecurred)
+        </td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.EventID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EventID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.EventID })
         </td>
     </tr>
