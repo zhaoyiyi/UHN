@@ -55,7 +55,7 @@
             <PropertyRef Name="EventID" />
           </Key>
           <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EventName" Type="varchar(max)" />
+          <Property Name="EventTitle" Type="varchar(max)" />
           <Property Name="EventDate" Type="datetime" />
           <Property Name="EventTime" Type="varchar(max)" />
           <Property Name="EventLocation" Type="varchar(max)" />
@@ -86,8 +86,6 @@
           </Key>
           <Property Name="Search_History" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\APP_DATA\UHNDB.MDF.dbo.IntellisenceSettings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="MenuGroup">
           <Key>
             <PropertyRef Name="MenuGroupId" />
@@ -133,11 +131,12 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <Key>
             <PropertyRef Name="StaffId" />
           </Key>
-          <Property Name="StaffId" Type="int" Nullable="false" />
+          <Property Name="StaffId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StaffFirstName" Type="varchar" MaxLength="50" />
           <Property Name="StaffLastName" Type="varchar" MaxLength="50" />
           <Property Name="StaffUsername" Type="varchar" MaxLength="50" />
           <Property Name="StaffPassword" Type="varchar" MaxLength="15" />
+          <Property Name="StaffAccess" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="VideoTable">
           <Key>
@@ -156,9 +155,9 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <Property Name="VolunteerFirstName" Type="varchar" MaxLength="50" />
           <Property Name="VolunteerLastName" Type="varchar" MaxLength="50" />
           <Property Name="VolunteerAddress" Type="varchar" MaxLength="50" />
-          <Property Name="VolunteerPhone" Type="int" />
+          <Property Name="VolunteerPhone" Type="varchar" MaxLength="50" />
           <Property Name="VolunteerEmail" Type="varchar" MaxLength="50" />
-          <Property Name="VolunteerResume" Type="varchar(max)" />
+          <Property Name="VolunteerInfo" Type="text" />
         </EntityType>
         <EntityContainer Name="UHNDBModelStoreContainer">
           <EntitySet Name="AlertTable" EntityType="Self.AlertTable" Schema="dbo" store:Type="Tables" />
@@ -281,6 +280,7 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <Property Name="StaffLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="StaffUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="StaffPassword" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="StaffAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="VideoTable">
           <Key>
@@ -302,6 +302,7 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <Property Name="VolunteerPhone" Type="Int32" />
           <Property Name="VolunteerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VolunteerResume" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VolunteerInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="UHNDBContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AlertTables" EntityType="Self.AlertTable" />
@@ -317,7 +318,7 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <EntitySet Name="Volunteers" EntityType="Self.Volunteer" />
           <EntitySet Name="FAQCategories" EntityType="UHNDBModel.FAQCategory" />
           <EntitySet Name="FAQQuestions" EntityType="UHNDBModel.FAQQuestion" />
-          <EntitySet Name="Event1" EntityType="UHNDBModel.Event1" />
+          <EntitySet Name="Events" EntityType="UHNDBModel.Event" />
         </EntityContainer>
         <EntityType Name="FAQCategory">
           <Key>
@@ -337,7 +338,7 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <Property Name="FAQQuestionCategory" Type="Int32" />
           <Property Name="FAQQuestionOrder" Type="Int32" />
         </EntityType>
-        <EntityType Name="Event1">
+        <EntityType Name="Event">
           <Key>
             <PropertyRef Name="EventID" />
           </Key>
@@ -348,6 +349,7 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <Property Name="EventLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="EventDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="EventRecurred" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EventTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -458,6 +460,7 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <EntitySetMapping Name="StaffLogins">
             <EntityTypeMapping TypeName="UHNDBModel.StaffLogin">
               <MappingFragment StoreEntitySet="StaffLogin">
+                <ScalarProperty Name="StaffAccess" ColumnName="StaffAccess" />
                 <ScalarProperty Name="StaffId" ColumnName="StaffId" />
                 <ScalarProperty Name="StaffFirstName" ColumnName="StaffFirstName" />
                 <ScalarProperty Name="StaffLastName" ColumnName="StaffLastName" />
@@ -479,13 +482,13 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <EntitySetMapping Name="Volunteers">
             <EntityTypeMapping TypeName="UHNDBModel.Volunteer">
               <MappingFragment StoreEntitySet="Volunteer">
+                <ScalarProperty Name="VolunteerInfo" ColumnName="VolunteerInfo" />
                 <ScalarProperty Name="VolunteerId" ColumnName="VolunteerId" />
                 <ScalarProperty Name="VolunteerFirstName" ColumnName="VolunteerFirstName" />
                 <ScalarProperty Name="VolunteerLastName" ColumnName="VolunteerLastName" />
                 <ScalarProperty Name="VolunteerAddress" ColumnName="VolunteerAddress" />
                 <ScalarProperty Name="VolunteerPhone" ColumnName="VolunteerPhone" />
                 <ScalarProperty Name="VolunteerEmail" ColumnName="VolunteerEmail" />
-                <ScalarProperty Name="VolunteerResume" ColumnName="VolunteerResume" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -509,15 +512,15 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Event1">
-            <EntityTypeMapping TypeName="UHNDBModel.Event1">
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="UHNDBModel.Event">
               <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
                 <ScalarProperty Name="EventRecurred" ColumnName="EventRecurred" />
                 <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
                 <ScalarProperty Name="EventLocation" ColumnName="EventLocation" />
                 <ScalarProperty Name="EventTime" ColumnName="EventTime" />
                 <ScalarProperty Name="EventDate" ColumnName="EventDate" />
-                <ScalarProperty Name="EventName" ColumnName="EventName" />
                 <ScalarProperty Name="EventID" ColumnName="EventID" />
               </MappingFragment>
             </EntityTypeMapping>

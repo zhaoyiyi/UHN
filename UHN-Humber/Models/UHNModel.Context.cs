@@ -38,6 +38,6 @@ namespace UHN_Humber.Models
         public virtual DbSet<Volunteer> Volunteers { get; set; }
         public virtual DbSet<FAQCategory> FAQCategories { get; set; }
         public virtual DbSet<FAQQuestion> FAQQuestions { get; set; }
-        public virtual DbSet<Event1> Event1 { get; set; }
+        public virtual DbSet<Event> Events { get; set; }
     }
 }
