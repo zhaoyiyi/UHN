@@ -88,13 +88,6 @@
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\APP_DATA\UHNDB.MDF.dbo.IntellisenceSettings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="IntellisenceSettings">
-          
-          <Property Name="Intellisense" Type="tinyint" Nullable="false" />
-          <Property Name="Result_limit" Type="int" />
-          <Property Name="Disabled_fields" Type="varchar" MaxLength="50" />
-          <Property Name="Debounce_Time" Type="int" />
-        </EntityType>
         <EntityType Name="MenuGroup">
           <Key>
             <PropertyRef Name="MenuGroupId" />
@@ -182,14 +175,6 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <EntitySet Name="StaffLogin" EntityType="Self.StaffLogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VideoTable" EntityType="Self.VideoTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Volunteer" EntityType="Self.Volunteer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="IntellisenceSettings" EntityType="Self.IntellisenceSettings" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [IntellisenceSettings].[Intellisense] AS [Intellisense], 
-    [IntellisenceSettings].[Result_limit] AS [Result_limit], 
-    [IntellisenceSettings].[Disabled_fields] AS [Disabled_fields], 
-    [IntellisenceSettings].[Debounce_Time] AS [Debounce_Time]
-    FROM [dbo].[IntellisenceSettings] AS [IntellisenceSettings]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -318,16 +303,6 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <Property Name="VolunteerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VolunteerResume" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="IntellisenceSetting">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="Intellisense" Type="Byte" Nullable="false" />
-          <Property Name="Result_limit" Type="Int32" />
-          <Property Name="Debounce_Time" Type="Int32" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Disabled_fields" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityContainer Name="UHNDBContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AlertTables" EntityType="Self.AlertTable" />
           <EntitySet Name="Doctors" EntityType="UHNDBModel.Doctor" />
@@ -340,7 +315,6 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
           <EntitySet Name="StaffLogins" EntityType="Self.StaffLogin" />
           <EntitySet Name="VideoTables" EntityType="Self.VideoTable" />
           <EntitySet Name="Volunteers" EntityType="Self.Volunteer" />
-          <EntitySet Name="IntellisenceSettings" EntityType="Self.IntellisenceSetting" />
           <EntitySet Name="FAQCategories" EntityType="UHNDBModel.FAQCategory" />
           <EntitySet Name="FAQQuestions" EntityType="UHNDBModel.FAQQuestion" />
           <EntitySet Name="Event1" EntityType="UHNDBModel.Event1" />
@@ -512,16 +486,6 @@ warning 6002: The table/view 'C:\USERS\HANA\DESKTOP\GITEXAMPLE\UHN\UHN-HUMBER\AP
                 <ScalarProperty Name="VolunteerPhone" ColumnName="VolunteerPhone" />
                 <ScalarProperty Name="VolunteerEmail" ColumnName="VolunteerEmail" />
                 <ScalarProperty Name="VolunteerResume" ColumnName="VolunteerResume" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="IntellisenceSettings">
-            <EntityTypeMapping TypeName="UHNDBModel.IntellisenceSetting">
-              <MappingFragment StoreEntitySet="IntellisenceSettings">
-                <ScalarProperty Name="Disabled_fields" ColumnName="Disabled_fields" />
-                <ScalarProperty Name="Intellisense" ColumnName="Intellisense" />
-                <ScalarProperty Name="Result_limit" ColumnName="Result_limit" />
-                <ScalarProperty Name="Debounce_Time" ColumnName="Debounce_Time" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

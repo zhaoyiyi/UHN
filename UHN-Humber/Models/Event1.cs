@@ -11,18 +11,13 @@ namespace UHN_Humber.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Event1
     {
         public int EventID { get; set; }
-        [Required(ErrorMessage ="Please enter the event name")]
         public string EventName { get; set; }
-        [Required(ErrorMessage = "Please select the event date")]
         public Nullable<System.DateTime> EventDate { get; set; }
-        [Required(ErrorMessage = "Please select the event time")]
         public string EventTime { get; set; }
-        [Required(ErrorMessage = "Please enter the event location")]
         public string EventLocation { get; set; }
         public string EventDescription { get; set; }
         public string EventRecurred { get; set; }

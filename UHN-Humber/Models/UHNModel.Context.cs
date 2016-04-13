@@ -36,7 +36,6 @@ namespace UHN_Humber.Models
         public virtual DbSet<StaffLogin> StaffLogins { get; set; }
         public virtual DbSet<VideoTable> VideoTables { get; set; }
         public virtual DbSet<Volunteer> Volunteers { get; set; }
-        public virtual DbSet<IntellisenceSetting> IntellisenceSettings { get; set; }
         public virtual DbSet<FAQCategory> FAQCategories { get; set; }
         public virtual DbSet<FAQQuestion> FAQQuestions { get; set; }
         public virtual DbSet<Event1> Event1 { get; set; }

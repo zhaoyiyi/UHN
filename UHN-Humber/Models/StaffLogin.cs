@@ -25,7 +25,7 @@ namespace UHN_Humber.Models
         public string StaffLastName { get; set; }
 
         [Required(ErrorMessage = "Username Required")]
-        [Remote("IsUserNameAvailable", "StaffLogin",ErrorMessage = "Username already in use")]
+        [Remote("IsUserNameAvailable", "StaffLogin", ErrorMessage = "Username already in use")]
         public string StaffUsername { get; set; }
 
         [Required(ErrorMessage = "Password Required")]
@@ -36,4 +36,3 @@ namespace UHN_Humber.Models
         public string StaffAccess { get; set; }
     }
 }
-
