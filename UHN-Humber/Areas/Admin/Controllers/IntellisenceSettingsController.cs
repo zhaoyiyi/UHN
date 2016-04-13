@@ -12,7 +12,7 @@ namespace UHN_Humber.Areas.Admin.Controllers
 {
     public class IntellisenceSettingsController : Controller
     {
-        private UHNDBContext db = new UHNDBContext();
+        private MenuContext db = new MenuContext();
 
         // GET: Admin/IntellisenceSettings
         public ActionResult Index()

@@ -362,7 +362,7 @@
       <DependentUpon>UHNModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IntellisenceSetting.cs">
-      <DependentUpon>UHNModel.tt</DependentUpon>
+      <DependentUpon>MenuModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Menu.cs">
       <DependentUpon>MenuModel.tt</DependentUpon>

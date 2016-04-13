@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="33fcfa9330224a0793850ec3534ecc4d" Name="Diagram1">
         <EntityTypeShape EntityType="MenuModel.Menu" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MenuModel.IntellisenceSetting" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

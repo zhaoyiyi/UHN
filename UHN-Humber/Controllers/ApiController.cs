@@ -57,7 +57,8 @@ namespace UHN_Humber.Controllers
             if(String.IsNullOrEmpty(text)) return Json("", JsonRequestBehavior.AllowGet);
 
             UHNDBContext db = new UHNDBContext();
-            IntellisenceSetting options = db.IntellisenceSettings.FirstOrDefault();
+            MenuContext menuDB = new MenuContext();
+            IntellisenceSetting options = menuDB.IntellisenceSettings.FirstOrDefault();
 
             if (options.Intellisense == 0) return Json("", JsonRequestBehavior.AllowGet);
 

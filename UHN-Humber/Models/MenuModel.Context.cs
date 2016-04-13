@@ -26,5 +26,6 @@ namespace UHN_Humber.Models
         }
     
         public virtual DbSet<Menu> Menus { get; set; }
+        public virtual DbSet<IntellisenceSetting> IntellisenceSettings { get; set; }
     }
 }
