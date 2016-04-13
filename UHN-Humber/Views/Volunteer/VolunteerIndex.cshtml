@@ -1,0 +1,60 @@
+﻿@model IEnumerable<UHN_Humber.Models.Volunteer>
+
+@{
+    ViewBag.Title = "VolunteerIndex";
+}
+
+<h2>VolunteerIndex</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VolunteerFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VolunteerLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VolunteerAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VolunteerPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VolunteerEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VolunteerInfo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolunteerFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolunteerLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolunteerAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolunteerPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolunteerEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolunteerInfo)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.VolunteerId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VolunteerId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<UHN_Humber.Models.StaffLogin>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Staff Login Directory</h2>
+
+<div style="text-align:right">
+    @Html.ActionLink("Logout","Logout")
+</div>
+
+
+
+<p>
+    @Html.ActionLink("Register New", "Register")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffUsername)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=> model.StaffAccess)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StaffFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StaffLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StaffUsername)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StaffPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StaffAccess)
+        </td>
+        <!--<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StaffId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StaffId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StaffId })
+        </td>-->
+    </tr>
+}
+
+</table>

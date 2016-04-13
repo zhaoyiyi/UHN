@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Volunteer">
+          <Key>
+            <PropertyRef Name="VolunteerId" />
+          </Key>
+          <Property Name="VolunteerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VolunteerFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="VolunteerLastName" Type="varchar" MaxLength="50" />
+          <Property Name="VolunteerAddress" Type="varchar" MaxLength="50" />
+          <Property Name="VolunteerPhone" Type="varchar" MaxLength="50" />
+          <Property Name="VolunteerEmail" Type="varchar" MaxLength="50" />
+          <Property Name="VolunteerInfo" Type="text" />
+        </EntityType>
+        <EntityContainer Name="ModelsStoreContainer">
+          <EntitySet Name="Volunteer" EntityType="Self.Volunteer" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Volunteer">
+          <Key>
+            <PropertyRef Name="VolunteerId" />
+          </Key>
+          <Property Name="VolunteerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VolunteerFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VolunteerLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VolunteerAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VolunteerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VolunteerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VolunteerInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="VolunteerContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Volunteers" EntityType="Self.Volunteer" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="VolunteerContext">
+          <EntitySetMapping Name="Volunteers">
+            <EntityTypeMapping TypeName="Models.Volunteer">
+              <MappingFragment StoreEntitySet="Volunteer">
+                <ScalarProperty Name="VolunteerId" ColumnName="VolunteerId" />
+                <ScalarProperty Name="VolunteerFirstName" ColumnName="VolunteerFirstName" />
+                <ScalarProperty Name="VolunteerLastName" ColumnName="VolunteerLastName" />
+                <ScalarProperty Name="VolunteerAddress" ColumnName="VolunteerAddress" />
+                <ScalarProperty Name="VolunteerPhone" ColumnName="VolunteerPhone" />
+                <ScalarProperty Name="VolunteerEmail" ColumnName="VolunteerEmail" />
+                <ScalarProperty Name="VolunteerInfo" ColumnName="VolunteerInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

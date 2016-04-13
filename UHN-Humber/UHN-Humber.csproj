@@ -158,6 +158,26 @@
     <Content Include="images\twh.jpg" />
     <Content Include="images\twitter.png" />
     <Content Include="images\youtube.png" />
+    <Content Include="Models\StaffLogin.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StaffLogin.edmx</DependentUpon>
+      <LastGenOutput>StaffLogin.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\StaffLogin.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StaffLogin.edmx</DependentUpon>
+      <LastGenOutput>StaffLogin1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Volunteer.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Volunteer.edmx</DependentUpon>
+      <LastGenOutput>Volunteer.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Volunteer.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Volunteer.edmx</DependentUpon>
+      <LastGenOutput>Volunteer1.cs</LastGenOutput>
+    </Content>
     <Content Include="scripts\admin\lumino.glyphs.js" />
     <Content Include="Content\admin\styles.css" />
     <Content Include="Content\bootstrap.css" />
@@ -203,9 +223,28 @@
     <Content Include="Areas\Admin\Views\Doctors\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Doctors\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <EntityDeploy Include="Models\StaffLogin.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StaffLogin.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\StaffLogin.edmx.diagram">
+      <DependentUpon>StaffLogin.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Volunteer.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Volunteer.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Volunteer.edmx.diagram">
+      <DependentUpon>Volunteer.edmx</DependentUpon>
+    </Content>
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
+    <None Include="scripts\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\jquery.validate.js" />
+    <Content Include="scripts\jquery.validate.min.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -215,6 +254,8 @@
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DoctorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\VolunteerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -251,8 +292,23 @@
     <Compile Include="Models\PatientTable.cs">
       <DependentUpon>UHNModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StaffLogin.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StaffLogin.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\StaffLogin.cs">
-      <DependentUpon>UHNModel.tt</DependentUpon>
+      <DependentUpon>StaffLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StaffLogin.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StaffLogin.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StaffLogin1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StaffLogin.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UHNModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -272,8 +328,23 @@
     <Compile Include="Models\VideoTable.cs">
       <DependentUpon>UHNModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Volunteer.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Volunteer.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Volunteer.cs">
-      <DependentUpon>UHNModel.tt</DependentUpon>
+      <DependentUpon>Volunteer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Volunteer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Volunteer.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Volunteer1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Volunteer.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -292,6 +363,12 @@
     <Content Include="Views\Shared\_AdminSideMenu.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_PublicView.cshtml" />
+    <Content Include="Views\Staff\Index.cshtml" />
+    <Content Include="Views\Staff\Register.cshtml" />
+    <Content Include="Views\Staff\Login.cshtml" />
+    <Content Include="Views\Staff\LoggedIn.cshtml" />
+    <Content Include="Views\Volunteer\VolunteerApply.cshtml" />
+    <Content Include="Views\Volunteer\VolunteerIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
