@@ -127,17 +127,6 @@
           <Property Name="VisitReason" Type="varchar" MaxLength="50" />
           <Property Name="DocId" Type="int" />
         </EntityType>
-        <EntityType Name="StaffLogin">
-          <Key>
-            <PropertyRef Name="StaffId" />
-          </Key>
-          <Property Name="StaffId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="StaffFirstName" Type="varchar" MaxLength="50" />
-          <Property Name="StaffLastName" Type="varchar" MaxLength="50" />
-          <Property Name="StaffUsername" Type="varchar" MaxLength="50" />
-          <Property Name="StaffPassword" Type="varchar" MaxLength="15" />
-          <Property Name="StaffAccess" Type="varchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="VideoTable">
           <Key>
             <PropertyRef Name="EmployeeId" />
@@ -146,18 +135,6 @@
           <Property Name="EmployeeId" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="VideoNumber" Type="varchar" MaxLength="50" />
           <Property Name="VideoLink" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="Volunteer">
-          <Key>
-            <PropertyRef Name="VolunteerId" />
-          </Key>
-          <Property Name="VolunteerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="VolunteerFirstName" Type="varchar" MaxLength="50" />
-          <Property Name="VolunteerLastName" Type="varchar" MaxLength="50" />
-          <Property Name="VolunteerAddress" Type="varchar" MaxLength="50" />
-          <Property Name="VolunteerPhone" Type="varchar" MaxLength="50" />
-          <Property Name="VolunteerEmail" Type="varchar" MaxLength="50" />
-          <Property Name="VolunteerInfo" Type="text" />
         </EntityType>
         <EntityContainer Name="UHNDBModelStoreContainer">
           <EntitySet Name="AlertTable" EntityType="Self.AlertTable" Schema="dbo" store:Type="Tables" />
@@ -171,9 +148,7 @@
           <EntitySet Name="MenuItem" EntityType="Self.MenuItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PatientTable" EntityType="Self.PatientTable" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="StaffLogin" EntityType="Self.StaffLogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VideoTable" EntityType="Self.VideoTable" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Volunteer" EntityType="Self.Volunteer" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -271,17 +246,6 @@
           <Property Name="VisitReason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DocId" Type="Int32" />
         </EntityType>
-        <EntityType Name="StaffLogin">
-          <Key>
-            <PropertyRef Name="StaffId" />
-          </Key>
-          <Property Name="StaffId" Type="Int32" Nullable="false" />
-          <Property Name="StaffFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="StaffLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="StaffUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="StaffPassword" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="StaffAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="VideoTable">
           <Key>
             <PropertyRef Name="EmployeeId" />
@@ -290,19 +254,6 @@
           <Property Name="EmployeeId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="VideoNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VideoLink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Volunteer">
-          <Key>
-            <PropertyRef Name="VolunteerId" />
-          </Key>
-          <Property Name="VolunteerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="VolunteerFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VolunteerLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VolunteerAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VolunteerPhone" Type="Int32" />
-          <Property Name="VolunteerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VolunteerResume" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="VolunteerInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="UHNDBContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AlertTables" EntityType="Self.AlertTable" />
@@ -313,9 +264,7 @@
           <EntitySet Name="MenuItems" EntityType="Self.MenuItem" />
           <EntitySet Name="News" EntityType="Self.News" />
           <EntitySet Name="PatientTables" EntityType="Self.PatientTable" />
-          <EntitySet Name="StaffLogins" EntityType="Self.StaffLogin" />
           <EntitySet Name="VideoTables" EntityType="Self.VideoTable" />
-          <EntitySet Name="Volunteers" EntityType="Self.Volunteer" />
           <EntitySet Name="FAQCategories" EntityType="UHNDBModel.FAQCategory" />
           <EntitySet Name="FAQQuestions" EntityType="UHNDBModel.FAQQuestion" />
           <EntitySet Name="Events" EntityType="UHNDBModel.Event" />
@@ -343,13 +292,12 @@
             <PropertyRef Name="EventID" />
           </Key>
           <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EventName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EventTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="EventDate" Type="DateTime" Precision="3" />
           <Property Name="EventTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="EventLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="EventDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="EventRecurred" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="EventTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -457,18 +405,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="StaffLogins">
-            <EntityTypeMapping TypeName="UHNDBModel.StaffLogin">
-              <MappingFragment StoreEntitySet="StaffLogin">
-                <ScalarProperty Name="StaffAccess" ColumnName="StaffAccess" />
-                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
-                <ScalarProperty Name="StaffFirstName" ColumnName="StaffFirstName" />
-                <ScalarProperty Name="StaffLastName" ColumnName="StaffLastName" />
-                <ScalarProperty Name="StaffUsername" ColumnName="StaffUsername" />
-                <ScalarProperty Name="StaffPassword" ColumnName="StaffPassword" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="VideoTables">
             <EntityTypeMapping TypeName="UHNDBModel.VideoTable">
               <MappingFragment StoreEntitySet="VideoTable">
@@ -476,19 +412,6 @@
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
                 <ScalarProperty Name="VideoNumber" ColumnName="VideoNumber" />
                 <ScalarProperty Name="VideoLink" ColumnName="VideoLink" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Volunteers">
-            <EntityTypeMapping TypeName="UHNDBModel.Volunteer">
-              <MappingFragment StoreEntitySet="Volunteer">
-                <ScalarProperty Name="VolunteerInfo" ColumnName="VolunteerInfo" />
-                <ScalarProperty Name="VolunteerId" ColumnName="VolunteerId" />
-                <ScalarProperty Name="VolunteerFirstName" ColumnName="VolunteerFirstName" />
-                <ScalarProperty Name="VolunteerLastName" ColumnName="VolunteerLastName" />
-                <ScalarProperty Name="VolunteerAddress" ColumnName="VolunteerAddress" />
-                <ScalarProperty Name="VolunteerPhone" ColumnName="VolunteerPhone" />
-                <ScalarProperty Name="VolunteerEmail" ColumnName="VolunteerEmail" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -515,12 +438,12 @@
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="UHNDBModel.Event">
               <MappingFragment StoreEntitySet="Event">
-                <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
                 <ScalarProperty Name="EventRecurred" ColumnName="EventRecurred" />
                 <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
                 <ScalarProperty Name="EventLocation" ColumnName="EventLocation" />
                 <ScalarProperty Name="EventTime" ColumnName="EventTime" />
                 <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
                 <ScalarProperty Name="EventID" ColumnName="EventID" />
               </MappingFragment>
             </EntityTypeMapping>
