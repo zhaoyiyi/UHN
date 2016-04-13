@@ -8,8 +8,6 @@
         <EntityTypeShape EntityType="UHNDBModel.AlertTable" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UHNDBModel.Doctor" Width="1.875" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UHNDBModel.Donation" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UHNDBModel.EventsTable" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UHNDBModel.FAQTable" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UHNDBModel.History" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UHNDBModel.MenuGroup" Width="1.5" PointX="6.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UHNDBModel.MenuItem" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
@@ -19,6 +17,10 @@
         <EntityTypeShape EntityType="UHNDBModel.VideoTable" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UHNDBModel.Volunteer" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UHNDBModel.IntellisenceSetting" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UHNDBModel.FAQCategory" Width="1.5" PointX="11.375" PointY="3.75" />
+        <EntityTypeShape EntityType="UHNDBModel.FAQQuestion" Width="1.5" PointX="3.375" PointY="11.75" />
+        <EntityTypeShape EntityType="UHNDBModel.Event1" Width="1.5" PointX="0.75" PointY="10.75" />
+
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

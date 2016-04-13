@@ -1,0 +1,149 @@
+﻿
+@model UHN_Humber.Models.faqModel
+
+
+
+@{
+    ViewBag.Title = "UHN FAQ";
+    Layout = "~/Views/Shared/_PublicView.cshtml";
+}
+
+<h2 style="margin-top: 50px; margin-bottom: 30px; font-size: 25px;">Frequently Asked Questions</h2>
+
+
+<style>
+    #faqlist li {
+        background-color: #337ab7;
+    }
+
+        #faqlist li:hover {
+            background-color: #5abbff;
+        }
+
+    #faqlist a {
+        color: white;
+        border: none;
+    }
+
+        #faqlist a.active {
+            background-color: #5abbff;
+            border: none;
+        }
+
+        #faqlist a:hover {
+            background-color: #5abbff;
+            border: none;
+            cursor: pointer;
+        }
+
+
+    #tempDiv {
+        background-image: none;
+    }
+</style>
+
+
+<div id="tempDiv">
+
+    <ul id="faqlist" class="nav nav-tabs nav-justified" style="margin-top:30px ;">
+
+        <li role="presentation">@Html.ActionLink("All", "Index")</li>
+
+
+        @foreach (var item in Model.modelOne)
+        {
+            if (Request.QueryString["categoryid"] == item.FAQCategoryID.ToString())
+            {
+                <li role="presentation"><a class="active">@item.FAQCategoryName</a></li>
+            }
+            else
+            {
+                <li role="presentation">@Html.ActionLink(item.FAQCategoryName, "displayQList", new { categoryid = item.FAQCategoryID.ToString() })</li>
+            }
+        }
+
+    </ul>
+
+</div>
+    
+
+<style>
+    h3{
+     position: relative;
+    display: block;
+    font: bold 14px/19px "Ubuntu", sans-serif;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 15px;
+    color: #333333;
+    }
+    h3 span{
+    float: right;
+    cursor: pointer;
+    }
+    p {
+        color: #6f6f6f;
+        font: normal 14px/18px "Ubuntu", sans-serif;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 10px;
+        display: block;
+    }
+    #faq-list{
+                 border: 1px solid #dedede;
+                 padding: 20px 30px;
+             }
+
+    @@media screen and (min-width: 992px) {
+        p{
+            display: none;
+        }
+
+
+    }
+
+
+</style>
+
+<script>
+
+    $(document).ready(function () {
+        $("h3 span").click(function () {
+            if ($(this).hasClass('glyphicon-menu-down')) {
+                $(this).parent().next().show();
+                $(this).removeClass('glyphicon-menu-down');
+                $(this).addClass('glyphicon-menu-up');
+            }
+            else {
+                $(this).parent().next().hide();
+                $(this).removeClass('glyphicon-menu-up');
+                $(this).addClass('glyphicon-menu-down');
+            }
+        });
+    });
+</script>
+
+<div id="faq-list" style="margin-bottom: 50px; ">
+
+    @foreach (var item in Model.modelTwo)
+    {
+        if (item.FAQQuestionCategory.ToString() == Request.QueryString["categoryid"])
+        {
+            
+            <h3>
+                @item.FAQQuestionQuestion<span class="hidden-sm hidden-xs glyphicon glyphicon-menu-down"
+                                 aria-hidden="true"></span>
+        </h3>
+              <p>@item.FAQQuestionAnswer</p>
+        }
+        else
+        { }
+    }
+
+</div>
+
+
+
+
+

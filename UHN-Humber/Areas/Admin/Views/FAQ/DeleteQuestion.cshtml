@@ -1,0 +1,49 @@
+﻿@model UHN_Humber.Models.FAQQuestion
+
+@{
+    ViewBag.Title = "DeleteQuestion";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-bottom: 50px;">Frequently Asked Questions</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>FAQ Question</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <b>Question: </b>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAQQuestionQuestion)
+        </dd>
+
+        <dt>
+            <b>Answer: </b>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAQQuestionAnswer)
+        </dd>
+
+        <dt>
+            <b>Sort Order: </b>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAQQuestionOrder)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" style="background-color:white;" /> |
+            @Html.ActionLink("Back to List", "Edit", new { id= Model.FAQQuestionCategory})
+        </div>
+    }
+</div>

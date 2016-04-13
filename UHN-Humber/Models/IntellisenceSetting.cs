@@ -16,7 +16,8 @@ namespace UHN_Humber.Models
     {
         public byte Intellisense { get; set; }
         public Nullable<int> Result_limit { get; set; }
-        public string Disabled_fields { get; set; }
         public Nullable<int> Debounce_Time { get; set; }
+        public int id { get; set; }
+        public string Disabled_fields { get; set; }
     }
 }

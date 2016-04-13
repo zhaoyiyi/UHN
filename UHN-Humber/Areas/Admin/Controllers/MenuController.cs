@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace UHN_Humber.Controllers
+namespace UHN_Humber.Areas.Admin.Controllers
 {
-    public class HomeController : Controller
+    public class MenuController : Controller
     {
-        // GET: Home
+        // GET: Admin/Menu
         public ActionResult Index()
         {
             return View();

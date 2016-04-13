@@ -12,12 +12,10 @@ namespace UHN_Humber.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class EventsTable
+    public partial class Menu
     {
-        public int EventId { get; set; }
-        public string EventTitle { get; set; }
-        public string EventDescription { get; set; }
-        public Nullable<System.DateTime> EventDatetime { get; set; }
-        public string Recurrence { get; set; }
+        public int Id { get; set; }
+        public string menu { get; set; }
+        public string name { get; set; }
     }
 }

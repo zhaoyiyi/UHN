@@ -1,3 +1,8 @@
+node_modules/
+jspm_packages/
+.idea/
+
+
 # Created by http://www.gitignore.io
 
 ### VisualStudio ###
@@ -150,7 +155,7 @@ csx/
 AppPackages/
 
 # Others
-sql/
+
 *.Cache
 ClientBin/
 [Ss]tyle[Cc]op.*

@@ -28,8 +28,6 @@ namespace UHN_Humber.Models
         public virtual DbSet<AlertTable> AlertTables { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
         public virtual DbSet<Donation> Donations { get; set; }
-        public virtual DbSet<EventsTable> EventsTables { get; set; }
-        public virtual DbSet<FAQTable> FAQTables { get; set; }
         public virtual DbSet<History> Histories { get; set; }
         public virtual DbSet<MenuGroup> MenuGroups { get; set; }
         public virtual DbSet<MenuItem> MenuItems { get; set; }
@@ -39,5 +37,8 @@ namespace UHN_Humber.Models
         public virtual DbSet<VideoTable> VideoTables { get; set; }
         public virtual DbSet<Volunteer> Volunteers { get; set; }
         public virtual DbSet<IntellisenceSetting> IntellisenceSettings { get; set; }
+        public virtual DbSet<FAQCategory> FAQCategories { get; set; }
+        public virtual DbSet<FAQQuestion> FAQQuestions { get; set; }
+        public virtual DbSet<Event1> Event1 { get; set; }
     }
 }

@@ -1,0 +1,66 @@
+﻿@model UHN_Humber.Models.FAQQuestion
+@{
+    ViewBag.Title = "EditQuestion";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-bottom: 50px;">Frequently Asked Question</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Edit FAQ Question</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.FAQQuestionID)
+
+        <div class="form-group">
+            <div class="control-label col-md-2">
+                <b>Question <span style="vertical-align: middle; color: red; font-size: 30px;">*</span> : </b>
+            </div> 
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FAQQuestionQuestion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FAQQuestionQuestion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">
+                <b>Answer <span style="vertical-align: middle; color: red; font-size: 30px;">*</span> : </b>
+            </div> 
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FAQQuestionAnswer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FAQQuestionAnswer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="control-label col-md-2">
+                <b>Sort Order  : </b>
+            </div> 
+            <div class="col-md-10">
+                @Html.DropDownList("Questions")
+                <input type="hidden" name="faqid" value="@Model.FAQQuestionID" />
+                <input type="hidden" name="oldindex" value="@Model.FAQQuestionOrder" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" style="background-color:white;" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Edit", new { id = ViewBag.CategoryID })
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
