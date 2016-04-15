@@ -286,15 +286,22 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AlertController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DoctorsController.cs" />
     <Compile Include="Areas\Admin\Controllers\FAQController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Models\Alert.cs" />
+    <Compile Include="Areas\Admin\Models\AlertContext.cs" />
+    <Compile Include="Areas\Admin\Models\News.cs" />
+    <Compile Include="Areas\Admin\Models\NewsContext.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\FAQUHNController.cs" />
     <Compile Include="Areas\Admin\Controllers\IntellisenceSettingsController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\SearchDoctorController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -401,6 +408,7 @@
     <Content Include="Views\Api\Index.cshtml" />
     <Content Include="Views\SearchDoctor\Index.cshtml" />
     <Content Include="Views\SearchDoctor\Details.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -409,7 +417,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Alert\" />
+    <Folder Include="Areas\Admin\Views\News\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
