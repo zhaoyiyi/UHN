@@ -1,0 +1,69 @@
+﻿@model IEnumerable<UHN_Humber.Models.Donation>
+
+@{
+    ViewBag.Title = "DonatorList";
+    Layout = "~/Views/Shared/_AdminSideMenu.cshtml";
+}
+
+<h2>DonatorList</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Donator
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Amount
+        </th>
+        <th>
+            Recipient
+        </th>
+        <th>
+            Phone Number
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Credit Card
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonationAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonationRecipient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonationPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonationEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonationAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonationCreditCard)
+            </td>
+        </tr>
+    }
+
+</table>

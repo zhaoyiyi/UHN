@@ -149,6 +149,16 @@
     <Content Include="App_Data\UHNDB_log.ldf">
       <DependentUpon>UHNDB.mdf</DependentUpon>
     </Content>
+    <Content Include="Models\Donations.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Donations.edmx</DependentUpon>
+      <LastGenOutput>Donations.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Donations.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Donations.edmx</DependentUpon>
+      <LastGenOutput>Donations.cs</LastGenOutput>
+    </Content>
     <Content Include="scripts\apps\MenuDisplay.js" />
     <Content Include="scripts\apps\MenuDisplay\app.js" />
     <Content Include="scripts\apps\MenuDisplay\components\MenuDisplay.js" />
@@ -313,6 +323,14 @@
     <Content Include="Areas\Admin\Views\VolunteerAdmin\VolunteerIndex.cshtml" />
     <Content Include="Areas\Admin\Views\StaffLoginAdmin\StaffIndex.cshtml" />
     <Content Include="Areas\Admin\Views\StaffLoginAdmin\Register.cshtml" />
+    <EntityDeploy Include="Models\Donations.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Donations.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Donations.edmx.diagram">
+      <DependentUpon>Donations.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\DonationAdmin\DonationIndex.cshtml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -329,9 +347,10 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DoctorsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DonationAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffLoginAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\VolunteerAdminController.cs" />
-    <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\DonationController.cs" />
     <Compile Include="Controllers\VolunteerController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\FAQController.cs" />
@@ -351,7 +370,22 @@
       <DependentUpon>UHNModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Donation.cs">
-      <DependentUpon>UHNModel.tt</DependentUpon>
+      <DependentUpon>Donations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Donations.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Donations.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Donations.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Donations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Donations.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Donations.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Event.cs">
       <DependentUpon>UHNModel.tt</DependentUpon>
@@ -461,8 +495,8 @@
     <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_AdminSideMenu.cshtml" />
     <Content Include="Views\Shared\_PublicView.cshtml" />
-    <Content Include="Views\Staff\Login.cshtml" />
-    <Content Include="Views\Staff\LoggedIn.cshtml" />
+    <Content Include="Areas\Admin\Views\StaffLoginAdmin\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\StaffLoginAdmin\LoggedIn.cshtml" />
     <Content Include="Views\Volunteer\VolunteerApply.cshtml" />
     <Content Include="Views\FAQUHN\Index.cshtml" />
     <Content Include="Views\FAQUHN\displayQList.cshtml" />
@@ -470,6 +504,7 @@
     <Content Include="Views\Api\Index.cshtml" />
     <Content Include="Views\SearchDoctor\Index.cshtml" />
     <Content Include="Views\SearchDoctor\Details.cshtml" />
+    <Content Include="Views\Donation\Donate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -479,7 +514,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Volunteer\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

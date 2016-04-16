@@ -55,9 +55,11 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.VolunteerInfo, htmlAttributes: new { @class = "control-label col-md-2" })
+            Tell us about your previous volunteer history and why you would like to volunteer with UHN.
+
+                @Html.LabelFor(model => model.VolunteerInfo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.VolunteerInfo, new { htmlAttributes = new { @class = "form-control0"} })
+                @Html.EditorFor(model => model.VolunteerInfo, new { htmlAttributes = new { @class = "form-control0"}})
                 @Html.ValidationMessageFor(model => model.VolunteerInfo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -69,7 +71,3 @@
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "VolunteerIndex")
-</div>

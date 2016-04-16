@@ -11,17 +11,32 @@ namespace UHN_Humber.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Donation
     {
+        [Key]
         public int DonationId { get; set; }
+
+        [Required(ErrorMessage = "Please provide your name")]
         public string DonationName { get; set; }
-        public Nullable<System.DateTime> DonationDate { get; set; }
-        public Nullable<int> DonationAmount { get; set; }
+        [Required(ErrorMessage = "Please enter a date")]
+        [DataType(DataType.Date)]
+        public string DonationDate { get; set; }
+        [Required(ErrorMessage = "Please enter a donation amount")]
+        [DataType(DataType.Currency)]
+        public string DonationAmount { get; set; }
+        [Required(ErrorMessage = "Who would you like to donate to?")]
         public string DonationRecipient { get; set; }
+        [Required(ErrorMessage = "Please enter your phone number")]
+        [DataType(DataType.PhoneNumber)]
         public string DonationPhone { get; set; }
+        [Required(ErrorMessage = "Please enter your email")]
+        [DataType(DataType.EmailAddress)]
         public string DonationEmail { get; set; }
+        [Required(ErrorMessage ="Please enter your address")]
         public string DonationAddress { get; set; }
+        [Required(ErrorMessage = "Please enter your credit card")]
+        [DataType(DataType.CreditCard)]
         public string DonationCreditCard { get; set; }
     }
 }
