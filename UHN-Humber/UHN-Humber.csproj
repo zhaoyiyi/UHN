@@ -345,11 +345,20 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AlertController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DoctorsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonationAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffLoginAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VideoController.cs" />
     <Compile Include="Areas\Admin\Controllers\VolunteerAdminController.cs" />
+    <Compile Include="Areas\Admin\Models\Alert.cs" />
+    <Compile Include="Areas\Admin\Models\AlertContext.cs" />
+    <Compile Include="Areas\Admin\Models\News.cs" />
+    <Compile Include="Areas\Admin\Models\NewsContext.cs" />
+    <Compile Include="Areas\Admin\Models\Video.cs" />
+    <Compile Include="Areas\Admin\Models\VideoContext.cs" />
     <Compile Include="Controllers\DonationController.cs" />
     <Compile Include="Controllers\VolunteerController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventAdminController.cs" />
@@ -512,9 +521,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
