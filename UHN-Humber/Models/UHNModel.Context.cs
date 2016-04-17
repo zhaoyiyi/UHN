@@ -27,7 +27,6 @@ namespace UHN_Humber.Models
     
         public virtual DbSet<AlertTable> AlertTables { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
-        public virtual DbSet<Donation> Donations { get; set; }
         public virtual DbSet<History> Histories { get; set; }
         public virtual DbSet<MenuGroup> MenuGroups { get; set; }
         public virtual DbSet<MenuItem> MenuItems { get; set; }

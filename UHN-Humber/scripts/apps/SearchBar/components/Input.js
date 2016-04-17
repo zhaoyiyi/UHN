@@ -5,7 +5,7 @@ export default class Input extends React.Component {
   render() {
     return (
         <div className="input-group">
-          <input type="text" className="form-control"
+          <input type="text" className="form-control" name={this.props.inputName}
                  value={this.props.value} onChange={this.props.onChange}
           />
           <span className="input-group-btn">

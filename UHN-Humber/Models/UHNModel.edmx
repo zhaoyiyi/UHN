@@ -36,20 +36,6 @@
           <Property Name="Doc_research_profile" Type="varchar" MaxLength="67" />
           <Property Name="Doc_specialty" Type="varchar" MaxLength="64" />
         </EntityType>
-        <EntityType Name="Donation">
-          <Key>
-            <PropertyRef Name="DonationId" />
-          </Key>
-          <Property Name="DonationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DonationName" Type="varchar(max)" />
-          <Property Name="DonationDate" Type="date" />
-          <Property Name="DonationAmount" Type="int" />
-          <Property Name="DonationRecipient" Type="varchar(max)" />
-          <Property Name="DonationPhone" Type="varchar" MaxLength="50" />
-          <Property Name="DonationEmail" Type="varchar" MaxLength="50" />
-          <Property Name="DonationAddress" Type="varchar" MaxLength="50" />
-          <Property Name="DonationCreditCard" Type="nchar" MaxLength="10" />
-        </EntityType>
         <EntityType Name="Event">
           <Key>
             <PropertyRef Name="EventID" />
@@ -139,7 +125,6 @@
         <EntityContainer Name="UHNDBModelStoreContainer">
           <EntitySet Name="AlertTable" EntityType="Self.AlertTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="doctors" EntityType="Self.doctors" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FAQCategory" EntityType="Self.FAQCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FAQQuestion" EntityType="Self.FAQQuestion" Schema="dbo" store:Type="Tables" />
@@ -184,20 +169,6 @@
           <Property Name="Doc_research_institute_affiliations" Type="String" MaxLength="795" FixedLength="false" Unicode="false" />
           <Property Name="Doc_research_profile" Type="String" MaxLength="67" FixedLength="false" Unicode="false" />
           <Property Name="Doc_specialty" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Donation">
-          <Key>
-            <PropertyRef Name="DonationId" />
-          </Key>
-          <Property Name="DonationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DonationName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DonationDate" Type="DateTime" Precision="0" />
-          <Property Name="DonationAmount" Type="Int32" />
-          <Property Name="DonationRecipient" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DonationPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DonationEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DonationAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DonationCreditCard" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="History">
           <Key>
@@ -258,7 +229,6 @@
         <EntityContainer Name="UHNDBContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AlertTables" EntityType="Self.AlertTable" />
           <EntitySet Name="Doctors" EntityType="UHNDBModel.Doctor" />
-          <EntitySet Name="Donations" EntityType="Self.Donation" />
           <EntitySet Name="Histories" EntityType="Self.History" />
           <EntitySet Name="MenuGroups" EntityType="Self.MenuGroup" />
           <EntitySet Name="MenuItems" EntityType="Self.MenuItem" />
@@ -335,21 +305,6 @@
                 <ScalarProperty Name="Doc_research_institute_affiliations" ColumnName="Doc_research_institute_affiliations" />
                 <ScalarProperty Name="Doc_research_profile" ColumnName="Doc_research_profile" />
                 <ScalarProperty Name="Doc_specialty" ColumnName="Doc_specialty" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Donations">
-            <EntityTypeMapping TypeName="UHNDBModel.Donation">
-              <MappingFragment StoreEntitySet="Donation">
-                <ScalarProperty Name="DonationId" ColumnName="DonationId" />
-                <ScalarProperty Name="DonationName" ColumnName="DonationName" />
-                <ScalarProperty Name="DonationDate" ColumnName="DonationDate" />
-                <ScalarProperty Name="DonationAmount" ColumnName="DonationAmount" />
-                <ScalarProperty Name="DonationRecipient" ColumnName="DonationRecipient" />
-                <ScalarProperty Name="DonationPhone" ColumnName="DonationPhone" />
-                <ScalarProperty Name="DonationEmail" ColumnName="DonationEmail" />
-                <ScalarProperty Name="DonationAddress" ColumnName="DonationAddress" />
-                <ScalarProperty Name="DonationCreditCard" ColumnName="DonationCreditCard" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

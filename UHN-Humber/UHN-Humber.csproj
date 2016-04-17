@@ -149,6 +149,7 @@
     <Content Include="App_Data\UHNDB_log.ldf">
       <DependentUpon>UHNDB.mdf</DependentUpon>
     </Content>
+    <Content Include="images\noProfileImage.png" />
     <Content Include="Models\Donations.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Donations.edmx</DependentUpon>

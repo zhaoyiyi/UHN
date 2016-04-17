@@ -38,6 +38,7 @@ export default class SearchBar extends React.Component {
     return (
       <div>
         <Input
+            inputName="searchText"
             value={this.state.text}
             onChange={this.handleInputChange}
       />

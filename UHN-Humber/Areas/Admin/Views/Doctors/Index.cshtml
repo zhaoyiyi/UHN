@@ -36,7 +36,7 @@
 
     <div class="input-group">
         <!-- search app -->
-        <div id="searchBar" data-path="Admin/Doctors/details"></div>
+        <div id="searchBar" data-path="/Admin/Doctors/Details"></div>
         <script src="~/scripts/apps/SearchBar.js"></script>
 
         <input type="hidden" name="orderBy" value=@orderBy>
@@ -48,44 +48,51 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Specialty</th>
-    </tr>
+<div class="container">
+    @foreach (var item in Model)
+    {
+        string imgURL = String.IsNullOrEmpty(item.Doc_image) ? "/images/noProfileImage.png" : item.Doc_image;
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DocId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Doc_first_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Doc_last_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Doc_email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Doc_phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Doc_specialty)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DocId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DocId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DocId })
-        </td>
-    </tr>
-}
-</table>
+        <div class="row well">
+            <div class="media pull-left">
+                <a href="@Url.Action("Details", new { id=item.DocId })">
+                    <img src="@imgURL" alt="doctor's picture" class="img-circle" style="height: 230px; width: 230px" />
+                </a>
+            </div>
+
+            <div class="col-sm-8 text-center">
+                <h3>
+                    @item.Doc_first_name @item.Doc_last_name
+                </h3>
+                <p>
+                    <span class="text-primary">Program:</span> @item.Doc_program
+                </p>
+                <p>
+                    <span class="text-primary">Specialty:</span> @item.Doc_specialty
+                </p>
+                <p>
+                    <span class="text-primary">Email:</span> @item.Doc_email
+                </p>
+                <p>
+                    <span class="text-primary">Phone:</span> @item.Doc_phone
+                </p>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Action
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Edit", "Edit", new { id = item.DocId })</li>
+                        <li>@Html.ActionLink("Details", "Details", new { id = item.DocId })</li>
+                        <li>@Html.ActionLink("Delete", "Delete", new { id = item.DocId })</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
 
 <div>
     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
