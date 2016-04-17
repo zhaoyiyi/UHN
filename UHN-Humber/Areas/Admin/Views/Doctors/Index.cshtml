@@ -70,12 +70,18 @@
                 <p>
                     <span class="text-primary">Specialty:</span> @item.Doc_specialty
                 </p>
-                <p>
-                    <span class="text-primary">Email:</span> @item.Doc_email
-                </p>
-                <p>
-                    <span class="text-primary">Phone:</span> @item.Doc_phone
-                </p>
+                @if (item.Doc_email != null)
+                {
+                    <p>
+                        <span class="text-primary">Email:</span> @item.Doc_email
+                    </p>
+                }
+                @if (item.Doc_phone != null)
+                {
+                    <p>
+                        <span class="text-primary">Phone:</span> @item.Doc_phone
+                    </p>
+                }
                 <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Action
