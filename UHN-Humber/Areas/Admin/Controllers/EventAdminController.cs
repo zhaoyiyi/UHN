@@ -133,7 +133,7 @@ namespace UHN_Humber.Areas.Admin.Controllers
 
                 e.EventLocation = formCollection["EventLocation"];
                 e.EventDescription = formCollection["EventDescription"];
-                e.EventRecurred = formCollection["EventRepeat"];
+                e.EventRecurred = "Never"; // formCollection["EventRepeat"];
 
                 uc.Events.Add(e);
                 uc.SaveChanges();
@@ -296,7 +296,7 @@ namespace UHN_Humber.Areas.Admin.Controllers
                 e.EventTime = formCollection["EventTime"];
                 e.EventLocation = formCollection["EventLocation"];
                 e.EventDescription = formCollection["EventDescription"];
-                e.EventRecurred = formCollection["EventRepeat"];
+                e.EventRecurred = "Never"; // formCollection["EventRepeat"];
 
                 uc.Entry(e).State = System.Data.Entity.EntityState.Modified;
                 uc.SaveChanges();
