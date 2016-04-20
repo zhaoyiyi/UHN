@@ -26,7 +26,7 @@ export default class MenuDisplay extends React.Component {
       return (
           <li key={index} className={liClass}>
             <a className={aClass}
-               href={`http://${location.hostname}/${item.link}`}>{item.name}
+               href={`${item.link}`}>{item.name}
             </a>
             {arrow}
             {submenu}
