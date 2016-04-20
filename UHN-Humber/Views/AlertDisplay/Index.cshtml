@@ -1,0 +1,48 @@
+﻿@model IEnumerable<UHN_Humber.Areas.Admin.Models.Alert>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_PublicView.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AlertDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlertTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlertDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmergContact)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlertDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlertTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlertDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergContact)
+        </td>
+     
+    </tr>
+}
+
+</table>

@@ -149,6 +149,10 @@
     <Content Include="App_Data\UHNDB_log.ldf">
       <DependentUpon>UHNDB.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Data\UHN_Humber.Areas.Admin.Models.AlertContext.mdf" />
+    <Content Include="App_Data\UHN_Humber.Areas.Admin.Models.AlertContext_log.ldf">
+      <DependentUpon>UHN_Humber.Areas.Admin.Models.AlertContext.mdf</DependentUpon>
+    </Content>
     <Content Include="images\noProfileImage.png" />
     <Content Include="Models\Donations.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -332,6 +336,12 @@
       <DependentUpon>Donations.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Admin\Views\DonationAdmin\DonationIndex.cshtml" />
+    <Content Include="Areas\Admin\Views\Alert\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Alert\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Alert\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Index.cshtml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -360,6 +370,7 @@
     <Compile Include="Areas\Admin\Models\NewsContext.cs" />
     <Compile Include="Areas\Admin\Models\Video.cs" />
     <Compile Include="Areas\Admin\Models\VideoContext.cs" />
+    <Compile Include="Controllers\AlertDisplayController.cs" />
     <Compile Include="Controllers\DonationController.cs" />
     <Compile Include="Controllers\VolunteerController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventAdminController.cs" />
@@ -515,6 +526,7 @@
     <Content Include="Views\SearchDoctor\Index.cshtml" />
     <Content Include="Views\SearchDoctor\Details.cshtml" />
     <Content Include="Views\Donation\Donate.cshtml" />
+    <Content Include="Views\AlertDisplay\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -522,7 +534,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\AlertPublic\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
