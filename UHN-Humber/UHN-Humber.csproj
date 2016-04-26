@@ -316,11 +316,7 @@
       <DependentUpon>MenuModel.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\IntellisenceSettings\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\IntellisenceSettings\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\IntellisenceSettings\Details.cshtml" />
     <Content Include="Areas\Admin\Views\IntellisenceSettings\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\IntellisenceSettings\Index.cshtml" />
     <Content Include="Areas\Admin\Views\EventAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\EventAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\EventAdmin\Delete.cshtml" />
