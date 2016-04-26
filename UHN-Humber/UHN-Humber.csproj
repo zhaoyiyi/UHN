@@ -367,6 +367,7 @@
     <Compile Include="Areas\Admin\Models\Video.cs" />
     <Compile Include="Areas\Admin\Models\VideoContext.cs" />
     <Compile Include="Controllers\AlertDisplayController.cs" />
+    <Compile Include="Controllers\AppointmentRequestsController.cs" />
     <Compile Include="Controllers\DonationController.cs" />
     <Compile Include="Controllers\VolunteerController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventAdminController.cs" />
@@ -381,6 +382,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AlertTable.cs">
+      <DependentUpon>UHNModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AppointmentRequest.cs">
       <DependentUpon>UHNModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Doctor.cs">
@@ -523,6 +527,7 @@
     <Content Include="Views\SearchDoctor\Details.cshtml" />
     <Content Include="Views\Donation\Donate.cshtml" />
     <Content Include="Views\AlertDisplay\Index.cshtml" />
+    <Content Include="Views\AppointmentRequests\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

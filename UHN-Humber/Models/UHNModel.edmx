@@ -15,6 +15,19 @@
           <Property Name="AlertDescription" Type="text" />
           <Property Name="EmergContact" Type="int" />
         </EntityType>
+        <EntityType Name="AppointmentRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PatientName" Type="varchar" MaxLength="50" />
+          <Property Name="PatientAge" Type="int" />
+          <Property Name="PatientSex" Type="varchar" MaxLength="50" />
+          <Property Name="PatientPhone" Type="varchar" MaxLength="50" />
+          <Property Name="PatientEmail" Type="varchar" MaxLength="50" />
+          <Property Name="PreferredDate" Type="datetime" />
+          <Property Name="Reasons" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="doctors">
           <Key>
             <PropertyRef Name="DocId" />
@@ -124,6 +137,7 @@
         </EntityType>
         <EntityContainer Name="UHNDBModelStoreContainer">
           <EntitySet Name="AlertTable" EntityType="Self.AlertTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppointmentRequest" EntityType="Self.AppointmentRequest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="doctors" EntityType="Self.doctors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FAQCategory" EntityType="Self.FAQCategory" Schema="dbo" store:Type="Tables" />
@@ -238,6 +252,7 @@
           <EntitySet Name="FAQCategories" EntityType="UHNDBModel.FAQCategory" />
           <EntitySet Name="FAQQuestions" EntityType="UHNDBModel.FAQQuestion" />
           <EntitySet Name="Events" EntityType="UHNDBModel.Event" />
+          <EntitySet Name="AppointmentRequests" EntityType="UHNDBModel.AppointmentRequest" />
         </EntityContainer>
         <EntityType Name="FAQCategory">
           <Key>
@@ -268,6 +283,19 @@
           <Property Name="EventLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="EventDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="EventRecurred" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AppointmentRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PatientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PatientAge" Type="Int32" />
+          <Property Name="PatientSex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PatientPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PatientEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PreferredDate" Type="DateTime" Precision="3" />
+          <Property Name="Reasons" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -400,6 +428,20 @@
                 <ScalarProperty Name="EventDate" ColumnName="EventDate" />
                 <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
                 <ScalarProperty Name="EventID" ColumnName="EventID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppointmentRequests">
+            <EntityTypeMapping TypeName="UHNDBModel.AppointmentRequest">
+              <MappingFragment StoreEntitySet="AppointmentRequest">
+                <ScalarProperty Name="Reasons" ColumnName="Reasons" />
+                <ScalarProperty Name="PreferredDate" ColumnName="PreferredDate" />
+                <ScalarProperty Name="PatientEmail" ColumnName="PatientEmail" />
+                <ScalarProperty Name="PatientPhone" ColumnName="PatientPhone" />
+                <ScalarProperty Name="PatientSex" ColumnName="PatientSex" />
+                <ScalarProperty Name="PatientAge" ColumnName="PatientAge" />
+                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
