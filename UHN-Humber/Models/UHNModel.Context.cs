@@ -36,5 +36,6 @@ namespace UHN_Humber.Models
         public virtual DbSet<FAQCategory> FAQCategories { get; set; }
         public virtual DbSet<FAQQuestion> FAQQuestions { get; set; }
         public virtual DbSet<Event> Events { get; set; }
+        public virtual DbSet<AppointmentRequest> AppointmentRequests { get; set; }
     }
 }
