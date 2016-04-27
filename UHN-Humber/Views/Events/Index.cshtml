@@ -5,7 +5,13 @@
     ViewBag.Title = "Events Calendar";
     Layout = "~/Views/Shared/_PublicView.cshtml";
 }
-<h2 style="margin-top: 50px; margin-bottom: 30px; font-size: 25px;">Events Calendar</h2>
+<h2 style="margin-top: 50px; margin-bottom: 30px; font-size: 25px;">Events Calendar
+    <div style="display:inline; float:right;" class="btn-group" role="group" aria-label="...">
+        <button class="btn btn-default active"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> <span class="hidden-xs">Calendar View</span></button>
+        <a href="@Url.Action("listview")" class="btn btn-default"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> <span class="hidden-xs">List View</span></a>    
+    
+    
+    </div></h2>
 
 
 <style>
@@ -133,6 +139,7 @@
                 }
 
             });
+
         });
 </script>
 
@@ -152,52 +159,50 @@
         </tr>
 
         @{
-            int count = 1;
+                int count = 1;
         }
 
         @for (var i = 1 - Model.modelTwo.dayInString; i <= (Model.modelTwo.numDays + (6 - Model.modelTwo.lastday));)
         {
-
             <tr class="calendardays">
                 @for (var j = 0; j < 7; j++)
                 {
-
                     if (i < 1 || i > Model.modelTwo.numDays)
                     {
-                        <td></td>
+                        <td id="noday"></td>
                     }
                     else
                     {
                         if (Model.modelTwo.year == System.DateTime.Now.Year && Model.modelTwo.month == System.DateTime.Now.Month && i == System.DateTime.Now.Day)
                         {
-                            <td style="background-color:#FFFF99; ">
 
-                                @foreach (var e in Model.events.Where(e => e.EventDate.Value.Day == i && e.EventDate.Value.Month == Model.modelTwo.month
-        && e.EventDate.Value.Year == Model.modelTwo.year))
+                            <td  style="background-color:#FFFF99; ">
+                                @foreach (var e in Model.events.Where(e => e.EventDate.Value.Day == i && e.EventDate.Value.Month == Model.modelTwo.month && e.EventDate.Value.Year == Model.modelTwo.year))
                                 {
                                     <div class="circle visible-xs">
-
                                         <div>
                                             <span>@e.EventTitle</span>
                                             <span>
-                                                <b>Time: </b> @e.EventTime<br /><br /><b>
-                                                    Location:
-                                                </b> @e.EventLocation<br /><br />                              <b>Description:</b> @e.EventDescription<br /><br />
+                                                <b>Time: </b> @e.EventTime<br /><br />
+                                                <b>Location: </b> @e.EventLocation<br /><br />
+                                                <b>Description:</b> @e.EventDescription
+                                                <br /><br />
                                             </span>
                                         </div>
-
                                     </div> 
                                    <div class="hidden-xs">
-
-                                        <span style="font-size:     12px;">@e.EventTime</span><br  />
-                                       <span class="events">
-                    @e.EventTitle <div>
-                                        <span>@e.EventTitle</span>
-                                           <span>                          <b>Time: </b> @e.EventTime<br /><br /><b>
-    Location: </b> @e.EventLocation<br /><br />                              <b>Description:</b> @e.EventDescription<br /><br />
-    </span>
-                                    </div>
-                                </span><br />
+                                        <span style="font-size:12px;">@e.EventTime
+                                       </span><br  />
+                                       <span class="events">@e.EventTitle 
+                                           <div>
+                                                <span>@e.EventTitle</span>
+                                                <span><b>Time: </b> @e.EventTime<br /><br />
+                                                      <b>Location: </b> @e.EventLocation
+                                                      <br /><br />                                                          <b>Description:</b> @e.EventDescription
+                                                      <br /><br />
+                                                </span>
+                                          </div>
+                                        </span><br />
                                        </div>
                                 }
                                 <span class="dayTopRight">@i</span>
@@ -205,7 +210,7 @@
                         }
                         else
                         {
-                            <td>
+                            <td >
                                 @foreach (var e in Model.events.Where(e => e.EventDate.Value.Day == i && e.EventDate.Value.Month == Model.modelTwo.month && e.EventDate.Value.Year == Model.modelTwo.year))
                             {
 
