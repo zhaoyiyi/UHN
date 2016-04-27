@@ -11,16 +11,26 @@ namespace UHN_Humber.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class AppointmentRequest
     {
         public int Id { get; set; }
+        [Required(ErrorMessage ="Please write your name")]
         public string PatientName { get; set; }
+        [Required(ErrorMessage = "Please write your age. It must be a number.")]
         public Nullable<int> PatientAge { get; set; }
         public string PatientSex { get; set; }
+        [Required(ErrorMessage = "Please write your phone number")]
+        [RegularExpression(@"[0-9]{3,4}-[0-9]{3,4}-[0-9]{4}", ErrorMessage ="The phone number should be in the right format")]
         public string PatientPhone { get; set; }
+        [Required(ErrorMessage = "Please write your email address")]
+        [EmailAddress(ErrorMessage ="The email address is not valid")]
         public string PatientEmail { get; set; }
+        [Required(ErrorMessage = "Please select the preferred date")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> PreferredDate { get; set; }
+        [Required(ErrorMessage = "Please write the reason to visit")]
         public string Reasons { get; set; }
     }
 }

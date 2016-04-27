@@ -16,6 +16,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 
+    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
 
     <link rel="stylesheet" href="~/Content/main.css">
     <script src="~/Content/main.js"></script>
@@ -117,7 +120,7 @@
                 <li><a href="">Health Information</a></li>
                 <li><a href="">My Visit to UHN</a></li>
                 <li><a href="">Visiting Patients</a></li>
-                <li><a href="">Online Booking</a></li>
+                <li>@Html.ActionLink("Online Booking", "Create", "AppointmentRequestsPublic")</li>
                 <li><a href="">Patients & Family Services</a></li>
             </ul>
 
@@ -234,7 +237,7 @@
 
 
     </footer>
-
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 </body>
 </html>

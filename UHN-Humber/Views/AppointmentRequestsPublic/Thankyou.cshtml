@@ -1,0 +1,74 @@
+﻿@model UHN_Humber.Models.AppointmentRequest
+
+@{
+    ViewBag.Title = "Thankyou";
+    Layout = "~/Views/Shared/_PublicView.cshtml";
+}
+
+<h2>Confirmation</h2>
+
+<div>
+    <hr />
+<h4>Thank you, @Html.DisplayFor(model => model.PatientName) !<br/>
+    Your appointment request is successfully sent.<br/>
+    The following is your appointment details.</h4>
+           
+    <dl>
+        <dt>
+            Name :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatientName)
+        </dd>
+        <dt>
+            Age : 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatientAge)
+        </dd>
+
+        <dt>
+           Sex : 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatientSex)
+        </dd>
+
+        <dt>
+           Phone Number : 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatientPhone)
+        </dd>
+
+        <dt>
+            Email : 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatientEmail)
+        </dd>
+
+        <dt>
+           Preferred Date : 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreferredDate)
+        </dd>
+
+        <dt>
+           Reasons to visit : 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reasons)
+        </dd>
+
+    </dl>
+</div>
+

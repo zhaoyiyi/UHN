@@ -19,7 +19,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PatientName" Type="varchar" MaxLength="50" />
           <Property Name="PatientAge" Type="int" />
           <Property Name="PatientSex" Type="varchar" MaxLength="50" />
@@ -288,7 +288,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PatientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PatientAge" Type="Int32" />
           <Property Name="PatientSex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
