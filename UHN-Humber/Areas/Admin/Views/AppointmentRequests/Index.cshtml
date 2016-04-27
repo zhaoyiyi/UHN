@@ -1,0 +1,67 @@
+﻿@model IEnumerable<UHN_Humber.Models.AppointmentRequest>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Appointment Request List</h2>
+
+<table class="table">
+    <tr>
+        <th>
+           Patient Name
+        </th>
+        <th>
+            Age
+        </th>
+        <th>
+            Sex
+        </th>
+        <th>
+           Phone Number
+        </th>
+        <th>
+           Email Address
+        </th>
+        <th>
+          Preferred Date
+        </th>
+        <th>
+          Reasons to Appointment
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientAge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientSex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreferredDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reasons)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

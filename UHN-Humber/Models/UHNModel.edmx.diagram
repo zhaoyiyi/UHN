@@ -16,6 +16,7 @@
         <EntityTypeShape EntityType="UHNDBModel.FAQCategory" Width="1.5" PointX="11.375" PointY="3.75" />
         <EntityTypeShape EntityType="UHNDBModel.FAQQuestion" Width="1.5" PointX="3.375" PointY="11.75" />
         <EntityTypeShape EntityType="UHNDBModel.Event" Width="1.5" PointX="9.75" PointY="6.25" />
+        <EntityTypeShape EntityType="UHNDBModel.AppointmentRequest" Width="1.5" PointX="0.75" PointY="5.75" />
 
       </Diagram>
     </edmx:Diagrams>

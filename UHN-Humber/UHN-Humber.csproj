@@ -316,11 +316,7 @@
       <DependentUpon>MenuModel.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\IntellisenceSettings\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\IntellisenceSettings\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\IntellisenceSettings\Details.cshtml" />
     <Content Include="Areas\Admin\Views\IntellisenceSettings\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\IntellisenceSettings\Index.cshtml" />
     <Content Include="Areas\Admin\Views\EventAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\EventAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\EventAdmin\Delete.cshtml" />
@@ -342,6 +338,10 @@
     <Content Include="Areas\Admin\Views\News\Create.cshtml" />
     <Content Include="Areas\Admin\Views\News\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\News\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AppointmentRequests\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AppointmentRequests\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AppointmentRequests\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AppointmentRequests\Index.cshtml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -357,6 +357,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AlertController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AppointmentRequestsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DoctorsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonationAdminController.cs" />
@@ -371,6 +372,7 @@
     <Compile Include="Areas\Admin\Models\Video.cs" />
     <Compile Include="Areas\Admin\Models\VideoContext.cs" />
     <Compile Include="Controllers\AlertDisplayController.cs" />
+    <Compile Include="Controllers\AppointmentRequestsPublicController.cs" />
     <Compile Include="Controllers\DonationController.cs" />
     <Compile Include="Controllers\VolunteerController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventAdminController.cs" />
@@ -385,6 +387,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AlertTable.cs">
+      <DependentUpon>UHNModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AppointmentRequest.cs">
       <DependentUpon>UHNModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Doctor.cs">
@@ -527,6 +532,8 @@
     <Content Include="Views\SearchDoctor\Details.cshtml" />
     <Content Include="Views\Donation\Donate.cshtml" />
     <Content Include="Views\AlertDisplay\Index.cshtml" />
+    <Content Include="Views\AppointmentRequestsPublic\Create.cshtml" />
+    <Content Include="Views\AppointmentRequestsPublic\Thankyou.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

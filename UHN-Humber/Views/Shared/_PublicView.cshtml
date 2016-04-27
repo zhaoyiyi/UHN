@@ -16,6 +16,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 
+    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
 
     <link rel="stylesheet" href="~/Content/main.css">
     <script src="~/Content/main.js"></script>
@@ -35,7 +38,7 @@
             <div class="logo col-lg-7 col-md-7 col-sm-5 col-xs-12">
                 <div class="row">
                     <a href="" class="col-xs-8">
-                        <img class="hidden-xs" src="~/images/logo.png" alt="logo image" id="logo" /><img class="visible-xs" src="~/images/logo-uhn.svg" alt="logo image" id="logo2" />
+                        <img class="hidden-xs" src="~/images/logo.png" alt="logo image" id="logo" /><img class="visible-xs" src="~/images/logo-uhn.png" alt="logo image" id="logo2" />
                         <br /><span id="fake">This is a fake website for a school project</span>
                     </a>
 
@@ -117,7 +120,7 @@
                 <li><a href="">Health Information</a></li>
                 <li><a href="">My Visit to UHN</a></li>
                 <li><a href="">Visiting Patients</a></li>
-                <li><a href="">Online Booking</a></li>
+                <li>@Html.ActionLink("Online Booking", "Create", "AppointmentRequestsPublic")</li>
                 <li><a href="">Patients & Family Services</a></li>
             </ul>
 
@@ -234,7 +237,7 @@
 
 
     </footer>
-
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 </body>
 </html>

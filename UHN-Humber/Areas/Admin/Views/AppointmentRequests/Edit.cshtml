@@ -1,0 +1,112 @@
+﻿@model UHN_Humber.Models.AppointmentRequest
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>AppointmentRequest</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            <label class="control-label col-md-2" >Patient Name : </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PatientName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PatientName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Age : </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PatientAge, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PatientAge, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Sex : </label>
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.PatientSex, "Male", new { @checked = true }) : Male
+                @Html.RadioButtonFor(model => model.PatientSex, "Female", new { }) : Female
+                @Html.ValidationMessageFor(model => model.PatientSex, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Phone Number : <br /> (The format must be the following 000-000-0000) </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PatientPhone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PatientPhone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Email : </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PatientEmail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PatientEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <script>
+                    $(function () {
+                        $.datepicker.setDefaults({
+                            dateFormat: 'yy-mm-dd'
+                        });
+                    });
+
+        </script>
+
+        <script>
+              $(function() {
+                $( "#datepicker" ).datepicker({ minDate: 0, maxDate: "+10y" });
+              });
+        </script>
+
+
+
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Preferred Date :</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PreferredDate, new { htmlAttributes = new { @class = "form-control", @id = "datepicker" } })
+                @Html.ValidationMessageFor(model => model.PreferredDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Reasons for Appointment : </label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Reasons)
+                @Html.ValidationMessageFor(model => model.Reasons, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Edit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
