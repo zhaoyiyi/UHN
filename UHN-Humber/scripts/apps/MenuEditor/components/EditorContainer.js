@@ -6,8 +6,8 @@ import MenuStore from '../stores/MenuStore';
 import MenuActions from '../actions/MenuActions';
 import MenuDisplay from '../../MenuDisplay/components/MenuDisplay';
 import '../css/menu.css!';
-import $ from 'jquery';
-import 'jquery-ui';
+//import $ from 'jquery';
+//import 'jquery-ui';
 
 Array.prototype.deepSplice = function (indexArray, deleteCount, ...replacement) {
   if (!indexArray) return;
@@ -76,7 +76,7 @@ export default class EditorContainer extends React.Component {
     // get data-id on li element
     const id = $(event.target).closest('li').data('id');
     let menuTree = [].concat(this.state.menu[this.state.num].menu);
-    menuTree.deepSplice(id.toString().split(''), 1);
+    menuTree.deepSplice(id.toString().split(','), 1);
     MenuActions.update(menuTree)
   };
 
