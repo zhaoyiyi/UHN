@@ -20,6 +20,17 @@ namespace UHN_Humber.Areas.Admin.Controllers
             return View(events);
         }
 
+        public ActionResult passedEvents()
+        {
+            var events = uc.Events.Where(b => b.EventDate < DateTime.Now).OrderBy(b=>b.EventDate);
+            return View(events);
+        }
+        public ActionResult upcomingEvents()
+        {
+            var events = uc.Events.Where(b => b.EventDate >= DateTime.Now).OrderBy(b => b.EventDate);
+            return View(events);
+        }
+
         [HttpGet]
         public ActionResult Create()
         {

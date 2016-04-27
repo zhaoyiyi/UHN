@@ -15,7 +15,7 @@
     <span style="border:1px solid #30a5ff; padding: 4px;">
         @Html.ActionLink("Upcoming Events", "upcomingEvents")
     </span>
-        <span style="float:right;">@Html.ActionLink("Create New Event", "Create")</span>
+    <span style="float:right;">@Html.ActionLink("Create New Event", "Create")</span>
 </p>
 <table class="table" style="table-layout: fixed;">
     <tr>
@@ -23,7 +23,7 @@
             Title
         </th>
         <th>
-           Date
+            Date
         </th>
         <th>
             Time
@@ -37,30 +37,31 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.EventTitle)
-        </td>
-        <td>
-          @String.Format("{0:d}", item.EventDate)
-     
-            
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EventTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EventLocation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EventDescription)
-        </td>
-        <td >
-            @Html.ActionLink("Edit", "Edit", new { id=item.EventID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EventID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventTitle)
+            </td>
+            <td>
+                @String.Format("{0:d}", item.EventDate)
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EventID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EventID })
+            </td>
+        </tr>
+    }
 
 </table>

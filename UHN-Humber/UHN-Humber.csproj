@@ -342,6 +342,8 @@
     <Content Include="Areas\Admin\Views\AppointmentRequests\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AppointmentRequests\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AppointmentRequests\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\EventAdmin\passedEvents.cshtml" />
+    <Content Include="Areas\Admin\Views\EventAdmin\upcomingEvents.cshtml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
