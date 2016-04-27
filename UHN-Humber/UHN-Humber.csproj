@@ -537,6 +537,7 @@
     <Content Include="Views\AlertDisplay\Index.cshtml" />
     <Content Include="Views\AppointmentRequestsPublic\Create.cshtml" />
     <Content Include="Views\AppointmentRequestsPublic\Thankyou.cshtml" />
+    <Content Include="Views\Events\listview.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
